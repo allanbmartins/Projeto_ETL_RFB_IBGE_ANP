@@ -1,0 +1,18 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  "code-runner.executorMap": {
+    "code-runner.executorMap": { "python": "$pythonPath $fullFileName" }
+  },
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+
+  "python.formatting.provider": "none",
+  "python.linting.flake8Enabled": false,
+  "cSpell.language": "en,pt-BR"
+}
