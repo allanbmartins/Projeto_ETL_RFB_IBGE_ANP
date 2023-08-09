@@ -2,6 +2,7 @@ from pathlib import Path
 import tkinter as tk
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 import webbrowser
+import os
 
 from B_Def_Global import Criar_Var_Ambiente, limpar_terminal, VerifPath, log_retorno_erro, gerenciar_bancos, gerenciar_diretorios
 from C_Script_RFB import baixar_arq_rfb_estab, descompactar_arq_rfb_estab, converter_utf8_arq_rfb_estab, inserir_dados_estab_bd, sequencia_RFB, cnpj_repetidos_rfb, dados_faltantes_rfb, criar_indices_rfb
@@ -20,9 +21,16 @@ def menu_tkinter_1():
 
         main = tk.Tk()
 
-        img_receita = tk.PhotoImage(file='images/4_Receita2.png')
-        img_ibge = tk.PhotoImage(file='images/3_IBGE.png')
-        img_anp = tk.PhotoImage(file='images/5_ANP.png')
+        cwd = os.getcwd()
+        # print(cwd)
+
+        file_path_foto_receita = os.path.join(cwd + '\\images\\4_Receita2.png')
+        file_path_foto_ibge = os.path.join(cwd + '\\images\\3_IBGE.png')
+        file_path_foto_anp = os.path.join(cwd + '\\images\\5_ANP.png')
+
+        img_receita = tk.PhotoImage(file=file_path_foto_receita)
+        img_ibge = tk.PhotoImage(file=file_path_foto_ibge)
+        img_anp = tk.PhotoImage(file=file_path_foto_anp)
         global img_github
         global img_linkedin
         global img_email
@@ -126,9 +134,17 @@ def menu_tkinter_1():
             global img_linkedin
             global img_email
 
-            img_github = tk.PhotoImage(file='images/github.png')
-            img_linkedin = tk.PhotoImage(file='images/linkedin-logo.png')
-            img_email = tk.PhotoImage(file='images/gmail.png')
+            cwd = os.getcwd()
+            # print(cwd)
+
+            file_path_foto_git_hub = os.path.join(cwd + '\\images\\github.png')
+            file_path_foto_linkedin = os.path.join(
+                cwd + '\\images\\linkedin-logo.png')
+            file_path_foto_email = os.path.join(cwd + '\\images\\gmail.png')
+
+            img_github = tk.PhotoImage(file=file_path_foto_git_hub)
+            img_linkedin = tk.PhotoImage(file=file_path_foto_linkedin)
+            img_email = tk.PhotoImage(file=file_path_foto_email)
 
             try:
 
