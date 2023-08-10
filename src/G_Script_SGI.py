@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import pandas as pd
+import numpy as np
 from datetime import datetime, timedelta
 from tqdm import tqdm
 import time
@@ -283,3 +284,109 @@ def sequencia_sgi():
 
 
 # sequencia_sgi()
+
+def visitas_sgi_verificacao_isntrumentos_2021_2022():
+    """Função para baixar os dados de PIB Total, Industrial e Serviços na API IBGE
+    """
+
+    path_var_output = GetEnv('SGI_OUTPUT_FILES_PATH')
+    path_var_output_convert = GetEnv('SGI_OUTPUT_FILES_PATH_CONVERT')
+
+    ext = ('.xls')
+    name_file = ('tb_sgi_visitados_vrf_2021_2022')
+    file_path = os.path.join(path_var_output, (name_file+ext))
+
+    try:
+        insert_start = time.time()
+
+        nome_planilhas = ["SQL Results",
+                          "SQL Results (1)",
+                          "SQL Results (2)",
+                          "SQL Results (3)",
+                          "SQL Results (4)",
+                          "SQL Results (5)",
+                          "SQL Results (6)",
+                          "SQL Results (7)",
+                          "SQL Results (8)",
+                          "SQL Results (9)",
+                          "SQL Results (10)"]
+
+        tmp_1 = pd.DataFrame()
+
+        for i in nome_planilhas:
+            tabela = pd.read_excel(file_path,
+                                   sheet_name=i,
+                                   usecols=['NOME_UF',
+                                            'ANO',
+                                            'CNPJ'],
+                                   dtype={'NOME_UF': object,
+                                          'ANO': object,
+                                          'CNPJ': object})
+            tmp_1 = pd.concat([tmp_1, tabela], axis=0, ignore_index=True)
+
+        # Remover linhas com valores nulos
+        tmp_1 = tmp_1[tmp_1['CNPJ'].notnull()]
+
+        # Remover linhas com 0 na coluna CNPJ
+        tmp_1 = tmp_1[tmp_1['CNPJ'] != 0]
+
+        # Agrupando por item e contando o número de ocorrências
+        tmp_1 = tmp_1.groupby(['ANO', 'CNPJ'])['NOME_UF'].first().reset_index()
+
+        # Ordenar ascendente coluna específica para facilitar a visualização.
+        tmp_1 = tmp_1.sort_values(by='CNPJ', ascending=True)
+
+        # Converter coluna específica para fonto flutuante
+        # tmp_1 = tmp_1.astype({'CNPJ': int})
+
+        # Criar coluna para tipo de serviço
+        tmp_1['cd_vrf'] = ('1')
+        tmp_1['cd_ppe'] = ('')
+        tmp_1['cd_acf'] = ('')
+        tmp_1['qtd_cnpj_sgi'] = (1)
+        tmp_1['cd_cnae_principal_rfb'] = ('')
+
+        # Alterar ordem das colunas do dataframe
+        tmp_1 = tmp_1[['CNPJ',
+                       'qtd_cnpj_sgi',
+                       'NOME_UF',
+                       'ANO',
+                       'cd_vrf',
+                       'cd_ppe',
+                       'cd_acf',
+                       'cd_cnae_principal_rfb']]
+
+        # Alterar o nome da coluna
+        tmp_1.columns = ['id_cod_cnpj_trab',
+                         'qtd_cnpj_sgi',
+                         'st_uf_sgi_visitado',
+                         'dt_ano_sgi_visitado',
+                         'cd_vrf',
+                         'cd_ppe',
+                         'cd_acf',
+                         'cd_cnae_principal_rfb']
+
+        print(tmp_1)
+
+        # Salvar dataframe em um csv
+        local_save_csv = (os.path.join(
+            path_var_output_convert, (name_file + '.csv')))
+        tmp_1.to_csv(local_save_csv,
+                     index=False,  # Não usar índice
+                     encoding='utf-8'  # Usar formato UTF-8 para marter formatação
+                     , sep=';'  # Usar ponto e virgula
+                     , na_rep='0')  # Susbstituir NaN por 0
+
+        insert_end = time.time()
+        print_parcial_final_log_inf_retorno('download',
+                                            insert_start,
+                                            insert_end,
+                                            name_file,
+                                            'parcial')
+
+    except Exception as text:
+
+        log_retorno_erro(text)
+
+
+visitas_sgi_verificacao_isntrumentos_2021_2022()
