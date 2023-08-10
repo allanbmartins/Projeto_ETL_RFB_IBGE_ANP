@@ -20,6 +20,7 @@ from sklearn.preprocessing import MinMaxScaler
 from Z_Logger import Logs
 logs = Logs(filename="logs.log")
 
+
 def limpar_terminal():
     os.system("cls")
 
