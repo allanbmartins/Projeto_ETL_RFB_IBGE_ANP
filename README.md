@@ -8,7 +8,7 @@
 
 &nbsp;
 
-- Fonte de informações oficial da Receita Federal do Brasil, [aqui](https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-jurdica---cnpj).
+- Fonte de informações oficial da Receita Federal do Brasil, [aqui](https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj).
 
 - Fonte oficial que é usada para baixar os arquivos da Receita Federal do Brasil, [aqui](http://200.152.38.155/CNPJ/).
 
@@ -175,12 +175,13 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ## **_Infraestrutura necessária/opcional:_**
 
+- [Windows 10 ou superior ](https://www.microsoft.com/pt-br/windows/)
 - [Python 3.11.4](https://www.python.org/downloads/release/python-3114/)
 - [PostgreSQL 15](https://www.postgresql.org/download/)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 - [Packages Python mais atuais conforme "requirements.txt"](https://www.postgresql.org/download/)
 - [Java Release 8 - Atualização 333 - 32Bits e 64Bits - Requerido pelo pacote Tabula-Py para leitura de pdf"](https://www.java.com/pt-BR/download/help/windows_manual_download_pt-br.html)
 - [Insomnia - API Client](https://insomnia.rest/download)
-- [Opcional - Visual Studio Code](https://code.visualstudio.com/download)
 - [Opcional - DBeaver Community](https://dbeaver.io/download/)
 - [Opcional - Notepad++](https://notepad-plus-plus.org/downloads/)
 - [Opcional - paint.net](hhttps://www.dotpdn.com/downloads/pdn.html)
@@ -193,11 +194,11 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 &nbsp;
 
-**1.** Com o Python e PostgreSQL instalado.
+**1.** Com o Python, PostgreSQL e o Visual Studio Code instalado.
 
-**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha.
+**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha, abra a pasta dentro do Visual Studio Code já configurado para uso da linguagem Pyhon[aqui](https://www.youtube.com/watch?v=ctcDfKYrzOQ).
 
-**3.** Execute o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
+**3.** Execute no terminal do VSCODE o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
 
 &nbsp;
 
