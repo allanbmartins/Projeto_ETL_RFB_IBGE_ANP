@@ -190,15 +190,15 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ---
 
-## **_Como usar:_**
+## **_Como usar: (ATENÇÃO AO FAZER ALGUNS QUESTIONAMENTO SOBRE ALGUM PROBLEMA, COLE O CONTEÚDO DO ARQUIVO "log.log" QUE ESTÁ NA RAIZ DO DIRETÓRIO DO PROJETO PARA QUE POSSA SER IDENTIFICADO O PROBLEMA MAIS FACILMENTE)_ **
 
 &nbsp;
 
 **1.** Com o Python, PostgreSQL e o Visual Studio Code instalado.
 
-**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha, abra a pasta dentro do Visual Studio Code já configurado para uso da linguagem Pyhon[aqui](https://www.youtube.com/watch?v=ctcDfKYrzOQ).
+**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha, abra a pasta dentro do Visual Studio Code já configurado para uso da linguagem Pyhon [aqui](https://www.youtube.com/watch?v=ctcDfKYrzOQ).
 
-**3.** Execute no terminal do VSCODE o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
+**3.** Execute no Powershell do windows como administrador o comando "Set-ExecutionPolicy AllSigned" e coloque a opção A [Para todos] para liberação de execução de scripts, já no terminal do VSCODE execute o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
 
 &nbsp;
 
@@ -226,7 +226,7 @@ pip list
 
 &nbsp;
 
-**4.** Para facilitação foi criado uma interface gráfica pelo pacote "tkinter", execute o arquivo "A_GUI.py" da pasta ./src para iniciar o mesmo.
+**4.** Para facilitação foi criado uma **interface gráfica pelo pacote "tkinter"**, execute o arquivo **"A_GUI.py"** da pasta ./src para iniciar o mesmo, más também existe um **menu via console** caso queiram utilizar execute o arquivo **"A_Main.py"**.
 &nbsp;
 
 ![Alt text](Images/01_Menu_principal.png?raw=true "Menu Principal")
@@ -380,16 +380,16 @@ pip list
 
 - Tempos parciais coletados no processo da RFB:
 
-| Item | Descrição Processo                                                                                                                                   | Tempo decorrido no processo |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| 1    | Baixar                                                                                                                                               | `6:03:52   `                |
-| 2    | Descompactar                                                                                                                                         | `0:06:27`                   |
-| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:07`                   |
-| 4    | Inserir no Banco de dados                                                                                                                            | `0:27:15`                   |
-| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:10:26`                   |
-| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:06:07`                   |
-| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:56`                   |
-|      | Total                                                                                                                                                | `7:45:10`                   |
+| Item | Descrição Processo                                                                                                                                   | Tempo decorrido no processo PC i7 8Gen-Ram 16GB-HD-10Mbps | Tempo decorrido no processo PC i7 4Gen-Ram 8GB-SSD-200Mbps |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+| 1    | Baixar                                                                                                                                               | `6:03:52   `                                              | `1:08:00   `                                               |
+| 2    | Descompactar                                                                                                                                         | `0:06:27`                                                 | `0:06:00   `                                               |
+| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:07`                                                 | `1:01:00   `                                               |
+| 4    | Inserir no Banco de dados                                                                                                                            | `0:27:15`                                                 | `0:26:00   `                                               |
+| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:10:26`                                                 | `0:09:00   `                                               |
+| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:06:07`                                                 | `0:04:00   `                                               |
+| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:56`                                                 | `0:16:00   `                                               |
+|      | Total                                                                                                                                                | `7:45:10`                                                 | `3:10:00   `                                               |
 
 &nbsp;
 
@@ -422,3 +422,7 @@ pip list
 - O código pode ser adaptado para uso em notebooks (google colab) para minimizar o tempo de download usando o acesso direto a internet e também poderia injetar os dados diretos dos arquivos csv em uma banco de dados PostgreSQL em uma instância em nuvem.
 
 - Todos os agradecimentos a **Aphonso Henrique do Amaral Rafael** [Fonte github aqui](https://github.com/aphonsoar/Receita_Federal_do_Brasil_-_Dados_Publicos_CNPJ/), desenvolvedor do código original utilizado como inspiração/adaptação/inclusão para este meu projeto para atendimento das minhas necessidades, acompanhem o github dele e agradeçam a iniciativa de disponibilização inicial, pois acredito que o código original ou o meu alterado pode ajudar outras pessoas na obtenção mais facilitada dos dados na internet abertos (Públicos e privados).
+
+- Mediante a ajuda do colaborador **Henrique Santos** que está testando o projeto, foi possível atualizar os dados de tempo decorrido e teste de uso inicial.
+
+- Também foi identificado que uma internet mais potente e o uso de SSD podem melhorar significativamente a velocidade total do Script da RFB.
