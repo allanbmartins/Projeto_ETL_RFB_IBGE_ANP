@@ -383,6 +383,6 @@ pyrightconfig.json
 #Other
 files/*
 *.tmp
-extras/*
+#extras/*
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudiocode,jetbrains

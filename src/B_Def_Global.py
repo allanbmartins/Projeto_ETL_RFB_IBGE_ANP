@@ -56,10 +56,10 @@ def Criar_Var_Ambiente():
     print('=== Operações com o arquivo de configuração de ambiente === \n')
     # Criar arquivo de configuração de ambiente
     host = 'localhost'  # input('Digite o HOST usado do banco: ')
-    port = '5433'  # input('Digite a PORTA usada do banco: ')
+    port = '5432'  # input('Digite a PORTA usada do banco: ')
     user = 'postgres'  # input('Digite o USERNAME usado do banco: ')
     passw = 'xxxx'  # input('Digite o PASSWORD usado do banco: ')
-    namebd = 'dados_etl_2'  # input('Digite o NAME BD do banco: ')
+    namebd = 'dados_etl'  # input('Digite o NAME BD do banco: ')
 
     try:
         print("Informações do arquivo de configuração de ambiente \n")

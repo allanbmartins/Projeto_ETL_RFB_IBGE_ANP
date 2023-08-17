@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title align="center">Meu website</title>
+<style type="text/css">
+body {background-color: white}
+p {margin-left: 20px}
+</style>
+</head>
+
+<body>
+<h1><big>Bem-vindo! - COMO CONFIGURAR O COMANDO PSQL NO WINDOWS 10</big></h1>
+<br>
+<hr>
+
+<p><b>PEQUENO RESUMO SOBRE CONFIGURAÇÃO E USO DO POSTGRESQL NO WINDOWS</b></p>
+<p align="justify">
+Na barra de pesquisa do menu Iniciar, digite "variáveis" e clique na opção "Editar as variáveis de ambiente do sistema";<br>
+Certifique-se de que uma janela com o nome "Propriedades do Sistema" esteja aberta, e a seção "Avançado", selecionada;<br>
+Clique na opção "Variáveis de ambiente";<br>
+Na sessão "Variáveis do sistema", role para baixo até encontrar a opção com título "Path". Ao encontrá-la, dê um duplo clique em "Path";<br>
+Uma nova janela irá aparecer com uma lista de caminhos. Clique no botão "Novo", e aparecerá um campo para adicionar mais um caminho nessa lista;<br>
+Agora, basta adicionar o caminho que leva à pasta "PostgreSQL/11/bin/" (11 é a versão do PostgreSQL instalada). No meu caso, esse caminho é C:\Program Files\PostgreSQL\11\bin\ (pois selecionei os locais de instalação padrão). Se você também selecionou os locais padrão ao realizar a instalação, provavelmente o caminho que leva à pasta bin é o mesmo que eu escrevi acima.
+Por fim, basta clicar em "OK" e, ao voltar para a janela anterior, clicar em "Aplicar"<br> 
+<br>
+Para testar se esse tutorial deu certo, abra o prompt de comando do Windows e digite "psql" (sem aspas).<br>
+<br>
+<a href="https://www.dio.me/articles/como-configurar-o-comando-psql-no-windows-10">Fonte: Como configurar o comando psql no Windows 10</a>.
+</b></p>
+
+<br>
+<hr>
+<br>
+
+<p><b>LIBERANDO ACESSO AO BANCO DE DADOS POSTGRESQL NO WINDOWS</b></p>
+<p align="justify">
+Como liberar acesso ao banco de dados PostgreSQL para ser acessado de outro computador.<br>
+<br>
+Nesse tutorial, o banco está instalado no Windows 8.1, mas o procedimento é o mesmo para as demais versões do Windows.<br>
+<br>
+Primeiro precisamos editar o arquivo “pg_hba.conf”. Normalmente ele fica no diretório “C:\Program Files\PostgreSQL\9.4\data” caminho pode ser diferente de acordo com a versão do postgreSQL ou Windows, mas segue sempre essa linha.
+<br>
+O arquivo original deve estar igual ou semelhante a este:<br>
+<br>
+<br>
+Na analisando o arquivo, na linha 77 consta a explicação dos parâmetros a serem configurados, já na linha 80, existe a liberação para um host, que no caso, é a própria máquina onde o banco está instalado.<br>
+<br>
+host    all             all             127.0.0.1/32            md5
+<br>
+Entendo melhor essa linha já configurada<br>
+<br>
+host: É o tipo de dispositivo que fará conexão com o banco, no caso é host por padrão<br>
+<br>
+all: Informa qual base será liberada, no caso, consta todas, mas pode ser liberada uma base especifica, basta pôr o nome da base.<br>
+<br>
+all: Informa qual usuário será liberado, no caso, também consta todos os usuários. Para liberar um usuário especifico ou grupo de usuários, basta colocar o nome do mesmo.<br>
+<br>
+127.0.0.1/32: Esse é um parâmetro importante, pois nele deverá ser informado qual rede terá acesso. Caso queira liberar acesso para todas as maquinas de todas as redes possíveis, use: “0.0.0.0/0”. Mas o ideal é que seja liberado para a rede especifica que irá utilizar.<br>
+<br>
+md5: É o padrão de criptografia dos usuários das bases, caso queira que não seja solicitado senha, use o parâmetro trust ao invés de md5. Porém o mais comum é utilizar md5.<br>
+<br>
+Então, se você quer compartilhar sua base de desenvolvimento principalmente, com alguns colegas, poderá ser utilizado o seguinte padrão:<br>
+<br>
+host    all             all             0.0.0.0/0            md5<br>
+<br>
+<a href="https://coffops.com/liberando-acesso-ao-banco-de-dados-postgresql-no-windows/">Fonte: Liberando acesso ao banco de dados postgresql no windows</a>.
+
+</b></p>
+<br>
+<hr>
+<br>
+
+<p><b>CONHEÇA O BÁSICO DO PSQL</b></p>
+<p align="justify">
+Para se conectar a um banco de dados, você precisa informar sempre com que usuário deseja fazer a conexão e a qual banco de dados deseja se conectar. Deve informar também, qual é o nome ou IP do servidor onde está esse banco de dados.<br>
+<br>
+Para isto, servem os parâmetros do comando psql:<br>
+<br>
+-h :: para informar o host (IP ou nome do host);<br>
+-U :: para informar o nome do usuário;<br>
+-d :: para informar o nome do banco de dados.<br>
+-p :: para informar a porta do banco de dados.<br>
+<br>
+Como ficaria "psql -U postgres -d postgres -p 5433" #Eu uso a porta 5433 não a padrão que é 5432<br>
+<br>
+Dependendo da conexão que você quiser fazer, alguns parâmetros podem ser omitidos, mas ao omitir um parâmetro necessário, você não conseguirá fazer a conexão.<br>
+<br>
+Comandos próprios do psql<br>
+Além de realizar comandos SQL, o psql também inclui alguns comandos próprios. Por exemplo, para sair do psql, você deve usar o comando \q (note que é uma barra invertida mesmo).<br>
+<br>
+Existem várias opções interessantes, veja alguns exemplos:<br>
+<br>
+\d :: lista as tabelas do banco de dados<br>
+\dv :: lista as views do banco de dados<br>
+\di :: lista os índices do banco de dados<br>
+\db :: lista as tablespaces<br>
+\l :: lista os bancos de dados
+\dg :: lista as roles existentes (usuários ou grupos)<br>
+\conninfo :: apresenta informações sobre a conexão atual<br>
+\h :: lista os comandos SQL<br>
+\h comando :: apresenta detalhes sobre o comando<br>
+<br>
+Existem várias outras opções, você pode ver cada uma delas com o comando: \?<br>
+<br>
+<a href=" https://www.vivaolinux.com.br/artigo/psql-Conheca-o-basico">Fonte: Conheça o básico do psql</a>.
+<a href=" https://halleyoliv.gitlab.io/pgdocptbr/app-psql.html">Fonte: psql — terminal interativo do PostgreSQL </a>.
+
+</b></p>
+
+<br>
+<hr>
+<br>
+
+<p><b>PostgreSQL - Comandos para START, STOP e RESTART do servidor de banco de dados Postgres</b></p>
+<p align="justify">
+Para iniciar (START) o servidor de banco de dados, execute o seguinte procedimento:
+<br>
+Abra o Prompt de comando MS-DOS (Iniciar ou Aperte o botão Windows).<br>
+Caso windows 7 ou superior digite cmd e aperte Enter.<br>
+Se não, vá em Executar e digite cmd e aperte Enter.<br>
+Com o Prompt de comando do Windows aberto - Navegue até a pasta bin do PostgreSQL.<br>
+<br> 
+<br>
+Diretórios PostgreSQL:
+<br>
+    Se o Windows for 32 bits, será alguma dessas:<br>
+        "C:\Program Files\PostgreSQL\9.0\bin\" ou<br>
+        "C:\Program Files\PostgreSQL\9.4\bin\" ou<br>
+        "C:\Program Files\PostgreSQL\9.6\bin\"<br>
+    Se o Windows for 64, bits será alguma dessas:<br>
+        "C:\Program Files (x86)\PostgreSQL\9.0\bin\" ou<br>
+        "C:\Program Files (x86)\PostgreSQL\9.4\bin\" ou<br>
+        "C:\Program Files (x86)\PostgreSQL\9.6\bin\"<br>
+<br>
+<br>
+cd C:\Program Files (x86)\PostgreSQL\9.6\bin\<br>
+    Dentro da pasta bin digite o seguinte comando:<br>
+<br>
+pg_ctl -D "C:\Program Files (x86)\PostgreSQL\9.6\data" start<br>
+    Note que o -D tem que ser maiúsculo para que o comando seja executado perfeitamente.<br>
+<br>
+Para parar o servidor o procedimento é o mesmo, trocando somente a ultima palavra START por STOP.<br>
+<br>
+pg_ctl -D "C:\Program Files (x86)\PostgreSQL\9.6\data" stop<br>
+<br>
+Existe também a possibilidade de realizar o desligamento com segurança, sem que seja fechada todas as conexões, digite a opção -S ao final do comando.<br>
+<br>
+pg_ctl -D "C:\Program Files (x86)\PostgreSQL\9.6\data" stop -s <br>
+<br>
+Podemos fazer a reinicialização do servidor com o mesmo comando, mudando a palavra STOP por RESTART.<br>
+<br>
+pg_ctl -D "C:\Program Files (x86)\PostgreSQL\9.6\data" restart -s 
+<br>
+Trocando o postgres de porta<br>
+<br>
+Para trocar um postgres já instalado de porta, você precisa localizar o arquivo postgresql.conf. Geralmente esse arquivo se encontra no diretório de instalação padrão do postgres, nesse caso de exemplo, o caminho é: C:\Program Files (x86)\PostgreSQL\9.6\data<br>
+<br>
+Depois de localizar esse arquivo, encerre o serviço do postgres. Isso pode ser feito via CMD ou interface de Serviços mesmo, como achar melhor. 
+<br>
+Em seguida, abra o arquivo postgresql.conf e altere a propriedade port, conforme a imagem.<br>
+
+Altere o valor dessa propriedade para o valor da porta que deseja, por exemplo 5460. Feito isso, basta subir o serviço do Postgres novamente e ele já deve ser iniciado na nova porta.
+<br>
+Obs: em alguns casos, pode ser necessário reiniciar a máquina. 
+<br>
+Para testar se esse tutorial deu certo, abra o prompt de comando do Windows e digite "psql" (sem aspas).<br>
+<br>
+<a href="https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360012608093-PostgreSQL-Comandos-para-START-STOP-e-RESTART-do-servidor-de-banco-de-dados-Postgres">Fonte: PostgreSQL - Comandos para START, STOP e RESTART do servidor de banco de dados Postgres </a>.
+
+</b></p>
+
+</body>
+</html>

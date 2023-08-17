@@ -155,7 +155,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ### Link internet
 
-- 1Gb/s a 10Gb/s - compartilhado entre instituições - RNP [aqui](https://www.rnp.br/sistema-rnp/rede-ipe)
+- 10Mbs/s a 10Gb/s - compartilhado entre instituições - RNP [aqui](https://www.rnp.br/sistema-rnp/rede-ipe)
 
 &nbsp;
 ![Alt text](Images/09_MAPA_DEO_MAIO2023_VERSAO_SITE.png?raw=true "RNP")
@@ -164,7 +164,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ### Máquina de trabalho utilizada para teste
 
-- Windows 10 Pro;
+- Windows 10 Pro - 64Bits;
 - Processador Core i7 - Oitava Geração;
 - 16GB Memoria DDR4;
 - HD SATA 500GB; **Recomendado uso de SSD, melhora até 3x a velocidade de leitura e escrita**
@@ -175,16 +175,26 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ## **_Infraestrutura necessária/opcional:_**
 
-- [Windows 10 ou superior ](https://www.microsoft.com/pt-br/windows/)
-- [Python 3.11.4](https://www.python.org/downloads/release/python-3114/)
-- [PostgreSQL 15](https://www.postgresql.org/download/)
-- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Link download - Windows 10 ou superior - 64Bits](https://www.microsoft.com/pt-br/windows/)
+- [Link download - Python 3.11.4](https://www.python.org/downloads/release/python-3114/) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
+- [Link download - Visual Studio Code](https://code.visualstudio.com/download) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
+- [Link download - PostgreSQL 15](https://www.postgresql.org/download/) - [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
 - [Packages Python mais atuais conforme "requirements.txt"](https://www.postgresql.org/download/)
-- [Java Release 8 - Atualização 333 - 32Bits e 64Bits - Requerido pelo pacote Tabula-Py para leitura de pdf"](https://www.java.com/pt-BR/download/help/windows_manual_download_pt-br.html)
-- [Insomnia - API Client](https://insomnia.rest/download)
-- [Opcional - DBeaver Community](https://dbeaver.io/download/)
-- [Opcional - Notepad++](https://notepad-plus-plus.org/downloads/)
-- [Opcional - paint.net](hhttps://www.dotpdn.com/downloads/pdn.html)
+- [Link download Java Release 8 - Atualização 333 - 32Bits e 64Bits - Requerido pelo pacote Tabula-Py para leitura de pdf"](https://www.java.com/pt-BR/download/help/windows_manual_download_pt-br.html)
+- [Link download opcional - Insomnia - API Client](https://insomnia.rest/download)
+- [Link download opcional - DBeaver Community](https://dbeaver.io/download/)
+- [Link download opcional - Notepad++](https://notepad-plus-plus.org/downloads/)
+- [Link download opcional - paint.net](https://www.dotpdn.com/downloads/pdn.html)
+
+&nbsp;
+
+### Fonte de Conhecimento para resolução de problemas
+
+- [Windows 10: como desativar o UAC e dispensar permissões de administrador?](https://www.tecmundo.com.br/windows/91481-windows-10-desativar-uac-dispensar-permissoes-administrador.htm)
+- [Permitir a execução de scripts no PowerShell do Windows 10](https://answers.microsoft.com/pt-br/windows/forum/all/permitir-a-execu%C3%A7%C3%A3o-de-scripts-no/f6b195cf-0be7-46e2-b88c-358c79f78343)
+- [Como Configurar VSCode Para Python [RÁPIDO] em 2021](https://www.youtube.com/watch?v=ctcDfKYrzOQ)
+- [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
+- [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
 
 &nbsp;
 
@@ -196,7 +206,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 **1.** Com o Python, PostgreSQL e o Visual Studio Code instalado.
 
-**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha, abra a pasta dentro do Visual Studio Code já configurado para uso da linguagem Pyhon [aqui](https://www.youtube.com/watch?v=ctcDfKYrzOQ).
+**2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha (preferencialmente na raiz do drive D:\\\*), abra a pasta dentro do Visual Studio Code já pré configurado para uso da linguagem Pyhon.
 
 **3.** Execute no Powershell do windows como administrador o comando "Set-ExecutionPolicy AllSigned" e coloque a opção A [Para todos] para liberação de execução de scripts, já no terminal do VSCODE execute o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
 
@@ -233,7 +243,26 @@ pip list
 
 &nbsp;
 
-**5.** Através do menu 2 "Variáveis ambiente" submenu "Criar arquivo de configuração de ambiente em txt" será criado um arquivo `.env` com configurações padrão para posterior edição neste mesmo menu, o arquivo será criado no diretório raiz `./`, conforme as variáveis de ambiente do seu ambiente de trabalho altere para customizar.
+**5.** Através do menu 2 "Variáveis ambiente" submenu "Criar arquivo de configuração de ambiente em txt" será criado um arquivo `.env` com configurações padrão para posterior edição neste mesmo menu, o arquivo será criado no diretório raiz `./`, conforme as variáveis de ambiente do seu ambiente de trabalho altere para customizar só os dados abaixo do arquivo `.env`.
+
+&nbsp;
+Padrão que será criado pelo código
+
+&nbsp;
+"DB_HOST=localhost #Caso queira altere para endereço de servidor que você vai usar, a instalação padrão é esta "localhost" / "127.0.0.1"
+
+&nbsp;
+DB_PORT=5432 #Caso queira altere para a porta que você vai usar, a instalação padrão é esta "5432"
+
+&nbsp;
+DB_USER=postgres #Tem que ser informado o usuário root (Tem que ter privilégios completos)
+
+&nbsp;
+DB_PASSWORD=XXXX #Altere para senha que foi cadastrada na instalação do seu PostgreSQL
+
+&nbsp;
+DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
+
 &nbsp;
 
 ![Alt text](Images/02_menu_2_Exibir_editar_criar_variavel_ambiente.png?raw=true "Variáveis de Ambiente")
