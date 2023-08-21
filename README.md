@@ -190,6 +190,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 ### Fonte de Conhecimento para resolução de problemas
 
+- [Como adicionar Python a uma variável PATH do Windows](https://www.dz-techs.com/pt/python-windows-path)
 - [Windows 10: como desativar o UAC e dispensar permissões de administrador?](https://www.tecmundo.com.br/windows/91481-windows-10-desativar-uac-dispensar-permissoes-administrador.htm)
 - [Permitir a execução de scripts no PowerShell do Windows 10](https://answers.microsoft.com/pt-br/windows/forum/all/permitir-a-execu%C3%A7%C3%A3o-de-scripts-no/f6b195cf-0be7-46e2-b88c-358c79f78343)
 - [Como Configurar VSCode Para Python [RÁPIDO] em 2021](https://www.youtube.com/watch?v=ctcDfKYrzOQ)
@@ -197,6 +198,14 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 - [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
 
 &nbsp;
+
+### Erros comuns
+
+- [Erro na criação do ambiente virtual](https://www.alura.com.br/artigos/ambientes-virtuais-em-python?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=662261158752&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=Cj0KCQjwoeemBhCfARIsADR2QCsaTDIj7zJ_AiKrdPw_OeJlBOiLhwFCTol5ieKUDI9VZmotWWV6BLUaApSkEALw_wcB)
+- [ModuleNotFoundError](https://www.freecodecamp.org/news/module-not-found-error-in-python-solved/)
+- [psycopg2.errors.InsufficientPrivilege: could not open file](https://stackoverflow.com/questions/19463074/postgres-error-could-not-open-file-for-reading-permission-denied)
+- [psycopg2.errors.InsufficientPrivilege: must be superuser or have privileges](https://chartio.com/resources/tutorials/how-to-change-a-user-to-superuser-in-postgresql/)
+- [Set-ExecutionPolicy Unrestricted](https://answers.microsoft.com/pt-br/windows/forum/all/permitir-a-execu%C3%A7%C3%A3o-de-scripts-no/f6b195cf-0be7-46e2-b88c-358c79f78343)
 
 ---
 
