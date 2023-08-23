@@ -231,7 +231,9 @@ def converter_utf8_arq_rfb_estab():
                                             idx_arquivos_tmp,
                                             5000000,
                                             'latin-1',
-                                            'Utf-8'
+                                            'Utf-8',
+                                            None,
+                                            False
                                             )
 
                 print_divisor_inicio_fim(

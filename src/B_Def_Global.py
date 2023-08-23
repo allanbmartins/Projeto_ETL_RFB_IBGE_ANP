@@ -682,7 +682,9 @@ def split_csv_file_pandas_todos(file_path_entrada,
                                 nome_file,
                                 row_limit,
                                 encoding_entrada,
-                                encoding_saida
+                                encoding_saida,
+                                header_entrada,
+                                header_saida
                                 ):
     """Função para dividir um arquivo CSV em vários arquivos menores com base em um limite de linhas.
 
@@ -693,6 +695,8 @@ def split_csv_file_pandas_todos(file_path_entrada,
         row_limit (Inteiro): Limite de linhas para cada arquivo dividido
         encoding_entrada (String): Encoding do arquivo de entrada
         encoding_encoding_saida (String): Encoding do arquivo de saida
+        header_entrada (String): Escolha de criação de header no arquivo convertido 'default' sim  ou 'None' não
+        header_saida (String): Escolha de criação de header no arquivo convertido 'True' sim  ou 'False' não
     """
 
     try:
@@ -707,7 +711,7 @@ def split_csv_file_pandas_todos(file_path_entrada,
                                        nome_file)),
                          sep=';',
                          # skiprows=0,
-                         header=None,
+                         header=header_entrada,
                          dtype=str,
                          encoding=encoding_entrada,
                          engine='c',
@@ -807,6 +811,22 @@ def split_csv_file_pandas_todos(file_path_entrada,
             # print(" \n")
             pass
 
+        if nome_file.find('tb_sgi_visitados_2012_2020.csv') != -1:
+
+            # Criação da coluna cnpj original
+            df['id_cod_cnpj_ori'] = ''
+            print('Foi criado a coluna cnpj original')
+
+            # Criação da coluna quantidade de dígitos cnpj original
+            df['qtd_num'] = ''
+            print('Foi criado a coluna quantidade de dígitos cnpj original')
+
+            sleep(1)
+
+        else:
+            # print(" \n")
+            pass
+
         # Calcula o número de arquivos necessários
         num_files = math.ceil(len(df) / row_limit)
 
@@ -824,7 +844,7 @@ def split_csv_file_pandas_todos(file_path_entrada,
             output_file_path = os.path.join(file_path_saida, output_file_name)
             df[start:end].to_csv(output_file_path,
                                  index=False,
-                                 header=False,
+                                 header=header_saida,
                                  encoding=encoding_saida,
                                  sep=';'
                                  )
