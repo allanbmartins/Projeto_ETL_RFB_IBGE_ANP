@@ -1,13 +1,26 @@
-from pathlib import Path
 import os
-import pandas as pd
-from pandas import json_normalize
-
 import time
 from pathlib import Path as caminho
 from time import sleep
-from B_Def_Global import limpar_terminal, GetEnv, download_arquiv_barprogress, funçao_barprogress, print_divisor_inicio_fim, print_parcial_final_log_inf_retorno, log_retorno_info, log_retorno_erro, leitura_csv_insercao_bd_sql, conecta_bd_generico, criar_chaves_primaria_tabelas, criar_chaves_estrangeiras_tabelas
+
+import pandas as pd
+
+from B_Def_Global import (
+    GetEnv,
+    conecta_bd_generico,
+    criar_chaves_estrangeiras_tabelas,
+    criar_chaves_primaria_tabelas,
+    download_arquiv_barprogress,
+    funçao_barprogress,
+    leitura_csv_insercao_bd_sql,
+    limpar_terminal,
+    log_retorno_erro,
+    log_retorno_info,
+    print_divisor_inicio_fim,
+    print_parcial_final_log_inf_retorno,
+)
 from Z_Logger import Logs
+
 logs = Logs(filename="logs.log")
 
 

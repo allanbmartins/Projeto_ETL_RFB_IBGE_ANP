@@ -1,17 +1,66 @@
-from pathlib import Path
-import tkinter as tk
-from tkinter.filedialog import askopenfilename, asksaveasfilename
-import webbrowser
 import os
+import tkinter as tk
+import webbrowser
+from tkinter.filedialog import askopenfilename, asksaveasfilename
 
-from B_Def_Global import Criar_Var_Ambiente, limpar_terminal, VerifPath, log_retorno_erro, gerenciar_bancos, gerenciar_diretorios
-from C_Script_RFB import baixar_arq_rfb_estab, descompactar_arq_rfb_estab, converter_utf8_arq_rfb_estab, inserir_dados_estab_bd, sequencia_RFB, cnpj_repetidos_rfb, dados_faltantes_rfb, criar_indices_rfb
-from D_Script_IBGE import municipios_ibge, populacao_2022_ibge, pib_ibge, area_ter_urb_ibge, total_area_ter_2022_ibge, cnae_detalhado_ibge, sequencia_baixar_ibge, inserir_dados_ibge_bd, criar_indices_ibge, sequencia_IBGE
-from E_Script_ANP import postos_combustiveis_anp, inserir_dados_anp_bd, dados_faltantes_anp, criar_indices_anp, sequencia_anp
-from I_Script_VARIAVEIS_ESTRUTURANTES import sequencia_agregados_IBGE, municipios_faixas_fronteiras_IBGE_GEO, capacidade_instalada_ANEEL_ENERG, rede_pavimentada_DNIT_TRANSP, var_TELECON, agua_esgoto_IBGE_SNB, ocorrencias_criminais_MJSP_SEG, estabelecimentos_per_capita_RFB, var_ECON, tabela_var_estruturantes_final, sequencia_var_estruturantes
-
-
+from B_Def_Global import (
+    Criar_Var_Ambiente,
+    VerifPath,
+    gerenciar_bancos,
+    gerenciar_diretorios,
+    limpar_terminal,
+    log_retorno_erro,
+)
+from C_Script_RFB import (
+    baixar_arq_rfb_estab,
+    cnpj_repetidos_rfb,
+    converter_utf8_arq_rfb_estab,
+    criar_indices_rfb,
+    dados_faltantes_rfb,
+    descompactar_arq_rfb_estab,
+    inserir_dados_estab_bd,
+    sequencia_RFB,
+)
+from D_Script_IBGE import (
+    area_ter_urb_ibge,
+    cnae_detalhado_ibge,
+    criar_indices_ibge,
+    inserir_dados_ibge_bd,
+    municipios_ibge,
+    pib_ibge,
+    populacao_2022_ibge,
+    sequencia_baixar_ibge,
+    sequencia_IBGE,
+    total_area_ter_2022_ibge,
+)
+from E_Script_ANP import (
+    criar_indices_anp,
+    dados_faltantes_anp,
+    inserir_dados_anp_bd,
+    postos_combustiveis_anp,
+    sequencia_anp,
+)
+from I_Script_VARIAVEIS_ESTRUTURANTES import (
+    agua_esgoto_IBGE_SNB,
+    capacidade_instalada_ANEEL_ENERG,
+    estabelecimentos_per_capita_RFB,
+    municipios_faixas_fronteiras_IBGE_GEO,
+    ocorrencias_criminais_MJSP_SEG,
+    quantidade_municipios_IBGE,
+    quantidade_populacao_IBGE,
+    rede_pavimentada_DNIT_TRANSP,
+    sequencia_agregados_IBGE,
+    sequencia_dados_variaveis,
+    sequencia_var_estruturantes,
+    tabela_var_estruturantes_final,
+    unidades_conservacao_ICMBIO,
+    valor_area_territorial_IBGE,
+    valor_pib_industrial_IBGE,
+    var_ECON,
+    var_TELECON,
+)
 from Z_Logger import Logs
+
 logs = Logs(filename="logs.log")
 
 
@@ -31,11 +80,8 @@ def menu_tkinter_1():
         img_receita = tk.PhotoImage(file=file_path_foto_receita)
         img_ibge = tk.PhotoImage(file=file_path_foto_ibge)
         img_anp = tk.PhotoImage(file=file_path_foto_anp)
-        global img_github
-        global img_linkedin
-        global img_email
 
-        ### Posição Componentes (Layout) ####
+        # Posição Componentes (Layout) ####
         menubar = tk.Menu(main)
         main.config(menu=menubar)
         main.config(background='#ffffff')
@@ -49,7 +95,8 @@ def menu_tkinter_1():
         main.columnconfigure(0, weight=4)
 
         # box 1
-        box1 = tk.Label(main, text='EXTRACT TRANSFORM LOAD - ETL \n(Extrair, Transformar e Carregar)',
+        box1 = tk.Label(main, text='EXTRACT TRANSFORM LOAD - ETL \n\
+(Extrair, Transformar e Carregar)',
                         font=('Helvetica', 25, "bold"),
                         bg='#ffffff',
                         fg='#002E5F')
@@ -129,7 +176,6 @@ def menu_tkinter_1():
         menubar.add_cascade(label='Script VAR_INFRA', menu=filemenu8)
 
         def abrir_janela_1():
-
             global img_github
             global img_linkedin
             global img_email
@@ -427,8 +473,23 @@ def menu_tkinter_1():
         filemenu7.add_separator()
         filemenu7.add_command(label='Sair', command=Quit)
 
+        filemenu8.add_command(label='CRIAÇÃO DE AGREGADOS', command='XXX')
         filemenu8.add_command(
-            label='Criar agregados(população, munícipios, PIB Insdustrial, Área Territorial e Unidades de Conservação Ambiental) das tabelas IBGE...', command=sequencia_agregados_IBGE)
+            label='Criar agregado(população) das tabelas IBGE...', command=quantidade_populacao_IBGE)
+        filemenu8.add_command(
+            label='Criar agregado(munícipios) das tabelas IBGE...', command=quantidade_municipios_IBGE)
+        filemenu8.add_command(
+            label='Criar agregado(PIB Insdustrial) das tabelas IBGE...', command=valor_pib_industrial_IBGE)
+        filemenu8.add_command(
+            label='Criar agregado(Área Territorial) das tabelas IBGE...', command=valor_area_territorial_IBGE)
+        filemenu8.add_command(
+            label='Criar agregado(Unidades de Conservação Ambiental) das tabelas IBGE...', command=unidades_conservacao_ICMBIO)
+        filemenu8.add_command(
+            label='Criar agregados em sequência(população, munícipios, PIB Insdustrial, Área Territorial e Unidades de Conservação Ambiental) das tabelas IBGE...', command=sequencia_agregados_IBGE)
+        filemenu8.add_separator()
+
+        filemenu8.add_command(
+            label='CRIAÇÃO DE DADOS VARIÁVEIS', command='XXX')
         filemenu8.add_command(
             label='Dados IBGE - Municípios da Faixa de Fronteira e Cidades Gêmeas...', command=municipios_faixas_fronteiras_IBGE_GEO)
         filemenu8.add_command(
@@ -445,6 +506,8 @@ def menu_tkinter_1():
             label='Dados RFB - Estabelecimentos(Interesse) per capita......', command=estabelecimentos_per_capita_RFB)
         filemenu8.add_command(
             label='Dados variáveal ECON - IBGE agregados (PIB Indústrial x População)...', command=var_ECON)
+        filemenu8.add_command(
+            label='Dados variáveis em sequência...', command=sequencia_dados_variaveis)
         filemenu8.add_separator()
 
         filemenu8.add_command(label='TRANSFORMAÇÃO DE DADOS', command='XXX')

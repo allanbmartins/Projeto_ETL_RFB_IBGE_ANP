@@ -1,9 +1,56 @@
 import os
-from B_Def_Global import Criar_Var_Ambiente, limpar_terminal, VerifPath, log_retorno_erro, gerenciar_bancos, gerenciar_diretorios, print_divisor_inicio_fim
-from C_Script_RFB import baixar_arq_rfb_estab, descompactar_arq_rfb_estab, converter_utf8_arq_rfb_estab, inserir_dados_estab_bd, sequencia_RFB, cnpj_repetidos_rfb, dados_faltantes_rfb, criar_indices_rfb
-from D_Script_IBGE import municipios_ibge, populacao_2022_ibge, pib_ibge, area_ter_urb_ibge, total_area_ter_2022_ibge, cnae_detalhado_ibge, sequencia_baixar_ibge, inserir_dados_ibge_bd, criar_indices_ibge, sequencia_IBGE
-from E_Script_ANP import postos_combustiveis_anp, inserir_dados_anp_bd, dados_faltantes_anp, criar_indices_anp, sequencia_anp
-from I_Script_VARIAVEIS_ESTRUTURANTES import sequencia_agregados_IBGE, municipios_faixas_fronteiras_IBGE_GEO, capacidade_instalada_ANEEL_ENERG, rede_pavimentada_DNIT_TRANSP, var_TELECON, agua_esgoto_IBGE_SNB, ocorrencias_criminais_MJSP_SEG, estabelecimentos_per_capita_RFB, var_ECON, tabela_var_estruturantes_final, sequencia_var_estruturantes
+
+from B_Def_Global import (
+    Criar_Var_Ambiente,
+    VerifPath,
+    gerenciar_bancos,
+    gerenciar_diretorios,
+    limpar_terminal,
+    log_retorno_erro,
+    print_divisor_inicio_fim,
+)
+from C_Script_RFB import (
+    baixar_arq_rfb_estab,
+    cnpj_repetidos_rfb,
+    converter_utf8_arq_rfb_estab,
+    criar_indices_rfb,
+    dados_faltantes_rfb,
+    descompactar_arq_rfb_estab,
+    inserir_dados_estab_bd,
+    sequencia_RFB,
+)
+from D_Script_IBGE import (
+    area_ter_urb_ibge,
+    cnae_detalhado_ibge,
+    criar_indices_ibge,
+    inserir_dados_ibge_bd,
+    municipios_ibge,
+    pib_ibge,
+    populacao_2022_ibge,
+    sequencia_baixar_ibge,
+    sequencia_IBGE,
+    total_area_ter_2022_ibge,
+)
+from E_Script_ANP import (
+    criar_indices_anp,
+    dados_faltantes_anp,
+    inserir_dados_anp_bd,
+    postos_combustiveis_anp,
+    sequencia_anp,
+)
+from I_Script_VARIAVEIS_ESTRUTURANTES import (
+    agua_esgoto_IBGE_SNB,
+    capacidade_instalada_ANEEL_ENERG,
+    estabelecimentos_per_capita_RFB,
+    municipios_faixas_fronteiras_IBGE_GEO,
+    ocorrencias_criminais_MJSP_SEG,
+    rede_pavimentada_DNIT_TRANSP,
+    sequencia_agregados_IBGE,
+    sequencia_var_estruturantes,
+    tabela_var_estruturantes_final,
+    var_ECON,
+    var_TELECON,
+)
 
 
 # if __name__ == "__main__":

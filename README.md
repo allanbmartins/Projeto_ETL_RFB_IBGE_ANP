@@ -177,7 +177,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 - [Link download - Windows 10 ou superior - 64Bits](https://www.microsoft.com/pt-br/windows/)
 - [Link download - Python 3.11.4](https://www.python.org/downloads/release/python-3114/) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
-- [Link download - Visual Studio Code](https://code.visualstudio.com/download) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
+- [Link download - Visual Studio Code](https://code.visualstudio.com/download) - [Python + VS Code no Windows em 2022](https://www.youtube.com/watch?v=XQwHJc1uO_g)
 - [Link download - PostgreSQL 15](https://www.postgresql.org/download/) - [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
 - [Packages Python mais atuais conforme "requirements.txt"](https://www.postgresql.org/download/)
 - [Link download Java Release 8 - Atualização 333 - 32Bits e 64Bits - Requerido pelo pacote Tabula-Py para leitura de pdf"](https://www.java.com/pt-BR/download/help/windows_manual_download_pt-br.html)
@@ -416,34 +416,36 @@ DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
 
 &nbsp;
 
+- **Data atualização dos arquivos, tempos obtidos processo e tamanhos dos arquivos da RFB:**
+  - **`2023-08-21`**;
+
+&nbsp;
+
 - Tempos parciais coletados no processo da RFB:
 
 | Item | Descrição Processo                                                                                                                                   | Tempo decorrido no processo PC i7 8Gen-Ram 16GB-HD-10Mbps | Tempo decorrido no processo PC i7 4Gen-Ram 8GB-SSD-200Mbps |
 | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-| 1    | Baixar                                                                                                                                               | `6:03:52   `                                              | `1:08:00   `                                               |
-| 2    | Descompactar                                                                                                                                         | `0:06:27`                                                 | `0:06:00   `                                               |
-| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:07`                                                 | `1:01:00   `                                               |
-| 4    | Inserir no Banco de dados                                                                                                                            | `0:27:15`                                                 | `0:26:00   `                                               |
-| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:10:26`                                                 | `0:09:00   `                                               |
-| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:06:07`                                                 | `0:04:00   `                                               |
-| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:56`                                                 | `0:16:00   `                                               |
-|      | Total                                                                                                                                                | `7:45:10`                                                 | `3:10:00   `                                               |
-
-&nbsp;
-
-- Data atualização e tamanhos dos arquivos da RFB:
-  - `17/07/2023`;
+| 1    | Baixar                                                                                                                                               | `5:37:43   `                                              | `1:08:00   `                                               |
+| 2    | Descompactar                                                                                                                                         | `0:07:42`                                                 | `0:06:00   `                                               |
+| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:13`                                                 | `1:01:00   `                                               |
+| 4    | Inserir no Banco de dados                                                                                                                            | `0:38:13`                                                 | `0:26:00   `                                               |
+| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:08:18`                                                 | `0:09:00   `                                               |
+| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:08:09`                                                 | `0:04:00   `                                               |
+| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:44`                                                 | `0:16:00   `                                               |
+|      | Total                                                                                                                                                | `7:31:02`                                                 | `3:10:00   `                                               |
 
 &nbsp;
 
 - Tamanhos dos arquivos da RFB:
 
-| Item | Tipo                       | Tamanho    |
-| ---- | -------------------------- | ---------- |
-| 1    | Compactados - originais    | `5,66 GB`  |
-| 2    | Descompactados - originais | `20,6 GB`  |
-| 3    | Convertidos - padronizados | `17,5 GB`  |
-| 4    | Banco de dados             | `22,76 GB` |
+| Item | Tipo                            | Tamanho    |
+| ---- | ------------------------------- | ---------- |
+| 1    | Compactados - originais         | `5,70 GB`  |
+| 2    | Descompactados - originais      | `20,7 GB`  |
+| 3    | Convertidos - padronizados      | `17,6 GB`  |
+| 4    | Banco de dados - Inicial        | `20,59 GB` |
+| 4    | Banco de dados - 2º Tratamentos | `20,59 GB` |
+| 4    | Banco de dados - Chaves         | `22,94 GB` |
 
 &nbsp;
 

@@ -1,23 +1,21 @@
-
-from pathlib import Path
-import shutil
-from dotenv import load_dotenv
+import inspect
+import math
 import os
-from functools import partial
+import shutil
+import time
+import timeit
+from time import sleep
+
+import enlighten
 import pandas as pd
 import psycopg2
-import time
-from time import sleep
 import requests
-from pathlib import Path as caminho
-from tqdm import tqdm
-import timeit
-import math
-import enlighten
-from io import StringIO
-import inspect
+from dotenv import load_dotenv
 from sklearn.preprocessing import MinMaxScaler
+from tqdm import tqdm
+
 from Z_Logger import Logs
+
 logs = Logs(filename="logs.log")
 
 
@@ -424,13 +422,13 @@ def download_arquiv_barprogress(url,
             # print(" \n")
             # pass
 
-        elif (tipo_download) == '.jsonData':  # 'tb_ibge_pib_2020'
+        elif (tipo_download) == '.jsonData':
 
             response = requests.get(url, verify=False).json()
 
             return response
 
-        elif (tipo_download) == '.xls':  # 'tb_correios_agencias_2019'
+        elif (tipo_download) == '.xls':
 
             response = requests.get(url)
 
@@ -440,7 +438,16 @@ def download_arquiv_barprogress(url,
 
             return
 
-        elif (tipo_download) == '.csv':  # 'tb_correios_agencias_2019'
+        elif (tipo_download) == '.csv':
+
+            response = requests.get(url)
+
+            open(file_path,
+                 'wb').write(response.content)
+
+            return
+
+        elif (tipo_download) == '.pdf':
 
             response = requests.get(url)
 
@@ -450,17 +457,7 @@ def download_arquiv_barprogress(url,
 
             return
 
-        elif (tipo_download) == '.pdf':  # 'tb_correios_agencias_2019'
-
-            response = requests.get(url)
-
-            open((os.path.join(file_path,
-                               nome_file + tipo_download)),
-                 'wb').write(response.content)
-
-            return
-
-        elif (tipo_download) == '.xlsx':  # 'tb_correios_agencias_2019'
+        elif (tipo_download) == '.xlsx':
 
             response = requests.get(url)
 
@@ -481,12 +478,56 @@ def download_arquiv_barprogress(url,
 
         if file_path:
 
-            with open(file_path, 'wb') as f:
-                with enlighten.Counter(total=int(total_length), desc=f'Baixando arquivo {nome_file}...', unit='B',
-                                       color='green') as counter:  # color='green'
-                    for data in response.iter_content(chunk_size=1024):
-                        f.write(data)
-                        counter.update(len(data))
+            max_attempts = 3
+            attempt = 0
+            while attempt < max_attempts:  # Condição repetição do download caso tenha tido algum problema ao baixar
+
+                # Condição para verificação se os arquivos zip já existem
+                if not os.path.exists(file_path):
+
+                    with open(file_path, 'wb') as f:
+                        with enlighten.Counter(total=int(total_length), desc=f'Baixando arquivo {nome_file}...', unit='B',
+                                               color='green') as counter:  # color='green'
+                            for data in response.iter_content(chunk_size=1024):
+                                f.write(data)
+                                counter.update(len(data))
+
+                    if os.path.getsize(file_path) == int(total_length):
+                        print(
+                            f'O arquivo {file_path} foi baixado com sucesso.')
+
+                        logs.record(f'O arquivo {file_path} foi baixado com sucesso.',
+                                    type="info",
+                                    colorize=True)
+
+                        break
+
+                    else:
+                        print(
+                            f'!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!')
+                        os.remove(file_path)
+                        attempt += 1
+
+                        logs.record(f'!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!',
+                                    colorize=True)
+
+                else:
+                    print(
+                        f'!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!')
+
+                    logs.record(
+                        (f'!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!'),
+                        type="info",
+                        colorize=True)
+
+                    break
+
+            if attempt == max_attempts:
+                print(
+                    f'!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!')
+
+                logs.record(f'!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!',
+                            colorize=True)
 
         elif return_df:
 

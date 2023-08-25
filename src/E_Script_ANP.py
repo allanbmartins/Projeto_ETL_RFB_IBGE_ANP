@@ -1,13 +1,30 @@
-from pathlib import Path
 import os
-import pandas as pd
-from datetime import datetime, timedelta
-from tqdm import tqdm
 import time
 from pathlib import Path as caminho
-from time import sleep
-from B_Def_Global import limpar_terminal, GetEnv, download_arquiv_barprogress, funçao_barprogress, leitura_csv_insercao_bd_sql, print_divisor_inicio_fim, convert_tempo, conecta_bd_generico, print_parcial_final_log_inf_retorno, log_retorno_info, log_retorno_erro, criar_chaves_primaria_tabelas, criar_chaves_estrangeiras_tabelas, verificar_repetidos_tabelas, remover_repetidos_tabelas, verificar_dados_faltantes_tabelas, inserir_dados_faltantes_tabelas
+
+import pandas as pd
+
+from B_Def_Global import (
+    GetEnv,
+    conecta_bd_generico,
+    convert_tempo,
+    criar_chaves_estrangeiras_tabelas,
+    criar_chaves_primaria_tabelas,
+    download_arquiv_barprogress,
+    funçao_barprogress,
+    inserir_dados_faltantes_tabelas,
+    leitura_csv_insercao_bd_sql,
+    limpar_terminal,
+    log_retorno_erro,
+    log_retorno_info,
+    print_divisor_inicio_fim,
+    print_parcial_final_log_inf_retorno,
+    remover_repetidos_tabelas,
+    verificar_dados_faltantes_tabelas,
+    verificar_repetidos_tabelas,
+)
 from Z_Logger import Logs
+
 logs = Logs(filename="logs.log")
 
 
@@ -17,8 +34,9 @@ def postos_combustiveis_anp():
 
     path_anp = GetEnv('ANP_FILES_PATH')
     url_api = GetEnv('URL_ANP_POSTO_COMBUSTIVEIS')
-    name_file = 'tb_postos_combustiveis_anp.csv'
-    file_path = os.path.join(path_anp, name_file)
+    name_file = 'tb_postos_combustiveis_anp'
+    ext_file = '.csv'
+    file_path = os.path.join(path_anp, name_file+ext_file)
 
     try:
         insert_start = time.time()
@@ -46,7 +64,7 @@ def postos_combustiveis_anp():
         path.unlink()
 
         # Salvar dataframe em um csv
-        local_save_csv = os.path.join(path_anp, name_file)
+        local_save_csv = os.path.join(path_anp, name_file+ext_file)
 
         # print(local_save_csv)
         tmp.to_csv(local_save_csv,

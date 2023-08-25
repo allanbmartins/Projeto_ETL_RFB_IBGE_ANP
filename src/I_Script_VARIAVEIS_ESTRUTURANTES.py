@@ -1,19 +1,32 @@
-from B_Def_Global import limpar_terminal, GetEnv, download_arquiv_barprogress, funçao_barprogress, print_divisor_inicio_fim, print_parcial_final_log_inf_retorno, log_retorno_info, log_retorno_erro, leitura_csv_insercao_bd_sql, conecta_bd_generico, criar_chaves_primaria_tabelas, criar_chaves_estrangeiras_tabelas, unir_valores_linhas_df_go, substituir_nomes_por_siglas, coluna_escala_p_n, dividir_linhas
-from pathlib import Path
 import os
-import pandas as pd
-from pandas import json_normalize
 import time
-from pathlib import Path as caminho
-from time import sleep
-import requests
-import tabula
 import zipfile
-from sklearn.preprocessing import MinMaxScaler
+
+import pandas as pd
+import tabula
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-import numpy as np
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+from B_Def_Global import (
+    GetEnv,
+    coluna_escala_p_n,
+    conecta_bd_generico,
+    criar_chaves_estrangeiras_tabelas,
+    criar_chaves_primaria_tabelas,
+    dividir_linhas,
+    download_arquiv_barprogress,
+    funçao_barprogress,
+    leitura_csv_insercao_bd_sql,
+    limpar_terminal,
+    log_retorno_erro,
+    log_retorno_info,
+    print_divisor_inicio_fim,
+    print_parcial_final_log_inf_retorno,
+    substituir_nomes_por_siglas,
+    unir_valores_linhas_df_go,
+)
 from Z_Logger import Logs
+
 logs = Logs(filename="logs.log")
 
 
@@ -68,9 +81,9 @@ def quantidade_populacao_IBGE():
             path_var_output_convert, (name_file + '.csv')))
         tmp_1.to_csv(local_save_csv,
                      index=False,  # Não usar índice
-                     encoding='utf-8'  # Usar formato UTF-8 para marter formatação
-                     , sep=';'  # Usar ponto e virgula
-                     , na_rep='0')  # Susbstituir NaN por 0
+                     encoding='utf-8',  # Usar formato UTF-8 para marter formatação
+                     sep=';',  # Usar ponto e virgula
+                     na_rep='0')  # Susbstituir NaN por 0
 
         print_divisor_inicio_fim(f'Arquivo {name_file+ext} baixado e convertido com sucesso',
                                  3)
@@ -333,15 +346,15 @@ def unidades_conservacao_ICMBIO():
     name_file_ori_1 = '04_tb_ibge_valor_area_territorial_2022.csv'
     name_file = ('05_tb_icmbio_unidades_conservacao_2022')
     file_path_ori_1 = os.path.join(path_var_output_convert, name_file_ori_1)
-    file_path = os.path.join(path_var_output, (name_file+ext))
+    file_path = os.path.join(path_var_output_convert, (name_file+ext))
 
     try:
         insert_start = time.time()
 
         download_arquiv_barprogress(url_api,
-                                    name_file,
+                                    (name_file+ext),
                                     ext,
-                                    path_var_output,
+                                    file_path,
                                     False)
 
         tmp_AREA_TOTAL = pd.read_csv(file_path_ori_1,
@@ -647,7 +660,7 @@ def capacidade_instalada_ANEEL_ENERG():
         download_arquiv_barprogress(url_api,
                                     name_file_1,
                                     ext,
-                                    path_var_output,
+                                    file_path_1,
                                     False)
 
         tmp_1 = pd.read_csv(file_path_1,
@@ -1845,6 +1858,39 @@ def sequencia_agregados_IBGE():
         log_retorno_erro(text)
 
 
+def sequencia_dados_variaveis():
+
+    try:
+
+        insert_start = time.time()
+        base_dados = GetEnv('DB_NAME')
+
+        funçao_barprogress([municipios_faixas_fronteiras_IBGE_GEO,
+                            capacidade_instalada_ANEEL_ENERG,
+                            rede_pavimentada_DNIT_TRANSP,
+                            var_TELECON,
+                            agua_esgoto_IBGE_SNB,
+                            ocorrencias_criminais_MJSP_SEG,
+                           estabelecimentos_per_capita_RFB,
+                           var_ECON],
+                           'blue')
+
+        '''funçao_barprogress([tabela_var_estruturantes_final],
+                           'blue')'''
+
+        insert_end = time.time()
+
+        print_parcial_final_log_inf_retorno(f'Dados baixados para criação da variável estruturante',
+                                            insert_start,
+                                            insert_end,
+                                            '',
+                                            'geral')
+
+    except Exception as text:
+
+        log_retorno_erro(text)
+
+
 def sequencia_var_estruturantes():
 
     try:
@@ -1853,14 +1899,7 @@ def sequencia_var_estruturantes():
         base_dados = GetEnv('DB_NAME')
 
         funçao_barprogress([sequencia_agregados_IBGE,
-                            municipios_faixas_fronteiras_IBGE_GEO,
-                            capacidade_instalada_ANEEL_ENERG,
-                            rede_pavimentada_DNIT_TRANSP,
-                            var_TELECON,
-                            agua_esgoto_IBGE_SNB,
-                            ocorrencias_criminais_MJSP_SEG,
-                           estabelecimentos_per_capita_RFB,
-                           var_ECON,
+                            sequencia_dados_variaveis,
                             tabela_var_estruturantes_final],
                            'blue')
 
