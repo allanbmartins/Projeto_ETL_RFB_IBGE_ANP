@@ -24,79 +24,76 @@ def limpar_terminal():
 
 
 def VerifPath():
-    """Função para verificar path de trabalho
-    """
+    """Função para verificar path de trabalho"""
 
     limpar_terminal()
-    print_divisor_inicio_fim('=== Ler path de trabalho',
-                             1)
+    print_divisor_inicio_fim("=== Ler path de trabalho", 1)
     try:
         # verify the path using getcwd()
         cwd = os.getcwd()
         # print the current directory
-        print_divisor_inicio_fim("O diretório atual é este: " + cwd,
-                                 2)
+        print_divisor_inicio_fim("O diretório atual é este: " + cwd, 2)
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
 def Criar_Var_Ambiente():
-    """Função para criação do arquivo txt de variáveis de ambiente
-    """
+    """Função para criação do arquivo txt de variáveis de ambiente"""
 
     os.system("cls")
 
-    print('Caminho de trabalho atual: \n')
+    print("Caminho de trabalho atual: \n")
     cwd_atual = os.getcwd()
     # cwd_atual_trab = (cwd_atual + '\src')
-    print('=== Operações com o arquivo de configuração de ambiente === \n')
+    print("=== Operações com o arquivo de configuração de ambiente === \n")
     # Criar arquivo de configuração de ambiente
-    host = 'localhost'  # input('Digite o HOST usado do banco: ')
-    port = '5432'  # input('Digite a PORTA usada do banco: ')
-    user = 'postgres'  # input('Digite o USERNAME usado do banco: ')
-    passw = 'xxxx'  # input('Digite o PASSWORD usado do banco: ')
-    namebd = 'dados_etl'  # input('Digite o NAME BD do banco: ')
+    host = "localhost"  # input('Digite o HOST usado do banco: ')
+    port = "5432"  # input('Digite a PORTA usada do banco: ')
+    user = "postgres"  # input('Digite o USERNAME usado do banco: ')
+    passw = "xxxx"  # input('Digite o PASSWORD usado do banco: ')
+    namebd = "dados_etl"  # input('Digite o NAME BD do banco: ')
 
     try:
         print("Informações do arquivo de configuração de ambiente \n")
         # nome_arquivo_env = ('env.txt')
-        nome_arquivo_env = ('.env')
-        arquivo = open(nome_arquivo_env, 'a')
+        nome_arquivo_env = ".env"
+        arquivo = open(nome_arquivo_env, "a")
 
-        tmp0 = (cwd_atual + r"\files\dados_rfb")
-        tmp1 = (cwd_atual + r"\files\dados_rfb\OUTPUT_FILES")
-        tmp2 = (cwd_atual + r"\files\dados_rfb\EXTRACTED_FILES")
-        tmp3 = (cwd_atual + r"\files\dados_rfb\EXTRACTED_FILES_CONVERT")
-        tmp4 = (cwd_atual + r"\files\dados_rfb\OUTPUT_ERROS")
+        tmp0 = cwd_atual + r"\files\dados_rfb"
+        tmp1 = cwd_atual + r"\files\dados_rfb\OUTPUT_FILES"
+        tmp2 = cwd_atual + r"\files\dados_rfb\EXTRACTED_FILES"
+        tmp3 = cwd_atual + r"\files\dados_rfb\EXTRACTED_FILES_CONVERT"
+        tmp4 = cwd_atual + r"\files\dados_rfb\OUTPUT_ERROS"
 
-        tmp5 = (cwd_atual + r"\files\dados_ibge")
-        tmp6 = (cwd_atual + r"\files\dados_ibge\OUTPUT_ERROS")
+        tmp5 = cwd_atual + r"\files\dados_ibge"
+        tmp6 = cwd_atual + r"\files\dados_ibge\OUTPUT_ERROS"
 
-        tmp7 = (cwd_atual + r"\files\dados_anp")
-        tmp8 = (cwd_atual + r"\files\dados_anp\OUTPUT_ERROS")
+        tmp7 = cwd_atual + r"\files\dados_anp"
+        tmp8 = cwd_atual + r"\files\dados_anp\OUTPUT_ERROS"
 
-        tmp9 = (cwd_atual + r"\files\dados_rais")
-        tmp10 = (cwd_atual + r"\files\dados_rais\OUTPUT_FILES")
-        tmp11 = (cwd_atual + r"\files\dados_rais\EXTRACTED_FILES")
-        tmp12 = (cwd_atual + r"\files\dados_rais\EXTRACTED_FILES_CONVERT")
-        tmp13 = (cwd_atual + r"\files\dados_rais\OUTPUT_ERROS")
+        tmp9 = cwd_atual + r"\files\dados_rais"
+        tmp10 = cwd_atual + r"\files\dados_rais\OUTPUT_FILES"
+        tmp11 = cwd_atual + r"\files\dados_rais\EXTRACTED_FILES"
+        tmp12 = cwd_atual + r"\files\dados_rais\EXTRACTED_FILES_CONVERT"
+        tmp13 = cwd_atual + r"\files\dados_rais\OUTPUT_ERROS"
 
-        tmp14 = (cwd_atual + r"\files\dados_sgi")
-        tmp15 = (cwd_atual + r"\files\dados_sgi\OUTPUT_FILES")
-        tmp16 = (cwd_atual + r"\files\dados_sgi\OUTPUT_FILES_CONVERT")
-        tmp17 = (cwd_atual + r"\files\dados_sgi\OUTPUT_ERROS")
+        tmp14 = cwd_atual + r"\files\dados_sgi"
+        tmp15 = cwd_atual + r"\files\dados_sgi\OUTPUT_FILES"
+        tmp16 = cwd_atual + r"\files\dados_sgi\OUTPUT_FILES_CONVERT"
+        tmp17 = cwd_atual + r"\files\dados_sgi\OUTPUT_ERROS"
 
-        tmp18 = (cwd_atual + r"\files\dados_ft")
-        tmp19 = (cwd_atual + r"\files\dados_ft\OUTPUT_FILES")
-        tmp20 = (cwd_atual + r"\files\dados_ft\OUTPUT_FILES_CONVERT")
-        tmp21 = (cwd_atual + r"\files\dados_ft\OUTPUT_ERROS")
+        tmp18 = cwd_atual + r"\files\dados_ft"
+        tmp19 = cwd_atual + r"\files\dados_ft\OUTPUT_FILES"
+        tmp20 = cwd_atual + r"\files\dados_ft\OUTPUT_FILES_CONVERT"
+        tmp21 = cwd_atual + r"\files\dados_ft\OUTPUT_ERROS"
 
-        tmp22 = (cwd_atual + r"\files\dados_var_estruturantes")
-        tmp23 = (cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_FILES")
-        tmp24 = (cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_FILES_CONVERT")
-        tmp25 = (cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_ERROS")
+        tmp22 = cwd_atual + r"\files\dados_var_estruturantes"
+        tmp23 = cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_FILES"
+        tmp24 = (
+            cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_FILES_CONVERT"
+        )
+        tmp25 = cwd_atual + r"\files\dados_var_estruturantes\OUTPUT_ERROS"
 
         frases = list()
         frases.append("RFB_FILES_PATH=" + tmp0 + "\n")
@@ -138,84 +135,138 @@ def Criar_Var_Ambiente():
         frases.append("DB_PASSWORD=" + passw + "\n")
         frases.append("DB_NAME=" + namebd + "\n")
         # ENDEREÇO PARA DONWNLOAD DOS DADOS PRINCIPAIS - https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj
-        frases.append("URL_RFB_1=" + 'http://200.152.38.155/CNPJ/' + "\n")
+        frases.append("URL_RFB_1=" + "http://200.152.38.155/CNPJ/" + "\n")
         # ENDEREÇO PARA DONWNLOAD DO REGIME TRIBUTÁRIO - https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj
         frases.append(
-            "URL_RFB_2=" + 'http://200.152.38.155/CNPJ/regime_tributario/' + "\n")
+            "URL_RFB_2="
+            + "http://200.152.38.155/CNPJ/regime_tributario/"
+            + "\n"
+        )
         # TABELA AUXILIAR PARA CONVERSÃO DO CÓDIGO DO MUNICÍPIOS QUE A RECEITA FEDERAL UTILIZA QUE É O CÓD MUNICÍPIO DO SIAF PARA O CÓD MUNICÍPIO DO IBGE - https://www.gov.br/receitafederal/dados?b_start:int=0
-        frases.append("URL_IBGE_AUX_COD_MUNIC=" +
-                      r'https://www.gov.br/receitafederal/dados/municipios.csv/' + "\n")
+        frases.append(
+            "URL_IBGE_AUX_COD_MUNIC="
+            + r"https://www.gov.br/receitafederal/dados/municipios.csv/"
+            + "\n"
+        )
         # Dados POPULAÇÃO 2022 por Pessoas - https://servicodados.ibge.gov.br/api/docs
-        frases.append("URL_IBGE_POP_2022=" +
-                      r'https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93?localidades=N6[all]' + "\n")
+        frases.append(
+            "URL_IBGE_POP_2022="
+            + r"https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93?localidades=N6[all]"
+            + "\n"
+        )
         # Dados PIB TOTAL, INDUSTRIAL E SERVIÇOS POR MUNICÍPIOS 2020 em Mil Reais - Fonte: https://servicodados.ibge.gov.br/api/docs
-        frases.append("URL_IBGE_PIB_2020=" +
-                      r'https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37|517|6575?localidades=N6[all]' + "\n")
+        frases.append(
+            "URL_IBGE_PIB_2020="
+            + r"https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37|517|6575?localidades=N6[all]"
+            + "\n"
+        )
         # Dados ÁREA TERRITORIAL URBANA 2019 - https://servicodados.ibge.gov.br/api/docs
-        frases.append("URL_IBGE_TER_URB_2019=" +
-                      r'https://servicodados.ibge.gov.br/api/v3/agregados/8418/periodos/-6/variaveis/12749?localidades=N6[all]' + "\n")
+        frases.append(
+            "URL_IBGE_TER_URB_2019="
+            + r"https://servicodados.ibge.gov.br/api/v3/agregados/8418/periodos/-6/variaveis/12749?localidades=N6[all]"
+            + "\n"
+        )
         # Dados ÁREA TERRITORIAL TOTAL 2022 - https://servicodados.ibge.gov.br/api/docs
-        frases.append("URL_IBGE_TER_2022=" +
-                      r'https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/6318?localidades=N6[all]' + "\n")
+        frases.append(
+            "URL_IBGE_TER_2022="
+            + r"https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/6318?localidades=N6[all]"
+            + "\n"
+        )
         # Dados CNAE DETALHADO 2.3 - https://servicodados.ibge.gov.br/api/docs
-        frases.append("URL_IBGE_CNAE=" +
-                      r'https://servicodados.ibge.gov.br/api/v2/cnae/subclasses' + "\n")
+        frases.append(
+            "URL_IBGE_CNAE="
+            + r"https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
+            + "\n"
+        )
         # Dados Cadastrais dos Revendedores Varejistas de Combustíveis Automotivos - https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/dados-cadastrais-dos-revendedores-varejistas-de-combustiveis-automotivos
-        frases.append("URL_ANP_POSTO_COMBUSTIVEIS=" +
-                      r'https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-dados-cadastrais-dos-revendedores-varejistas-de-combustiveis-automotivos/dados-cadastrais-revendedores-varejistas-combustiveis-automoveis.csv' + "\n")
+        frases.append(
+            "URL_ANP_POSTO_COMBUSTIVEIS="
+            + r"https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-dados-cadastrais-dos-revendedores-varejistas-de-combustiveis-automotivos/dados-cadastrais-revendedores-varejistas-combustiveis-automoveis.csv"
+            + "\n"
+        )
 
         # VARIÁVEIS ESTRUTURANTES
         # Dados ANEEL - Capacidade Instalada por Unidade da Federação - Fonte: https://dadosabertos.aneel.gov.br/dataset/capacidade-instalada-por-unidade-da-federacao - Layout: https://dadosabertos.aneel.gov.br/dataset/cec20fdd-97e4-40a8-870f-c63339f5d8b7/resource/6fbee0f8-2617-4879-a69a-6b7892f12dad
-        frases.append("URL_ANEEL_CAPACIDADE_INSTALADA=" +
-                      r'https://dadosabertos.aneel.gov.br/datastore/dump/6fbee0f8-2617-4879-a69a-6b7892f12dad?bom=True' + "\n")
+        frases.append(
+            "URL_ANEEL_CAPACIDADE_INSTALADA="
+            + r"https://dadosabertos.aneel.gov.br/datastore/dump/6fbee0f8-2617-4879-a69a-6b7892f12dad?bom=True"
+            + "\n"
+        )
         # Dados DNIT - Plano Nacional de Viação e Sistema Nacional de Viação - Fonte: https://www.gov.br/dnit/pt-br/assuntos/atlas-e-mapas/pnv-e-snv
-        frases.append("URL_DNIT_SNV_REDE_PAVIMENTADA=" +
-                      r'https://servicos.dnit.gov.br/dnitcloud/index.php/s/oTpPRmYs5AAdiNr/download?path=%2FSNV%20Planilhas%20(2011-Atual)%20(XLS)&files=SNV_202308A.xlsx&downloadStartSecret=lqxu1hhnbuq' + "\n")
+        frases.append(
+            "URL_DNIT_SNV_REDE_PAVIMENTADA="
+            + r"https://servicos.dnit.gov.br/dnitcloud/index.php/s/oTpPRmYs5AAdiNr/download?path=%2FSNV%20Planilhas%20(2011-Atual)%20(XLS)&files=SNV_202308A.xlsx&downloadStartSecret=lqxu1hhnbuq"
+            + "\n"
+        )
         # Dados ANATEL - Plano Estrutural de Redes de Telecomunicações - PERT - Fonte: https://www.gov.br/anatel/pt-br/dados/infraestrutura/pert - Opção: https://informacoes.anatel.gov.br/paineis/infraestrutura/rede-de-transporte
-        frases.append("URL_ANATEL_INFRA_REDE=" +
-                      r'https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/mapeamento_rede_transporte.zip' + "\n")
+        frases.append(
+            "URL_ANATEL_INFRA_REDE="
+            + r"https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/mapeamento_rede_transporte.zip"
+            + "\n"
+        )
         # Dados IBGE PNSB - Pesquisa Nacional de Saneamento Básico - Fonte: https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?=&t=resultados - Layout: https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/ - Origem: https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37|498|513|517|6575|525?localidades=N6[all]
-        frases.append("URL_IBGE_PNSB_ABASTACIMENTO_AGUA=" +
-                      r'https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/abastecimento_de_agua_20210624.zip' + "\n")
-        frases.append("URL_IBGE_PNSB_ESGOTO_SANITARIO=" +
-                      r'https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/esgotamento_sanitario.zip' + "\n")
+        frases.append(
+            "URL_IBGE_PNSB_ABASTACIMENTO_AGUA="
+            + r"https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/abastecimento_de_agua_20210624.zip"
+            + "\n"
+        )
+        frases.append(
+            "URL_IBGE_PNSB_ESGOTO_SANITARIO="
+            + r"https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/esgotamento_sanitario.zip"
+            + "\n"
+        )
         # Dados Ministério da Justiça e Segurança Pública - MJSP - Ocorrências Criminais - Sinesp - Fonte: https://dados.gov.br/dados/conjuntos-dados/sistema-nacional-de-estatisticas-de-seguranca-publica - Layout: https://dados.mj.gov.br/dataset/210b9ae2-21fc-4986-89c6-2006eb4db247/resource/f29f6034-8dfc-4270-974e-ceedd18d7244/download/dicionario-de-dadosmunicipios.pdf
-        frases.append("URL_MJSP_OCORRENCIAS_CRIMINAIS=" +
-                      r'https://dados.mj.gov.br/dataset/210b9ae2-21fc-4986-89c6-2006eb4db247/resource/03af7ce2-174e-4ebd-b085-384503cfb40f/download/indicadoressegurancapublicamunic.xlsx' + "\n")
+        frases.append(
+            "URL_MJSP_OCORRENCIAS_CRIMINAIS="
+            + r"https://dados.mj.gov.br/dataset/210b9ae2-21fc-4986-89c6-2006eb4db247/resource/03af7ce2-174e-4ebd-b085-384503cfb40f/download/indicadoressegurancapublicamunic.xlsx"
+            + "\n"
+        )
         # Dados Correios - Agência nos municípios Brasileiros - Fonte: https://mais.correios.com.br/app/index.php
-        frases.append("URL_CORREIOS_AGENCIAS_MUNICIPIOS=" +
-                      r'https://www2.correios.com.br/institucional/licit_compras_contratos/licitacoes/anexos/EDI_AP000001_2019_114383.pdf' + "\n")
+        frases.append(
+            "URL_CORREIOS_AGENCIAS_MUNICIPIOS="
+            + r"https://www2.correios.com.br/institucional/licit_compras_contratos/licitacoes/anexos/EDI_AP000001_2019_114383.pdf"
+            + "\n"
+        )
         # Dados ICMBio - Atributos das Unidades de Conservação Federais - Fonte: https://dados.gov.br/dados/conjuntos-dados/tabela-de-atributos-e-informacoes-das-unidades-de-conservacao-federais
-        frases.append("URL_UNIDADES_CONSERVACAO_FEDERAIS=" +
-                      r'https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/atributos-das-unidades-de-conservacao-federais/atributos_oficiais_das_unidades_de_conservacao_federais.csv' + "\n")
+        frases.append(
+            "URL_UNIDADES_CONSERVACAO_FEDERAIS="
+            + r"https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/atributos-das-unidades-de-conservacao-federais/atributos_oficiais_das_unidades_de_conservacao_federais.csv"
+            + "\n"
+        )
         # Dados ICMBio - Limites oficiais das Unidades de Conservação Federais - Fonte: https://dados.gov.br/dados/conjuntos-dados/limites-oficiais-das-unidades-de-conservacao-federais
-        frases.append("URL_LIMITES_CONSERVACAO_FEDERAIS=" +
-                      r'https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/limites-oficiais-das-unidades-de-conservacao-federais/limiteucsfederais_032023_csv.csv' + "\n")
+        frases.append(
+            "URL_LIMITES_CONSERVACAO_FEDERAIS="
+            + r"https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/limites-oficiais-das-unidades-de-conservacao-federais/limiteucsfederais_032023_csv.csv"
+            + "\n"
+        )
         # Dados IBGE - Municípios da Faixa de Fronteira e Cidades Gêmeas - Fonte: https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/24073-municipios-da-faixa-de-fronteira.html?=&t=downloads
-        frases.append("URL_MUNICIPIOS_FAIXAS_FRONTEIRAS=" +
-                      r'https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_da_faixa_de_fronteira/2022/Mun_Faixa_de_Fronteira_Cidades_Gemeas_2022.xlsx' + "\n")
+        frases.append(
+            "URL_MUNICIPIOS_FAIXAS_FRONTEIRAS="
+            + r"https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_da_faixa_de_fronteira/2022/Mun_Faixa_de_Fronteira_Cidades_Gemeas_2022.xlsx"
+            + "\n"
+        )
 
         arquivo.writelines(frases)
         arquivo.close()
 
-        print_divisor_inicio_fim("Informações inseridas abaixo: ",
-                                 1)
+        print_divisor_inicio_fim("Informações inseridas abaixo: ", 1)
         # nome_arquivo_env = ('env.txt')
-        arquivo = open(nome_arquivo_env, 'r')
+        arquivo = open(nome_arquivo_env, "r")
         conteudo_arquivo = arquivo.readlines()
         for i in conteudo_arquivo:
             print(i)
 
-        print_divisor_inicio_fim(f'Número de linhas na letra: {len(conteudo_arquivo)}',
-                                 3)
+        print_divisor_inicio_fim(
+            f"Número de linhas na letra: {len(conteudo_arquivo)}", 3
+        )
         arquivo.close()
 
     except FileNotFoundError as text:
+        print_divisor_inicio_fim(
+            "\n!!! Arquivo criado pois nao existia !!!", 3
+        )
 
-        print_divisor_inicio_fim('\n!!! Arquivo criado pois nao existia !!!',
-                                 3)
-
-        arquivo = open(nome_arquivo_env, 'w+')
+        arquivo = open(nome_arquivo_env, "w+")
         arquivo.close()
 
         log_retorno_erro(text)
@@ -233,13 +284,12 @@ def GetEnv(env):
 
     try:
         local_env = os.getcwd()
-        dotenv_path = os.path.join(local_env, '.env')
+        dotenv_path = os.path.join(local_env, ".env")
         load_dotenv(dotenv_path)
 
         return os.getenv(env)
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
@@ -252,55 +302,54 @@ def conecta_bd_generico(name_db):
 
     # Conectar:
     try:
-
         pg_conn = psycopg2.connect(
             dbname=name_db,
-            user=GetEnv('DB_USER'),
-            password=GetEnv('DB_PASSWORD'),
-            host=GetEnv('DB_HOST'),
-            port=GetEnv('DB_PORT'))
+            user=GetEnv("DB_USER"),
+            password=GetEnv("DB_PASSWORD"),
+            host=GetEnv("DB_HOST"),
+            port=GetEnv("DB_PORT"),
+        )
         cur = pg_conn.cursor()
 
         if pg_conn:
-
-            '''for i in tqdm(range(10), 
-            bar_format='{l_bar}{bar}|', 
+            """for i in tqdm(range(10),
+            bar_format='{l_bar}{bar}|',
             colour='green'):
                 # Simula o tempo de conexão
-                time.sleep(0.1)'''
+                time.sleep(0.1)"""
 
-            '''print_divisor_inicio_fim(f'\n Conexão com o PostgresSQL estabelecida com sucesso. \n {pg_conn}',
-                                     2)'''
+            """print_divisor_inicio_fim(f'\n Conexão com o PostgresSQL estabelecida com sucesso. \n {pg_conn}',
+                                     2)"""
 
         else:
             print_divisor_inicio_fim(
-                'Conexão com o PostgresSQL não foi estabelecida encontrando erros !!!!!!!',
-                3)
+                "Conexão com o PostgresSQL não foi estabelecida encontrando erros !!!!!!!",
+                3,
+            )
 
             log_retorno_erro(
-                'Conexão com o PostgresSQL não foi estabelecida encontrando erros !!!!!!!')
+                "Conexão com o PostgresSQL não foi estabelecida encontrando erros !!!!!!!"
+            )
 
         return cur, pg_conn
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
 def gerenciar_bancos(opcao):
-
-    nome_banco = GetEnv('DB_NAME')
+    nome_banco = GetEnv("DB_NAME")
     # nome_banco = ('DB_NAME2')
 
     # pg_connectar:
     try:
-
         if opcao == "ListarBancoDados":
             limpar_terminal()
-            cur, pg_conn = conecta_bd_generico('postgres')
+            cur, pg_conn = conecta_bd_generico("postgres")
             try:
                 cur.execute(
-                    "SELECT datname FROM pg_database WHERE datistemplate = false;")
+                    "SELECT datname FROM pg_database WHERE datistemplate = false;"
+                )
                 bancos = cur.fetchall()
 
                 if bancos:
@@ -312,11 +361,9 @@ def gerenciar_bancos(opcao):
 
                         cur, pg_conn = conecta_bd_generico(banco[0])
 
-                        sql_1 = (
-                            f'''SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_catalog = '{banco[0]}';''')
+                        sql_1 = f"""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_catalog = '{banco[0]}';"""
 
-                        sql_2 = (
-                            f'''select relname from pg_class where relkind='r' and relname !~ '^(pg_|sql_)';''')
+                        sql_2 = f"""select relname from pg_class where relkind='r' and relname !~ '^(pg_|sql_)';"""
 
                         cur.execute(sql_1)
 
@@ -329,7 +376,9 @@ def gerenciar_bancos(opcao):
                                 print(f"    {j} - {tabela[0]}")
 
                         else:
-                            print("              !!! Nenhuma tabela encontrada !!!")
+                            print(
+                                "              !!! Nenhuma tabela encontrada !!!"
+                            )
 
                 else:
                     print("!!! Nenhum banco de dados encontrada !!!")
@@ -337,17 +386,16 @@ def gerenciar_bancos(opcao):
                 pg_conn.close()
 
             except Exception as text:
-
                 log_retorno_erro(text)
 
         elif opcao == "CriarBancoDados":
             limpar_terminal()
-            cur, pg_conn = conecta_bd_generico('postgres')
+            cur, pg_conn = conecta_bd_generico("postgres")
             try:
-                sql_3 = (f'''CREATE DATABASE {nome_banco}  
+                sql_3 = f"""CREATE DATABASE {nome_banco}  
                     WITH OWNER = postgres 
                     ENCODING = 'UTF8' 
-                    CONNECTION LIMIT = -1;''')
+                    CONNECTION LIMIT = -1;"""
 
                 pg_conn.autocommit = True
                 cur.execute(sql_3)
@@ -357,16 +405,15 @@ def gerenciar_bancos(opcao):
                 print(f"Banco de dados {nome_banco} criado com sucesso.")
 
             except Exception as text:
-
                 print(f"Erro ao criar o banco de dados {nome_banco}: {text}")
 
                 log_retorno_erro(text)
 
         elif opcao == "ExcluirBancoDados":
             limpar_terminal()
-            cur, pg_conn = conecta_bd_generico('postgres')
+            cur, pg_conn = conecta_bd_generico("postgres")
             try:
-                sql_4 = (f'''DROP DATABASE "{nome_banco}";''')
+                sql_4 = f"""DROP DATABASE "{nome_banco}";"""
 
                 pg_conn.autocommit = True
                 cur.execute(sql_4)
@@ -376,25 +423,22 @@ def gerenciar_bancos(opcao):
                 print(f"Banco de dados {nome_banco} excluído com sucesso.")
 
             except Exception as text:
-
                 print(f"Erro ao excluir o banco de dados {nome_banco}: {text}")
 
                 log_retorno_erro(text)
 
         else:
             print(
-                "Opção inválida. Escolha entre 'ListarBancoDados', 'CriarBancoDados' ou 'ExcluirBancoDados'.")
+                "Opção inválida. Escolha entre 'ListarBancoDados', 'CriarBancoDados' ou 'ExcluirBancoDados'."
+            )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def download_arquiv_barprogress(url,
-                                nome_file,
-                                tipo_download,
-                                file_path=None,
-                                return_df=False):
+def download_arquiv_barprogress(
+    url, nome_file, tipo_download, file_path=None, return_df=False
+):
     """Função para download e criação de arquivo ou um dataframe pandas como retorno com barra de progresso
 
     Args:
@@ -408,12 +452,11 @@ def download_arquiv_barprogress(url,
     """
 
     try:
+        print_divisor_inicio_fim(
+            f"### O arquivo {nome_file} está sendo baixado aguarde...", 3
+        )
 
-        print_divisor_inicio_fim(f'### O arquivo {nome_file} está sendo baixado aguarde...',
-                                 3)
-
-        if (tipo_download) == '.json':  # tb_ibge_cnae_detalhado
-
+        if (tipo_download) == ".json":  # tb_ibge_cnae_detalhado
             response = requests.get(url, verify=False).json()
             # Fonte: https://github.com/pedrounes1/CNAES-IBGE-2_3/blob/main/scripts/tratativas.py
             # pip install --upgrade certifi if older version of python3
@@ -422,121 +465,127 @@ def download_arquiv_barprogress(url,
             # print(" \n")
             # pass
 
-        elif (tipo_download) == '.jsonData':
-
+        elif (tipo_download) == ".jsonData":
             response = requests.get(url, verify=False).json()
 
             return response
 
-        elif (tipo_download) == '.xls':
-
+        elif (tipo_download) == ".xls":
             response = requests.get(url)
 
-            with open(os.path.join(file_path,
-                                   nome_file + tipo_download), 'wb') as f:
+            with open(
+                os.path.join(file_path, nome_file + tipo_download), "wb"
+            ) as f:
                 f.write(response.content)
 
             return
 
-        elif (tipo_download) == '.csv':
-
+        elif (tipo_download) == ".csv":
             response = requests.get(url)
 
-            open(file_path,
-                 'wb').write(response.content)
+            open(file_path, "wb").write(response.content)
 
             return
 
-        elif (tipo_download) == '.pdf':
-
+        elif (tipo_download) == ".pdf":
             response = requests.get(url)
 
-            open((os.path.join(file_path,
-                               nome_file + tipo_download)),
-                 'wb').write(response.content)
+            open(
+                (os.path.join(file_path, nome_file + tipo_download)), "wb"
+            ).write(response.content)
 
             return
 
-        elif (tipo_download) == '.xlsx':
-
+        elif (tipo_download) == ".xlsx":
             response = requests.get(url)
 
-            open((os.path.join(file_path,
-                               nome_file + tipo_download)),
-                 'wb').write(response.content)
+            open(
+                (os.path.join(file_path, nome_file + tipo_download)), "wb"
+            ).write(response.content)
 
             return
 
         else:
-
             response = requests.get(url, stream=True)
-            total_length = response.headers.get('content-length')
+            total_length = response.headers.get("content-length")
 
             if total_length is None:
-
                 return
 
         if file_path:
-
             max_attempts = 3
             attempt = 0
-            while attempt < max_attempts:  # Condição repetição do download caso tenha tido algum problema ao baixar
-
+            while (
+                attempt < max_attempts
+            ):  # Condição repetição do download caso tenha tido algum problema ao baixar
                 # Condição para verificação se os arquivos zip já existem
                 if not os.path.exists(file_path):
-
-                    with open(file_path, 'wb') as f:
-                        with enlighten.Counter(total=int(total_length), desc=f'Baixando arquivo {nome_file}...', unit='B',
-                                               color='green') as counter:  # color='green'
+                    with open(file_path, "wb") as f:
+                        with enlighten.Counter(
+                            total=int(total_length),
+                            desc=f"Baixando arquivo {nome_file}...",
+                            unit="B",
+                            color="green",
+                        ) as counter:  # color='green'
                             for data in response.iter_content(chunk_size=1024):
                                 f.write(data)
                                 counter.update(len(data))
 
                     if os.path.getsize(file_path) == int(total_length):
                         print(
-                            f'O arquivo {file_path} foi baixado com sucesso.')
+                            f"O arquivo {file_path} foi baixado com sucesso."
+                        )
 
-                        logs.record(f'O arquivo {file_path} foi baixado com sucesso.',
-                                    type="info",
-                                    colorize=True)
+                        logs.record(
+                            f"O arquivo {file_path} foi baixado com sucesso.",
+                            type="info",
+                            colorize=True,
+                        )
 
                         break
 
                     else:
                         print(
-                            f'!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!')
+                            f"!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!"
+                        )
                         os.remove(file_path)
                         attempt += 1
 
-                        logs.record(f'!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!',
-                                    colorize=True)
+                        logs.record(
+                            f"!!! Ocorreu um erro ao baixar o arquivo {nome_file}. Tentando novamente na tentativa {attempt}...!!!",
+                            colorize=True,
+                        )
 
                 else:
                     print(
-                        f'!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!')
+                        f"!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!"
+                    )
 
                     logs.record(
-                        (f'!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!'),
+                        (
+                            f"!!! O arquivo {file_path} já existe no caminho especificado, devido a isso não será baixado.!!!"
+                        ),
                         type="info",
-                        colorize=True)
+                        colorize=True,
+                    )
 
                     break
 
             if attempt == max_attempts:
                 print(
-                    f'!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!')
+                    f"!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!"
+                )
 
-                logs.record(f'!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!',
-                            colorize=True)
+                logs.record(
+                    f"!!! Não foi possível baixar o arquivo {nome_file} após {max_attempts} tentativas.!!!",
+                    colorize=True,
+                )
 
         elif return_df:
-
             return response
 
     except Exception as text:
-
-        print_divisor_inicio_fim('!!! O arquivo não pode ser baixado !!!',
-                                 3)
+        print_divisor_inicio_fim("!!! O arquivo não pode ser baixado !!!", 3)
 
         log_retorno_erro(text)
 
@@ -550,67 +599,70 @@ def funçao_barprogress(lista_funcoes, cor_bar):
     """
 
     # Barra de progresso para acompanhar a execução das funções acima
-    with tqdm(total=len(lista_funcoes),
-              bar_format='{l_bar}{bar}|',
-              colour=cor_bar) as pbar:
+    with tqdm(
+        total=len(lista_funcoes), bar_format="{l_bar}{bar}|", colour=cor_bar
+    ) as pbar:
         for funcao in lista_funcoes:
             funcao()
             pbar.update(1)
 
 
 def gerenciar_diretorios(opcao):
-
-    raiz = (GetEnv('RFB_FILES_PATH'),
-            GetEnv('IBGE_FILES_PATH'),
-            GetEnv('ANP_FILES_PATH'),
-            GetEnv('RAIS_FILES_PATH'),
-            GetEnv('SGI_FILES_PATH'),
-            GetEnv('FT_FILES_PATH'),
-            GetEnv('VAR_FILES_PATH'))
+    raiz = (
+        GetEnv("RFB_FILES_PATH"),
+        GetEnv("IBGE_FILES_PATH"),
+        GetEnv("ANP_FILES_PATH"),
+        GetEnv("RAIS_FILES_PATH"),
+        GetEnv("SGI_FILES_PATH"),
+        GetEnv("FT_FILES_PATH"),
+        GetEnv("VAR_FILES_PATH"),
+    )
 
     diretorios = (  # GetEnv('RFB_FILES_PATH'),
-        GetEnv('OUTPUT_FILES_PATH'),
-        GetEnv('EXTRACTED_FILES_PATH'),
-        GetEnv('EXTRACTED_FILES_PATH_CONVERT'),
-        GetEnv('OUTPUT_ERROS'),
+        GetEnv("OUTPUT_FILES_PATH"),
+        GetEnv("EXTRACTED_FILES_PATH"),
+        GetEnv("EXTRACTED_FILES_PATH_CONVERT"),
+        GetEnv("OUTPUT_ERROS"),
         # GetEnv('IBGE_FILES_PATH'),
-        GetEnv('IBGE_OUTPUT_ERROS_PATH'),
+        GetEnv("IBGE_OUTPUT_ERROS_PATH"),
         # GetEnv('ANP_FILES_PATH'),
-        GetEnv('ANP_OUTPUT_ERROS_PATH'),
+        GetEnv("ANP_OUTPUT_ERROS_PATH"),
         # GetEnv('RAIS_FILES_PATH'),
-        GetEnv('RAIS_OUTPUT_FILES_PATH'),
-        GetEnv('RAIS_EXTRACTED_FILES_PATH'),
-        GetEnv('RAIS_EXTRACTED_FILES_PATH_CONVERT'),
-        GetEnv('RAIS_OUTPUT_ERROS_PATH'),
+        GetEnv("RAIS_OUTPUT_FILES_PATH"),
+        GetEnv("RAIS_EXTRACTED_FILES_PATH"),
+        GetEnv("RAIS_EXTRACTED_FILES_PATH_CONVERT"),
+        GetEnv("RAIS_OUTPUT_ERROS_PATH"),
         # GetEnv('SGI_FILES_PATH'),
-        GetEnv('SGI_OUTPUT_FILES_PATH'),
-        GetEnv('SGI_OUTPUT_FILES_PATH_CONVERT'),
-        GetEnv('SGI_OUTPUT_ERROS_PATH'),
+        GetEnv("SGI_OUTPUT_FILES_PATH"),
+        GetEnv("SGI_OUTPUT_FILES_PATH_CONVERT"),
+        GetEnv("SGI_OUTPUT_ERROS_PATH"),
         # GetEnv('FT_FILES_PATH'),
-        GetEnv('FT_OUTPUT_FILES_PATH'),
-        GetEnv('FT_OUTPUT_FILES_PATH_CONVERT'),
-        GetEnv('FT_OUTPUT_ERROS_PATH'),
+        GetEnv("FT_OUTPUT_FILES_PATH"),
+        GetEnv("FT_OUTPUT_FILES_PATH_CONVERT"),
+        GetEnv("FT_OUTPUT_ERROS_PATH"),
         # GetEnv('VAR_FILES_PATH'),
-        GetEnv('VAR_OUTPUT_FILES_PATH'),
-        GetEnv('VAR_OUTPUT_FILES_PATH_CONVERT'),
-        GetEnv('VAR_OUTPUT_ERROS_PATH'))
+        GetEnv("VAR_OUTPUT_FILES_PATH"),
+        GetEnv("VAR_OUTPUT_FILES_PATH_CONVERT"),
+        GetEnv("VAR_OUTPUT_ERROS_PATH"),
+    )
 
     try:
-
         diretorios_lidos = []
         if opcao == "LerDiretorios":
             limpar_terminal()
             print_divisor_inicio_fim(
-                f"Diretórios e arquivos serão listados abaixo: ",
-                1)
+                f"Diretórios e arquivos serão listados abaixo: ", 1
+            )
             for diretorio in raiz:
                 if diretorio not in diretorios_lidos:
                     if os.path.exists(diretorio):
                         print(
-                            f"=== Listando arquivos e diretórios em ({diretorio}):")
+                            f"=== Listando arquivos e diretórios em ({diretorio}):"
+                        )
 
-                        for caminho, subdiretorios, arquivos in os.walk(diretorio):
-
+                        for caminho, subdiretorios, arquivos in os.walk(
+                            diretorio
+                        ):
                             print(f"Diretório: ({caminho})")
                             j = 0
                             for nome in arquivos:
@@ -629,27 +681,19 @@ def gerenciar_diretorios(opcao):
 
         elif opcao == "CriarDiretorios":
             limpar_terminal()
-            print_divisor_inicio_fim(
-                f"Diretórios serão criados abaixo: ",
-                1)
+            print_divisor_inicio_fim(f"Diretórios serão criados abaixo: ", 1)
             for diretorio in diretorios:
                 if not os.path.exists(diretorio):
-
                     os.makedirs(diretorio)
                     print(f"Diretório ({diretorio}) criado.")
                 else:
-                    print(
-                        f"!!! Diretório ({diretorio}) já existe !!!")
+                    print(f"!!! Diretório ({diretorio}) já existe !!!")
 
-            print_divisor_inicio_fim(
-                f"",
-                2)
+            print_divisor_inicio_fim(f"", 2)
 
         elif opcao == "ExcluirDiretorios":
             limpar_terminal()
-            print_divisor_inicio_fim(
-                f"Diretórios serão excluídos abaixo: ",
-                1)
+            print_divisor_inicio_fim(f"Diretórios serão excluídos abaixo: ", 1)
             for diretorio in raiz:
                 if os.path.exists(diretorio):
                     shutil.rmtree(diretorio)
@@ -657,43 +701,40 @@ def gerenciar_diretorios(opcao):
 
                 else:
                     print(
-                        f"!!! Diretório ({diretorio}) não existe para ser excluído !!!")
+                        f"!!! Diretório ({diretorio}) não existe para ser excluído !!!"
+                    )
 
-            print_divisor_inicio_fim(
-                f"",
-                2)
+            print_divisor_inicio_fim(f"", 2)
 
         else:
             print_divisor_inicio_fim(
                 "Opção inválida. Escolha entre 'LerDiretorios', 'CriarDiretorios' ou 'ExcluirDiretorios'.",
-                3)
+                3,
+            )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
         print_divisor_inicio_fim(
             'Erro na definição dos diretórios, verifique o arquivo ".env" ou o local informado do seu arquivo de configuração.',
-            3)
+            3,
+        )
 
 
 def LerDiretorios():
-    """Função para leitura dos diretórios necessários, caso não existam serão criados
-    """
+    """Função para leitura dos diretórios necessários, caso não existam serão criados"""
 
     gerenciar_diretorios("LerDiretorios")
 
 
 def CriarDiretorios():
-    """Função para criação dos diretórios necessários
-    """
+    """Função para criação dos diretórios necessários"""
 
     gerenciar_diretorios("CriarDiretorios")
 
 
 def ExcluirDiretorios():
-    """Função para excluir diretórios específicos do projeto
-    """
+    """Função para excluir diretórios específicos do projeto"""
 
     gerenciar_diretorios("ExcluirDiretorios")
 
@@ -710,23 +751,25 @@ def calcula_tempo_execucao(entrada):
         elapsed_time = timeit.timeit(entrada, number=1)
 
         # Imprima o tempo de execução
-        print_divisor_inicio_fim(f'Tempo de execução em horas/minutos/segundos: {convert_tempo(elapsed_time)}',  # elapsed_time:.2f
-                                 3)
+        print_divisor_inicio_fim(
+            f"Tempo de execução em horas/minutos/segundos: {convert_tempo(elapsed_time)}",  # elapsed_time:.2f
+            3,
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def split_csv_file_pandas_todos(file_path_entrada,
-                                file_path_saida,
-                                nome_file,
-                                row_limit,
-                                encoding_entrada,
-                                encoding_saida,
-                                header_entrada,
-                                header_saida
-                                ):
+def split_csv_file_pandas_todos(
+    file_path_entrada,
+    file_path_saida,
+    nome_file,
+    row_limit,
+    encoding_entrada,
+    encoding_saida,
+    header_entrada,
+    header_saida,
+):
     """Função para dividir um arquivo CSV em vários arquivos menores com base em um limite de linhas.
 
     Args:
@@ -742,125 +785,119 @@ def split_csv_file_pandas_todos(file_path_entrada,
 
     try:
         print_divisor_inicio_fim(
-            f'O arquivo {nome_file} está sendo lido e poderá ser dividido em partes para facilitar a leitura no banco de dados... ',
-            3)
+            f"O arquivo {nome_file} está sendo lido e poderá ser dividido em partes para facilitar a leitura no banco de dados... ",
+            3,
+        )
 
         tmp_insert_start = time.time()
 
         # Lê o arquivo CSV usando pandas
-        df = pd.read_csv((os.path.join(file_path_entrada,
-                                       nome_file)),
-                         sep=';',
-                         # skiprows=0,
-                         header=header_entrada,
-                         dtype=str,
-                         encoding=encoding_entrada,
-                         engine='c',
-                         encoding_errors='ignore',
-                         on_bad_lines='skip'
-                         )
+        df = pd.read_csv(
+            (os.path.join(file_path_entrada, nome_file)),
+            sep=";",
+            # skiprows=0,
+            header=header_entrada,
+            dtype=str,
+            encoding=encoding_entrada,
+            engine="c",
+            encoding_errors="ignore",
+            on_bad_lines="skip",
+        )
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno('leitura do arquivo csv',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            nome_file,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            "leitura do arquivo csv",
+            tmp_insert_start,
+            tmp_insert_end,
+            nome_file,
+            "parcial",
+        )
 
         # Inserir if para inserir colunas cnpj no arquivo Estabelecimentos
         # Condição de verificação para criação de coluna com o cnpj completo na tabela Estabelecimentos
-        if nome_file.find('ESTABELE') != -1:
-
+        if nome_file.find("ESTABELE") != -1:
             tmp_insert_start = time.time()
 
-            df[30] = (df[0] +
-                      df[1] +
-                      df[2])
-            print('Foi criado coluna cnpj completo TXT')
+            df[30] = df[0] + df[1] + df[2]
+            print("Foi criado coluna cnpj completo TXT")
 
             sleep(1)
 
-            df[31] = (df[0] +
-                      df[1] +
-                      df[2])
-            print('Foi criado coluna cnpj completo NUM')
+            df[31] = df[0] + df[1] + df[2]
+            print("Foi criado coluna cnpj completo NUM")
 
             sleep(1)
 
             # Substituindo os valores da coluna 'data_situacao_cadastral' se foram nulos e o valoe da coluna cod_situacao_cadastral por igual a 2, pelos valores da coluna 'data_inicio_atividade'
-            df.loc[((df[6].isnull()) | (df[6] == '0')), [6]] = df[10]
-            print('Foi substituído os valores da coluna data_situacao_cadastral caso nulos ou 0 pelos valores da coluna data_inicio_atividade')
+            df.loc[((df[6].isnull()) | (df[6] == "0")), [6]] = df[10]
+            print(
+                "Foi substituído os valores da coluna data_situacao_cadastral caso nulos ou 0 pelos valores da coluna data_inicio_atividade"
+            )
 
             tmp_insert_end = time.time()
 
-            print_parcial_final_log_inf_retorno('criacao das colunas cnpj completo',
-                                                tmp_insert_start,
-                                                tmp_insert_end,
-                                                nome_file,
-                                                'parcial')
+            print_parcial_final_log_inf_retorno(
+                "criacao das colunas cnpj completo",
+                tmp_insert_start,
+                tmp_insert_end,
+                nome_file,
+                "parcial",
+            )
 
         else:
             # print(" \n")
             pass
 
-        if nome_file.find('Estb2021ID') != -1:
-
+        if nome_file.find("Estb2021ID") != -1:
             # Remover headers
             df = df.drop(0)
-            print('Foi removido os cabeçalhos das colunas')
+            print("Foi removido os cabeçalhos das colunas")
 
             # sleep(1)
 
             df[29] = df[3]
-            print('Foi replicada a coluna cnpj completo TXT')
+            print("Foi replicada a coluna cnpj completo TXT")
 
             sleep(1)
 
             # Substituindo os valores da coluna 'data_situacao_cadastral' se foram nulos e o valoe da coluna cod_situacao_cadastral por igual a 2, pelos valores da coluna 'data_inicio_atividade'
-            df = df.replace(to_replace='000000000000',
-                            value='')
-            df = df.replace(to_replace='000000000',
-                            value='')
-            df = df.replace(to_replace='00000000',
-                            value='')
-            print('Foi substituído os valores das coluna de data caso 0 por nulos')
+            df = df.replace(to_replace="000000000000", value="")
+            df = df.replace(to_replace="000000000", value="")
+            df = df.replace(to_replace="00000000", value="")
+            print(
+                "Foi substituído os valores das coluna de data caso 0 por nulos"
+            )
 
             sleep(1)
 
             # Substituindo os valor errado de data "22061199"
-            df = df.replace(to_replace='22061199',
-                            value='22061989')
+            df = df.replace(to_replace="22061199", value="22061989")
             print('Foi substituído o valor  errado de data "22-06-1199"')
 
             sleep(1)
 
             # Converter para o formato de data style '%y%m%d'
-            df[5] = pd.to_datetime(
-                df[5].astype(str),
-                format='%d%m%Y')
-            df[6] = pd.to_datetime(
-                df[6].astype(str),
-                format='%d%m%Y')
-            df[7] = pd.to_datetime(
-                df[7].astype(str),
-                format='%d%m%Y')
+            df[5] = pd.to_datetime(df[5].astype(str), format="%d%m%Y")
+            df[6] = pd.to_datetime(df[6].astype(str), format="%d%m%Y")
+            df[7] = pd.to_datetime(df[7].astype(str), format="%d%m%Y")
 
-            print(r'Foi convertido nas colunas de datas para o data style "%y%m%d"')
+            print(
+                r'Foi convertido nas colunas de datas para o data style "%y%m%d"'
+            )
 
         else:
             # print(" \n")
             pass
 
-        if nome_file.find('tb_sgi_visitados_2012_2020.csv') != -1:
-
+        if nome_file.find("tb_sgi_visitados_2012_2020.csv") != -1:
             # Criação da coluna cnpj original
-            df['id_cod_cnpj_ori'] = ''
-            print('Foi criado a coluna cnpj original')
+            df["id_cod_cnpj_ori"] = ""
+            print("Foi criado a coluna cnpj original")
 
             # Criação da coluna quantidade de dígitos cnpj original
-            df['qtd_num'] = ''
-            print('Foi criado a coluna quantidade de dígitos cnpj original')
+            df["qtd_num"] = ""
+            print("Foi criado a coluna quantidade de dígitos cnpj original")
 
             sleep(1)
 
@@ -872,8 +909,9 @@ def split_csv_file_pandas_todos(file_path_entrada,
         num_files = math.ceil(len(df) / row_limit)
 
         # Cria um objeto tqdm para exibir a barra de progresso
-        pbar = tqdm(total=num_files,
-                    bar_format='{l_bar}{bar}|', colour='green')
+        pbar = tqdm(
+            total=num_files, bar_format="{l_bar}{bar}|", colour="green"
+        )
 
         tmp_insert_start = time.time()
 
@@ -881,14 +919,15 @@ def split_csv_file_pandas_todos(file_path_entrada,
         for i in range(num_files):
             start = i * row_limit
             end = (i + 1) * row_limit
-            output_file_name = f'{nome_file}._parte_{i + 1}'  # ext
+            output_file_name = f"{nome_file}._parte_{i + 1}"  # ext
             output_file_path = os.path.join(file_path_saida, output_file_name)
-            df[start:end].to_csv(output_file_path,
-                                 index=False,
-                                 header=header_saida,
-                                 encoding=encoding_saida,
-                                 sep=';'
-                                 )
+            df[start:end].to_csv(
+                output_file_path,
+                index=False,
+                header=header_saida,
+                encoding=encoding_saida,
+                sep=";",
+            )
 
             # Atualiza a barra de progresso
             pbar.update(1)
@@ -898,54 +937,52 @@ def split_csv_file_pandas_todos(file_path_entrada,
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno('criacao dos novos arquivos csv',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            nome_file,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            "criacao dos novos arquivos csv",
+            tmp_insert_start,
+            tmp_insert_end,
+            nome_file,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def print_divisor_inicio_fim(item: str,
-                             position: int):
+def print_divisor_inicio_fim(item: str, position: int):
     """Função para inserção automática com o tamanho do item a ser impresso de um separador
         na parte de cima e baixo com escolha de qual vai ser(1 cima, 2 baixo, 3 os dois ou 0 para sem linhas)
 
     Args:
         item (Objeto/String): Objeto ou string para ser impresso pelo comando print
     """
-    separator = '='
+    separator = "="
     # length = len(item)
     length = 108  # '============================================================================================================'
     if position == 1:
-        print(separator * length + '\n')
+        print(separator * length + "\n")
         print(item)
-        print('\n')
+        print("\n")
 
     elif position == 2:
-        print('\n')
+        print("\n")
         print(item)
-        print(separator * length + '\n')
+        print(separator * length + "\n")
 
     elif position == 3:
-        print(separator * length + '\n')
+        print(separator * length + "\n")
         print(item)
-        print(separator * length + '\n')
+        print(separator * length + "\n")
 
     elif position == 0:
-        print('\n')
+        print("\n")
         print(item)
-        print('\n')
+        print("\n")
 
 
-def leitura_csv_insercao_bd_sql(nome_arquivo,
-                                nome_tabela,
-                                sql_create_table,
-                                op_header,
-                                path_file):
+def leitura_csv_insercao_bd_sql(
+    nome_arquivo, nome_tabela, sql_create_table, op_header, path_file
+):
     """Função para leituras de csv da RFB para dataframe em loop e inserção no banco de dados postgres na tabela definida
 
     Args:
@@ -959,28 +996,30 @@ def leitura_csv_insercao_bd_sql(nome_arquivo,
     insert_start = time.time()
 
     try:
-
         pg_conn = psycopg2.connect(
-            dbname=GetEnv('DB_NAME'),
-            user=GetEnv('DB_USER'),
-            password=GetEnv('DB_PASSWORD'),
-            host=GetEnv('DB_HOST'),
-            port=GetEnv('DB_PORT'))
+            dbname=GetEnv("DB_NAME"),
+            user=GetEnv("DB_USER"),
+            password=GetEnv("DB_PASSWORD"),
+            host=GetEnv("DB_HOST"),
+            port=GetEnv("DB_PORT"),
+        )
         cur = pg_conn.cursor()
 
         extracted_files = path_file
 
         # LER E INSERIR DADOS #
 
-        Items = list(filter(lambda name: nome_arquivo in name,
-                     os.listdir(extracted_files)))
+        Items = list(
+            filter(
+                lambda name: nome_arquivo in name, os.listdir(extracted_files)
+            )
+        )
 
         if len(Items) > 0:
-
             # Drop table antes do insert
-            sql_1 = f'''DROP TABLE IF EXISTS "{nome_tabela}" CASCADE;'''
-            cur.execute(sql_1)
-            pg_conn.commit()
+            sql_1 = f"""DROP TABLE IF EXISTS "{nome_tabela}" CASCADE;"""
+            # cur.execute(sql_1)
+            # pg_conn.commit()
 
             # Criando tabela
             pg_conn.autocommit = True  #
@@ -988,95 +1027,92 @@ def leitura_csv_insercao_bd_sql(nome_arquivo,
             pg_conn.commit()
 
             # Truncate the table in case you've already run the script before
-            sql_2 = f'''TRUNCATE TABLE "{nome_tabela}";'''
+            sql_2 = f"""TRUNCATE TABLE "{nome_tabela}";"""
             cur.execute(sql_2)
             pg_conn.commit()
 
-            print_divisor_inicio_fim(f'Os arquivos contendo o nome {nome_arquivo} a seguir serão lidos e inseridos no banco de dados...',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Os arquivos contendo o nome {nome_arquivo} a seguir serão lidos e inseridos no banco de dados...",
+                1,
+            )
             for i, f in enumerate(Items, 1):
-                print(f'{i} - Arquivo csv = {f}')
+                print(f"{i} - Arquivo csv = {f}")
 
-            for i, idx_arquivos_tmp in enumerate(tqdm(Items,
-                                                      bar_format='{l_bar}{bar}|', colour='green')):  # o código \033[32m é usado para definir a cor do texto como verde e o código \033[0m é usado para redefinir a cor do texto para o padrão. Isso fará com que a barra de progresso seja exibida em verde.
-
+            for i, idx_arquivos_tmp in enumerate(
+                tqdm(Items, bar_format="{l_bar}{bar}|", colour="green")
+            ):  # o código \033[32m é usado para definir a cor do texto como verde e o código \033[0m é usado para redefinir a cor do texto para o padrão. Isso fará com que a barra de progresso seja exibida em verde.
                 tmp_insert_start = time.time()
 
-                print_divisor_inicio_fim(f'Trabalhando no arquivo: {idx_arquivos_tmp} aguarde [...]',
-                                         0)
+                print_divisor_inicio_fim(
+                    f"Trabalhando no arquivo: {idx_arquivos_tmp} aguarde [...]",
+                    0,
+                )
 
                 # GRAVAR DADOS NO BANCO
 
-                path_file_csv = os.path.join(extracted_files,
-                                             idx_arquivos_tmp)
+                path_file_csv = os.path.join(extracted_files, idx_arquivos_tmp)
 
-                cur.execute('''SET CLIENT_ENCODING TO 'Utf-8';''')
-                cur.execute('''SHOW client_encoding;''')
+                cur.execute("""SET CLIENT_ENCODING TO 'Utf-8';""")
+                cur.execute("""SHOW client_encoding;""")
 
-                if (op_header) == 'rfb':
-
-                    sql_3 = f'''
+                if (op_header) == "rfb":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV;
-                    '''
+                    """
 
-                elif (op_header) == 'ibge':
-
-                    sql_3 = f'''
+                elif (op_header) == "ibge":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV HEADER;
-                    '''
+                    """
 
-                elif (op_header) == 'anp':
-
-                    sql_3 = f'''
+                elif (op_header) == "anp":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV HEADER;
-                    '''
+                    """
 
-                elif (op_header) == 'rais':
-
-                    sql_3 = f'''
+                elif (op_header) == "rais":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV;
-                    '''
+                    """
 
-                elif (op_header) == 'ft':
-
-                    sql_3 = f'''
+                elif (op_header) == "ft":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV HEADER;
-                    '''
+                    """
 
-                elif (op_header) == 'sgi':
-
-                    sql_3 = f'''
+                elif (op_header) == "sgi":
+                    sql_3 = f"""
                     COPY {nome_tabela}
                     FROM '{path_file_csv}' --input full file path here.
                     DELIMITER ';' CSV HEADER;
-                    '''
+                    """
 
                 else:
-
-                    print_divisor_inicio_fim(f'!!! Opção não suportada !!!',
-                                             3)
-                    log_retorno_erro(f'!!! Opção não suportada !!!')
+                    print_divisor_inicio_fim("!!! Opção não suportada !!!", 3)
+                    log_retorno_erro("!!! Opção não suportada !!!")
 
                 cur.execute(sql_3)
                 pg_conn.commit()
 
                 tmp_insert_end = time.time()
 
-                print_parcial_final_log_inf_retorno('inserção no banco de dados',
-                                                    tmp_insert_start,
-                                                    tmp_insert_end,
-                                                    idx_arquivos_tmp,
-                                                    'parcial')
+                print_parcial_final_log_inf_retorno(
+                    "inserção no banco de dados",
+                    tmp_insert_start,
+                    tmp_insert_end,
+                    idx_arquivos_tmp,
+                    "parcial",
+                )
 
             # close connection
             cur.close()
@@ -1086,25 +1122,24 @@ def leitura_csv_insercao_bd_sql(nome_arquivo,
             # https://stackoverflow.com/questions/4867272/invalid-byte-sequence-for-encoding-utf8
 
         else:
-
-            print_divisor_inicio_fim(f'Sem arquivos na pasta ({extracted_files}) contendo o nome {nome_arquivo}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Sem arquivos na pasta ({extracted_files}) contendo o nome {nome_arquivo}",
+                1,
+            )
 
             log_retorno_info(
-                f'Sem arquivos na pasta ({extracted_files}) contendo o nome {nome_arquivo}')
+                f"Sem arquivos na pasta ({extracted_files}) contendo o nome {nome_arquivo}"
+            )
 
             pass
 
         insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(nome_arquivo,
-                                            insert_start,
-                                            insert_end,
-                                            '',
-                                            'final')
+        print_parcial_final_log_inf_retorno(
+            nome_arquivo, insert_start, insert_end, "", "final"
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
@@ -1115,18 +1150,15 @@ def convert_tempo(n):
         n (Inteiro): Valor a ser convertido
 
     Returns:
-        String: Valor em formato convertido 
+        String: Valor em formato convertido
     """
 
-    return time.strftime('%H:%M:%S', time.gmtime(n))  # "%H:%M:%S.%f"
+    return time.strftime("%H:%M:%S", time.gmtime(n))  # "%H:%M:%S.%f"
 
 
-def print_parcial_final_log_inf_retorno(text,
-                                        insert_start,
-                                        insert_end,
-                                        nome_arquivo,
-                                        opcao_geral_final_parcial
-                                        ):
+def print_parcial_final_log_inf_retorno(
+    text, insert_start, insert_end, nome_arquivo, opcao_geral_final_parcial
+):
     """Função para capturar erro da função a qual esta função esta inserida
 
     Args:
@@ -1142,44 +1174,54 @@ def print_parcial_final_log_inf_retorno(text,
     tempo_final = round(insert_end - insert_start, 2)
     nome_funcao = inspect.stack()[1][3]
 
-    if (opcao_geral_final_parcial) == 'geral':
-
-        print_divisor_inicio_fim(f'### O processo total ({nome_funcao}) de {text} foi finalizado... \n \
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ###',
-                                 3)
-
-        logs.record(f'### O processo total ({nome_funcao}) de {text} foi finalizado... \n \
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ###',
-                    type="info", colorize=True)
-
-    elif (opcao_geral_final_parcial) == 'final':
-
-        print_divisor_inicio_fim(f'*** ({nome_funcao}) executada em todos os arquivos {text} \n\
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ***',
-                                 3)
+    if (opcao_geral_final_parcial) == "geral":
+        print_divisor_inicio_fim(
+            f"### O processo total ({nome_funcao}) de {text} foi finalizado... \n \
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ###",
+            3,
+        )
 
         logs.record(
-            (f'*** ({nome_funcao}) executada em todos os arquivos {text} \n\
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ***'),
+            f"### O processo total ({nome_funcao}) de {text} foi finalizado... \n \
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ###",
             type="info",
-            colorize=True)
+            colorize=True,
+        )
 
-    elif (opcao_geral_final_parcial) == 'parcial':
-
-        print_divisor_inicio_fim(f'... ({nome_funcao}) executada para {text} no/do arquivo/tabela ({nome_arquivo}) \n\
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ...',
-                                 0)
+    elif (opcao_geral_final_parcial) == "final":
+        print_divisor_inicio_fim(
+            f"*** ({nome_funcao}) executada em todos os arquivos {text} \n\
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ***",
+            3,
+        )
 
         logs.record(
-            (f'... ({nome_funcao}) executada para {text} no arquivo/tabela ({nome_arquivo}) \n\
-Com tempo de ({convert_tempo(tempo_final)})h:mim:s ...'),
+            (
+                f"*** ({nome_funcao}) executada em todos os arquivos {text} \n\
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ***"
+            ),
             type="info",
-            colorize=True)
+            colorize=True,
+        )
+
+    elif (opcao_geral_final_parcial) == "parcial":
+        print_divisor_inicio_fim(
+            f"... ({nome_funcao}) executada para {text} no/do arquivo/tabela ({nome_arquivo}) \n\
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ...",
+            0,
+        )
+
+        logs.record(
+            (
+                f"... ({nome_funcao}) executada para {text} no arquivo/tabela ({nome_arquivo}) \n\
+Com tempo de ({convert_tempo(tempo_final)})h:mim:s ..."
+            ),
+            type="info",
+            colorize=True,
+        )
 
     else:
-
-        print_divisor_inicio_fim(f'!!! OPÇÃO NÃO SUPORTADA !!!',
-                                 3)
+        print_divisor_inicio_fim(f"!!! OPÇÃO NÃO SUPORTADA !!!", 3)
 
 
 def log_retorno_info(text):
@@ -1194,10 +1236,13 @@ def log_retorno_info(text):
     nome_funcao = inspect.stack()[1][3]
 
     logs.record(
-        (f'!!! Nao executada ({nome_funcao}) pelo motivo: \n\
-            ({text}) !!!'),
+        (
+            f"!!! Nao executada ({nome_funcao}) pelo motivo: \n\
+            ({text}) !!!"
+        ),
         type="info",
-        colorize=True)
+        colorize=True,
+    )
 
 
 def log_retorno_erro(text):
@@ -1212,93 +1257,98 @@ def log_retorno_erro(text):
     nome_funcao = inspect.stack()[1][3]
 
     logs.record(
-        (f'\n {"!"*108}\n\
+        (
+            f'\n {"!"*108}\n\
 ({nome_funcao}) finalizada com erro abaixo: \n ({text})\
-\n {"!"*108}'),
-        colorize=True)
+\n {"!"*108}'
+        ),
+        colorize=True,
+    )
 
 
-def criar_chaves_primaria_tabelas(base_dados,
-                                  tabela_temp,
-                                  nome_pk_coluna,
-                                  coluna_temp1):
-
+def criar_chaves_primaria_tabelas(
+    base_dados, tabela_temp, nome_pk_coluna, coluna_temp1
+):
     try:
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        print_divisor_inicio_fim(f'Será criado na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} uma chave primária \n!!!AGUARDE!!!',
-                                 1)
+        print_divisor_inicio_fim(
+            f"Será criado na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} uma chave primária \n!!!AGUARDE!!!",
+            1,
+        )
 
         # Crie  SQL para consulta de cnpjs repetidos na tabela específica
-        sql_1 = (f'''ALTER TABLE {tabela_temp} 
+        sql_1 = f"""ALTER TABLE {tabela_temp} 
                 ADD CONSTRAINT  {nome_pk_coluna} 
                 PRIMARY KEY ({coluna_temp1});
-                ''')
+                """
 
         cur.execute(sql_1)
         pg_conn.commit()
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'criação na coluna {coluna_temp1} de uma chave primária',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"criação na coluna {coluna_temp1} de uma chave primária",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def criar_chaves_estrangeiras_tabelas(base_dados,
-                                      tabela_temp,
-                                      tabela_temp_origem,
-                                      nome_fk_coluna,
-                                      coluna_temp1,
-                                      coluna_temp1_origem):
-
+def criar_chaves_estrangeiras_tabelas(
+    base_dados,
+    tabela_temp,
+    tabela_temp_origem,
+    nome_fk_coluna,
+    coluna_temp1,
+    coluna_temp1_origem,
+):
     try:
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        print_divisor_inicio_fim(f'Será criado na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} uma chave estrangeira \n!!!AGUARDE!!!',
-                                 1)
+        print_divisor_inicio_fim(
+            f"Será criado na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} uma chave estrangeira \n!!!AGUARDE!!!",
+            1,
+        )
 
         # Crie  SQL para consulta de cnpjs repetidos na tabela específica
-        sql_1 = (f'''ALTER TABLE {tabela_temp} 
+        sql_1 = f"""ALTER TABLE {tabela_temp} 
                 ADD CONSTRAINT {nome_fk_coluna} 
                 FOREIGN KEY ({coluna_temp1}) 
                 REFERENCES {tabela_temp_origem}({coluna_temp1_origem});
-                ''')
+                """
 
         cur.execute(sql_1)
         pg_conn.commit()
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'criação na coluna {coluna_temp1} de uma chave estrangeira',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"criação na coluna {coluna_temp1} de uma chave estrangeira",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def verificar_repetidos_tabelas(base_dados,
-                                tabela_temp,
-                                coluna_temp1,
-                                op_salvar_lista,
-                                output_erros
-                                ):
+def verificar_repetidos_tabelas(
+    base_dados, tabela_temp, coluna_temp1, op_salvar_lista, output_erros
+):
     """Função para comparar colunas para verificar dados repetidos
 
     Args:
@@ -1313,20 +1363,21 @@ def verificar_repetidos_tabelas(base_dados,
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        print_divisor_inicio_fim(f'Verificando cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n !!!AGUARDE!!!',
-                                 1)
+        print_divisor_inicio_fim(
+            f"Verificando cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n !!!AGUARDE!!!",
+            1,
+        )
 
         # Crie  SQL para consulta de cnpjs repetidos na tabela específica
-        sql_1 = (
-            f'''SELECT * from (
+        sql_1 = f"""SELECT * from (
             SELECT {coluna_temp1}, 
                 count(*) as qtd 
             FROM {tabela_temp} 
             GROUP BY {coluna_temp1}
             ) tabela WHERE qtd > 1;
-        ''')
+        """
 
         cur.execute(sql_1)
         pg_conn.commit()
@@ -1335,50 +1386,50 @@ def verificar_repetidos_tabelas(base_dados,
         # print(repetidos)
 
         if len(repetidos) != 0:
-
             df_ori = pd.DataFrame.from_records(
-                repetidos, columns=['cnpj_basico', 'qtd'])
+                repetidos, columns=["cnpj_basico", "qtd"]
+            )
 
-            print_divisor_inicio_fim(f'{df_ori}',
-                                     0)
+            print_divisor_inicio_fim(f"{df_ori}", 0)
 
-            print_divisor_inicio_fim(f'Foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-                conforme lista acima',
-                                     2)
+            print_divisor_inicio_fim(
+                f"Foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+                conforme lista acima",
+                2,
+            )
 
             if len(df_ori) >= 2:
-
                 df_list = df_ori.cnpj_basico.tolist()
                 df_list = tuple(df_list)
 
-                print(f'Lista {df_list}')
+                print(f"Lista {df_list}")
 
                 if op_salvar_lista != 0:
-
-                    sql_2 = (
-                        f'''SELECT 
+                    sql_2 = f"""SELECT 
                         * 
                         FROM {tabela_temp}
                         WHERE {coluna_temp1} IN {df_list};
-                        ''')
+                        """
 
                     lista_repetidos = pd.read_sql_query(sql_2, pg_conn)
                     pg_conn.close()
 
-                    print_divisor_inicio_fim(lista_repetidos,
-                                             3)
+                    print_divisor_inicio_fim(lista_repetidos, 3)
 
-                    print_divisor_inicio_fim(f'Será salvo na pasta erros dos dados em questão, lista dos cnpj repetidos na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-conforme lista anterior',
-                                             3)
+                    print_divisor_inicio_fim(
+                        f"Será salvo na pasta erros dos dados em questão, lista dos cnpj repetidos na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+conforme lista anterior",
+                        3,
+                    )
 
-                    lista_repetidos.to_csv(output_erros,
-                                           index=False,
-                                           header=True,
-                                           encoding='utf-8',
-                                           sep=';',
-                                           mode='a'
-                                           )
+                    lista_repetidos.to_csv(
+                        output_erros,
+                        index=False,
+                        header=True,
+                        encoding="utf-8",
+                        sep=";",
+                        mode="a",
+                    )
 
                     valor_tmp = []
 
@@ -1388,37 +1439,36 @@ conforme lista anterior',
                     pass
 
             else:
+                valor_tmp = df_ori.iloc[0]["cnpj_basico"]
 
-                valor_tmp = df_ori.iloc[0]['cnpj_basico']
-
-                print(f'Valor {valor_tmp}')
+                print(f"Valor {valor_tmp}")
 
                 if op_salvar_lista != 0:
-
-                    sql_2 = (
-                        f'''SELECT 
+                    sql_2 = f"""SELECT 
                         * 
                         FROM {tabela_temp}
                         WHERE {coluna_temp1} = {valor_tmp};
-                        ''')
+                        """
 
                     lista_repetidos = pd.read_sql_query(sql_2, pg_conn)
                     pg_conn.close()
 
-                    print_divisor_inicio_fim(lista_repetidos,
-                                             3)
+                    print_divisor_inicio_fim(lista_repetidos, 3)
 
-                    print_divisor_inicio_fim(f'Será salvo na pasta erros dos dados em questão, lista dos cnpj repetidos na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-conforme lista anterior',
-                                             3)
+                    print_divisor_inicio_fim(
+                        f"Será salvo na pasta erros dos dados em questão, lista dos cnpj repetidos na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+conforme lista anterior",
+                        3,
+                    )
 
-                    lista_repetidos.to_csv(output_erros,
-                                           index=False,
-                                           header=True,
-                                           encoding='utf-8',
-                                           sep=';',
-                                           mode='a'
-                                           )
+                    lista_repetidos.to_csv(
+                        output_erros,
+                        index=False,
+                        header=True,
+                        encoding="utf-8",
+                        sep=";",
+                        mode="a",
+                    )
 
                     df_list = []
 
@@ -1428,33 +1478,37 @@ conforme lista anterior',
                     pass
 
         else:
-
-            print_divisor_inicio_fim(f'Não foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-                conforme lista acima, não a necessidade de executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Não foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+                conforme lista acima, não a necessidade de executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}",
+                1,
+            )
             pass
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'verificação de cnpj repetidos na coluna {coluna_temp1}',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"verificação de cnpj repetidos na coluna {coluna_temp1}",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def remover_repetidos_tabelas(base_dados,
-                              tabela_temp,
-                              coluna_temp1,
-                              coluna_temp2,
-                              coluna_temp3,
-                              coluna_temp4,
-                              op_salvar_lista,
-                              output_erros):
+def remover_repetidos_tabelas(
+    base_dados,
+    tabela_temp,
+    coluna_temp1,
+    coluna_temp2,
+    coluna_temp3,
+    coluna_temp4,
+    op_salvar_lista,
+    output_erros,
+):
     """Função para comparar colunas para verificar dados repetidos e removelos conforme critério
     escolhido
 
@@ -1473,32 +1527,33 @@ def remover_repetidos_tabelas(base_dados,
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        df_list, df_ori, valor_tmp = verificar_repetidos_tabelas(base_dados,
-                                                                 tabela_temp,
-                                                                 coluna_temp1,
-                                                                 op_salvar_lista,
-                                                                 output_erros)
+        df_list, df_ori, valor_tmp = verificar_repetidos_tabelas(
+            base_dados,
+            tabela_temp,
+            coluna_temp1,
+            op_salvar_lista,
+            output_erros,
+        )
 
         # print(df_list)
         # print(df_ori)
 
         if len(df_ori) != 0:
+            print_divisor_inicio_fim(f"Serão excluídos a seguir", 2)
 
-            print_divisor_inicio_fim(f'Serão excluídos a seguir',
-                                     2)
-
-            print_divisor_inicio_fim(f'O critério escolhido para exclusão é excluir na tabela {tabela_temp} \n\
+            print_divisor_inicio_fim(
+                f"O critério escolhido para exclusão é excluir na tabela {tabela_temp} \n\
                 os repetidos da coluna {coluna_temp1} que tenham valores nulos na coluna {coluna_temp3} \n\
-                caso ocorra de os repetidos sejam iguais o critério de desempate será o valor da coluna {coluna_temp4}',
-                                     2)
+                caso ocorra de os repetidos sejam iguais o critério de desempate será o valor da coluna {coluna_temp4}",
+                2,
+            )
 
             if len(df_ori) > 2:
+                print("passo 1")
 
-                print('passo 1')
-
-                sql_1 = f'''WITH
+                sql_1 = f"""WITH
                             duplicados AS (
                                 SELECT {coluna_temp1}, {coluna_temp4}, 
                                     row_number() 
@@ -1513,16 +1568,15 @@ def remover_repetidos_tabelas(base_dados,
                                 SELECT {coluna_temp4} 
                                 FROM duplicados 
                                 WHERE rn > 1
-                            );'''
+                            );"""
 
                 cur.execute(sql_1)
                 pg_conn.commit()
 
             else:
+                print("passo 2")
 
-                print('passo 2')
-
-                sql_1 = f'''WITH 
+                sql_1 = f"""WITH 
                             duplicados AS (
                                 SELECT {coluna_temp1}, {coluna_temp4}, 
                                     row_number() 
@@ -1537,41 +1591,48 @@ def remover_repetidos_tabelas(base_dados,
                                 SELECT {coluna_temp4} 
                                 FROM duplicados 
                                 WHERE rn > 1
-                            );'''
+                            );"""
 
                 cur.execute(sql_1)
                 pg_conn.commit()
 
-            print_divisor_inicio_fim(f'Foram removidos os cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-                conforme lista acima, executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}',
-                                     2)
+            print_divisor_inicio_fim(
+                f"Foram removidos os cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+                conforme lista acima, executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}",
+                2,
+            )
 
         else:
-            print_divisor_inicio_fim(f'Não foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
-                conforme lista acima, não a necessidade de executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Não foram encontrados cnpj duplicados na coluna {coluna_temp1} da tabela {tabela_temp} na {base_dados} \n \
+                conforme lista acima, não a necessidade de executar o passo seguinte para tratar estes cnpj repetidos na tabela {tabela_temp}",
+                1,
+            )
             pass
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'remoção de cnpj repetidos na coluna {coluna_temp1}',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"remoção de cnpj repetidos na coluna {coluna_temp1}",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def verificar_dados_faltantes_tabelas(base_dados,
-                                      tabela_temp,
-                                      tabela_temp_origem,
-                                      coluna_temp1,
-                                      coluna_temp1_origem,
-                                      op_salvar_lista,
-                                      output_erros):
+def verificar_dados_faltantes_tabelas(
+    base_dados,
+    tabela_temp,
+    tabela_temp_origem,
+    coluna_temp1,
+    coluna_temp1_origem,
+    op_salvar_lista,
+    output_erros,
+):
     """Função para comparar duas tabela/colunas para verificar dados faltantes
 
     Args:
@@ -1588,14 +1649,15 @@ def verificar_dados_faltantes_tabelas(base_dados,
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        print_divisor_inicio_fim(f'Verificando dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n !!!AGUARDE!!!',
-                                 1)
+        print_divisor_inicio_fim(
+            f"Verificando dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n !!!AGUARDE!!!",
+            1,
+        )
 
         # Crie  SQL para consulta de valores faltantes na tabela específica
-        sql_1 = (
-            f'''SELECT 
+        sql_1 = f"""SELECT 
             {coluna_temp1} 
             FROM {tabela_temp}
             WHERE {coluna_temp1} IS NOT NULL
@@ -1603,7 +1665,7 @@ def verificar_dados_faltantes_tabelas(base_dados,
             SELECT 
             {coluna_temp1_origem} 
             FROM {tabela_temp_origem};
-            ''')
+            """
 
         cur.execute(sql_1)
         pg_conn.commit()
@@ -1612,50 +1674,48 @@ def verificar_dados_faltantes_tabelas(base_dados,
         # print(faltantes)
 
         if len(faltantes) != 0:
+            df_ori = pd.DataFrame.from_records(faltantes, columns=["valores"])
 
-            df_ori = pd.DataFrame.from_records(
-                faltantes, columns=['valores'])
+            print_divisor_inicio_fim(f"{df_ori}", 0)
 
-            print_divisor_inicio_fim(f'{df_ori}',
-                                     0)
-
-            print_divisor_inicio_fim(f'Foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-                conforme lista acima',
-                                     2)
+            print_divisor_inicio_fim(
+                f"Foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+                conforme lista acima",
+                2,
+            )
 
             if len(df_ori) >= 2:
-
                 df_list = df_ori.valores.tolist()
                 df_list = tuple(df_list)
 
-                print(f'Lista {df_list}')
+                print(f"Lista {df_list}")
 
                 if op_salvar_lista != 0:
-
-                    sql_2 = (
-                        f'''SELECT 
+                    sql_2 = f"""SELECT 
                         * 
                         FROM {tabela_temp}
                         WHERE {coluna_temp1} IN {df_list};
-                        ''')
+                        """
 
                     lista_faltantes = pd.read_sql_query(sql_2, pg_conn)
                     pg_conn.close()
 
-                    print_divisor_inicio_fim(lista_faltantes,
-                                             3)
+                    print_divisor_inicio_fim(lista_faltantes, 3)
 
-                    print_divisor_inicio_fim(f'Será salvo na pasta erros dos dados em questão, lista dos cnpj faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-        conforme lista anterior',
-                                             3)
+                    print_divisor_inicio_fim(
+                        f"Será salvo na pasta erros dos dados em questão, lista dos cnpj faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+        conforme lista anterior",
+                        3,
+                    )
 
-                    lista_faltantes.to_csv(output_erros,
-                                           index=False,
-                                           header=True,
-                                           encoding='utf-8',
-                                           sep=';',
-                                           mode='a'
-                                           )
+                    lista_faltantes.to_csv(
+                        output_erros,
+                        index=False,
+                        header=True,
+                        encoding="utf-8",
+                        sep=";",
+                        mode="a",
+                    )
 
                     valor_tmp = []
 
@@ -1665,37 +1725,36 @@ def verificar_dados_faltantes_tabelas(base_dados,
                     pass
 
             else:
+                valor_tmp = df_ori.iloc[0]["valores"]
 
-                valor_tmp = df_ori.iloc[0]['valores']
-
-                print(f'Valor {valor_tmp}')
+                print(f"Valor {valor_tmp}")
 
                 if op_salvar_lista != 0:
-
-                    sql_2 = (
-                        f'''SELECT 
+                    sql_2 = f"""SELECT 
                         * 
                         FROM {tabela_temp}
                         WHERE {coluna_temp1} = {valor_tmp};
-                        ''')
+                        """
 
                     lista_faltantes = pd.read_sql_query(sql_2, pg_conn)
                     pg_conn.close()
 
-                    print_divisor_inicio_fim(lista_faltantes,
-                                             3)
+                    print_divisor_inicio_fim(lista_faltantes, 3)
 
-                    print_divisor_inicio_fim(f'Será salvo na pasta erros dos dados em questão, lista dos cnpj faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-        conforme lista anterior',
-                                             3)
+                    print_divisor_inicio_fim(
+                        f"Será salvo na pasta erros dos dados em questão, lista dos cnpj faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+        conforme lista anterior",
+                        3,
+                    )
 
-                    lista_faltantes.to_csv(output_erros,
-                                           index=False,
-                                           header=True,
-                                           encoding='utf-8',
-                                           sep=';',
-                                           mode='a'
-                                           )
+                    lista_faltantes.to_csv(
+                        output_erros,
+                        index=False,
+                        header=True,
+                        encoding="utf-8",
+                        sep=";",
+                        mode="a",
+                    )
 
                     df_list = []
 
@@ -1705,35 +1764,39 @@ def verificar_dados_faltantes_tabelas(base_dados,
                     pass
 
         else:
-
-            print_divisor_inicio_fim(f'Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}",
+                1,
+            )
             pass
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'verificação de dados faltantes na coluna {coluna_temp1_origem}',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp_origem,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"verificação de dados faltantes na coluna {coluna_temp1_origem}",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp_origem,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def inserir_dados_faltantes_tabelas(base_dados,
-                                    tabela_temp,
-                                    tabela_temp_origem,
-                                    coluna_temp1,
-                                    coluna_temp1_origem,
-                                    nome_coluna_temp1,
-                                    nome_coluna_temp2,
-                                    op_salvar_lista,
-                                    output_erros):
-    """Função para comparar duas tabela/colunas para verificar dados faltantes 
+def inserir_dados_faltantes_tabelas(
+    base_dados,
+    tabela_temp,
+    tabela_temp_origem,
+    coluna_temp1,
+    coluna_temp1_origem,
+    nome_coluna_temp1,
+    nome_coluna_temp2,
+    op_salvar_lista,
+    output_erros,
+):
+    """Função para comparar duas tabela/colunas para verificar dados faltantes
     em uma deslas e inserir com o descritivo "FALTANTE INSERIDO NA ETAPA DE ETL"
 
     Args:
@@ -1752,91 +1815,99 @@ def inserir_dados_faltantes_tabelas(base_dados,
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        df_list, df_ori, valor_tmp = verificar_dados_faltantes_tabelas(base_dados,
-                                                                       tabela_temp,
-                                                                       tabela_temp_origem,
-                                                                       coluna_temp1,
-                                                                       coluna_temp1_origem,
-                                                                       op_salvar_lista,
-                                                                       output_erros)
+        df_list, df_ori, valor_tmp = verificar_dados_faltantes_tabelas(
+            base_dados,
+            tabela_temp,
+            tabela_temp_origem,
+            coluna_temp1,
+            coluna_temp1_origem,
+            op_salvar_lista,
+            output_erros,
+        )
 
         if len(df_ori) != 0:
+            print_divisor_inicio_fim(f"Serão inseridos a seguir", 2)
 
-            print_divisor_inicio_fim(f'Serão inseridos a seguir',
-                                     2)
-
-            print_divisor_inicio_fim(f'O critério escolhido para inclusão é a inserção dos códigos faltantes na tabela {tabela_temp_origem} \n \
+            print_divisor_inicio_fim(
+                f'O critério escolhido para inclusão é a inserção dos códigos faltantes na tabela {tabela_temp_origem} \n \
                 com a descrição de "FALTANTE INSERIDO NA ETAPA DE ETL"',
-                                     2)
+                2,
+            )
 
             if len(df_ori) > 2:
+                print("passo 1")
 
-                print('passo 1')
-
-                print_divisor_inicio_fim(f'Valores sendo inseridos !!! AGUARDE !!!',
-                                         0)
+                print_divisor_inicio_fim(
+                    f"Valores sendo inseridos !!! AGUARDE !!!", 0
+                )
 
                 for i, idx_df_list_tmp in enumerate(df_list):
-
-                    sql_3 = (f'''INSERT INTO {tabela_temp_origem}
+                    sql_3 = f"""INSERT INTO {tabela_temp_origem}
                             ({nome_coluna_temp1},{nome_coluna_temp2})
                             VALUES
                             ({idx_df_list_tmp}, 'FALTANTE INSERIDO NA ETAPA DE ETL');
-                            ''')
+                            """
 
                     cur.execute(sql_3)
                     pg_conn.commit()
 
             else:
+                print("passo 2")
 
-                print('passo 2')
+                print_divisor_inicio_fim(
+                    f"Valor sendo inserido !!! AGUARDE !!!", 0
+                )
 
-                print_divisor_inicio_fim(f'Valor sendo inserido !!! AGUARDE !!!',
-                                         0)
-
-                sql_3 = (f'''INSERT INTO {tabela_temp_origem}
+                sql_3 = f"""INSERT INTO {tabela_temp_origem}
                         ({nome_coluna_temp1},{nome_coluna_temp2})
                         VALUES
                         ({valor_tmp}, 'FALTANTE INSERIDO NA ETAPA DE ETL');
-                        ''')
+                        """
 
                 cur.execute(sql_3)
                 pg_conn.commit()
 
-            print_divisor_inicio_fim(f'Foram inseridos os dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados}',
-                                     2)
+            print_divisor_inicio_fim(
+                f"Foram inseridos os dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados}",
+                2,
+            )
 
         else:
-            print_divisor_inicio_fim(f'Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}",
+                1,
+            )
             pass
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'inserção de dados faltantes na coluna {coluna_temp1_origem}',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp_origem,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"inserção de dados faltantes na coluna {coluna_temp1_origem}",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp_origem,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def remover_dados_faltantes_tabelas(base_dados,
-                                    tabela_temp,
-                                    tabela_temp_origem,
-                                    coluna_temp1,
-                                    coluna_temp1_origem,
-                                    nome_coluna_temp1,
-                                    nome_coluna_temp2,
-                                    op_salvar_lista,
-                                    output_erros):
-    """Função para comparar duas tabela/colunas para verificar dados faltantes 
+def remover_dados_faltantes_tabelas(
+    base_dados,
+    tabela_temp,
+    tabela_temp_origem,
+    coluna_temp1,
+    coluna_temp1_origem,
+    nome_coluna_temp1,
+    nome_coluna_temp2,
+    op_salvar_lista,
+    output_erros,
+):
+    """Função para comparar duas tabela/colunas para verificar dados faltantes
     em uma deslas e inserir com o descritivo "FALTANTE INSERIDO NA ETAPA DE ETL"
 
     Args:
@@ -1855,79 +1926,85 @@ def remover_dados_faltantes_tabelas(base_dados,
         tmp_insert_start = time.time()
 
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        df_list, df_ori, valor_tmp = verificar_dados_faltantes_tabelas(base_dados,
-                                                                       tabela_temp,
-                                                                       tabela_temp_origem,
-                                                                       coluna_temp1,
-                                                                       coluna_temp1_origem,
-                                                                       op_salvar_lista,
-                                                                       output_erros)
+        df_list, df_ori, valor_tmp = verificar_dados_faltantes_tabelas(
+            base_dados,
+            tabela_temp,
+            tabela_temp_origem,
+            coluna_temp1,
+            coluna_temp1_origem,
+            op_salvar_lista,
+            output_erros,
+        )
 
         if len(df_list) != 0:
+            print_divisor_inicio_fim(f"Serão removidos a seguir", 2)
 
-            print_divisor_inicio_fim(f'Serão removidos a seguir',
-                                     2)
-
-            print_divisor_inicio_fim(f'O critério escolhido para exclusão é a exclusão dos cnpjs da tabela {tabela_temp} \n \
-                com a possibilidade de criação de lista de exclusão em csv para registro',
-                                     2)
+            print_divisor_inicio_fim(
+                f"O critério escolhido para exclusão é a exclusão dos cnpjs da tabela {tabela_temp} \n \
+                com a possibilidade de criação de lista de exclusão em csv para registro",
+                2,
+            )
 
             if len(df_ori) > 2:
+                print("passo 1")
 
-                print('passo 1')
+                print_divisor_inicio_fim(
+                    f"Valores sendo excluídos !!! AGUARDE !!!", 0
+                )
 
-                print_divisor_inicio_fim(f'Valores sendo excluídos !!! AGUARDE !!!',
-                                         0)
-
-                sql_3 = (f'''DELETE FROM {tabela_temp}
+                sql_3 = f"""DELETE FROM {tabela_temp}
                 WHERE {coluna_temp1} IN {df_list};
-                ''')
+                """
 
                 cur.execute(sql_3)
                 pg_conn.commit()
 
             else:
+                print("passo 2")
 
-                print('passo 2')
+                print_divisor_inicio_fim(
+                    f"Valor sendo excluído !!! AGUARDE !!!", 0
+                )
 
-                print_divisor_inicio_fim(f'Valor sendo excluído !!! AGUARDE !!!',
-                                         0)
-
-                sql_3 = (f'''DELETE FROM {tabela_temp}
+                sql_3 = f"""DELETE FROM {tabela_temp}
                 WHERE {coluna_temp1} = {valor_tmp};
-                ''')
+                """
 
                 cur.execute(sql_3)
                 pg_conn.commit()
 
-            print_divisor_inicio_fim(f'Foram excluídos os dados faltantes na coluna na tabela {tabela_temp}',
-                                     2)
+            print_divisor_inicio_fim(
+                f"Foram excluídos os dados faltantes na coluna na tabela {tabela_temp}",
+                2,
+            )
 
         else:
-            print_divisor_inicio_fim(f'Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
-                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}',
-                                     1)
+            print_divisor_inicio_fim(
+                f"Não foram encontrados dados faltantes na coluna {coluna_temp1_origem} da tabela {tabela_temp_origem} na {base_dados} \n \
+                conforme lista acima, não a necessidade de executar o passo seguinte para tratar dados faltantes na tabela {tabela_temp_origem}",
+                1,
+            )
             pass
 
         tmp_insert_end = time.time()
 
-        print_parcial_final_log_inf_retorno(f'exclusão de dados faltantes na coluna {coluna_temp1_origem}',
-                                            tmp_insert_start,
-                                            tmp_insert_end,
-                                            tabela_temp_origem,
-                                            'parcial')
+        print_parcial_final_log_inf_retorno(
+            f"exclusão de dados faltantes na coluna {coluna_temp1_origem}",
+            tmp_insert_start,
+            tmp_insert_end,
+            tabela_temp_origem,
+            "parcial",
+        )
 
     except Exception as text:
-
         log_retorno_erro(text)
 
 
-def unir_valores_linhas_df_go(df_origem,
-                              coluna_pesquisa,
-                              valor_1,
-                              valor_2_padrao):
+def unir_valores_linhas_df_go(
+    df_origem, coluna_pesquisa, valor_1, valor_2_padrao
+):
     """Função para unir dados de 'DF' e 'GO' nos dataframes mantendo 'GO' como padrão
 
     Args:
@@ -1942,8 +2019,9 @@ def unir_valores_linhas_df_go(df_origem,
 
     # Selecionando as linhas desejadas
     rows = df_origem.loc[
-        (df_origem[coluna_pesquisa] == valor_1) |
-        (df_origem[coluna_pesquisa] == valor_2_padrao)]
+        (df_origem[coluna_pesquisa] == valor_1)
+        | (df_origem[coluna_pesquisa] == valor_2_padrao)
+    ]
 
     # Somando os valores das colunas
     result = rows.sum()
@@ -1960,9 +2038,8 @@ def unir_valores_linhas_df_go(df_origem,
 
     # Adicionando a linha com a soma obtida ao dataframe
     df_origem = pd.concat(
-        [df_origem,
-         pd.DataFrame([result])],
-        ignore_index=True)
+        [df_origem, pd.DataFrame([result])], ignore_index=True
+    )
 
     return df_origem
 
@@ -1980,13 +2057,33 @@ def substituir_nomes_por_siglas(df, coluna):
 
     # Dicionário de mapeamento de nomes para siglas dos estados brasileiros
     estados = {
-        'Acre': 'AC', 'Alagoas': 'AL', 'Amapá': 'AP', 'Amazonas': 'AM', 'Bahia': 'BA',
-        'Ceará': 'CE', 'Distrito Federal': 'DF', 'Espírito Santo': 'ES', 'Goiás': 'GO',
-        'Maranhão': 'MA', 'Mato Grosso': 'MT', 'Mato Grosso do Sul': 'MS', 'Minas Gerais': 'MG',
-        'Pará': 'PA', 'Paraíba': 'PB', 'Paraná': 'PR', 'Pernambuco': 'PE', 'Piauí': 'PI',
-        'Rio de Janeiro': 'RJ', 'Rio Grande do Norte': 'RN', 'Rio Grande do Sul': 'RS',
-        'Rondônia': 'RO', 'Roraima': 'RR', 'Santa Catarina': 'SC', 'São Paulo': 'SP',
-        'Sergipe': 'SE', 'Tocantins': 'TO'
+        "Acre": "AC",
+        "Alagoas": "AL",
+        "Amapá": "AP",
+        "Amazonas": "AM",
+        "Bahia": "BA",
+        "Ceará": "CE",
+        "Distrito Federal": "DF",
+        "Espírito Santo": "ES",
+        "Goiás": "GO",
+        "Maranhão": "MA",
+        "Mato Grosso": "MT",
+        "Mato Grosso do Sul": "MS",
+        "Minas Gerais": "MG",
+        "Pará": "PA",
+        "Paraíba": "PB",
+        "Paraná": "PR",
+        "Pernambuco": "PE",
+        "Piauí": "PI",
+        "Rio de Janeiro": "RJ",
+        "Rio Grande do Norte": "RN",
+        "Rio Grande do Sul": "RS",
+        "Rondônia": "RO",
+        "Roraima": "RR",
+        "Santa Catarina": "SC",
+        "São Paulo": "SP",
+        "Sergipe": "SE",
+        "Tocantins": "TO",
     }
 
     # Substituindo os nomes pelos códigos de siglas no DataFrame (ou lista)
@@ -2000,14 +2097,12 @@ def substituir_nomes_por_siglas(df, coluna):
     return df
 
 
-def coluna_escala_p_n(df,
-                      op_escala,
-                      coluna_origem):
+def coluna_escala_p_n(df, op_escala, coluna_origem):
     """Função para criação de coluna de escala e coluna escala percentual
 
     Args:
         df (DataFrame): DataFrame original para alteração
-        op_escala (Inteiro): Opção de (0) para coluna com escala negativa e final '_n' e (1) para coluna com escala positiva e final '_p' 
+        op_escala (Inteiro): Opção de (0) para coluna com escala negativa e final '_n' e (1) para coluna com escala positiva e final '_p'
         coluna_origem (String): Nome da coluna que será usada para criação das outras 02
 
     Returns:
@@ -2017,51 +2112,50 @@ def coluna_escala_p_n(df,
     if (op_escala) == 0:
         # Escala negativa (feature_range=(-1, 0))
         scaler = MinMaxScaler(feature_range=(-1, 0))
-        df[f'{coluna_origem}_escala_n'] = ((scaler.fit_transform(
-            df[[f'{coluna_origem}']]))*-1).round(5)
+        df[f"{coluna_origem}_escala_n"] = (
+            (scaler.fit_transform(df[[f"{coluna_origem}"]])) * -1
+        ).round(5)
 
         # Adicionar coluna percentual
-        df[f'{coluna_origem}_percent_n'] = (
-            df[f'{coluna_origem}_escala_n']*100).round(4)
+        df[f"{coluna_origem}_percent_n"] = (
+            df[f"{coluna_origem}_escala_n"] * 100
+        ).round(4)
 
         # Aplicando a função de formatação para adicionar o símbolo de porcentagem
-        '''df[f'{coluna_origem}_percent_n'] = df[f'{coluna_origem}_percent_n'].apply(
-            lambda x: f'{x:.2f}%')'''
+        """df[f'{coluna_origem}_percent_n'] = df[f'{coluna_origem}_percent_n'].apply(
+            lambda x: f'{x:.2f}%')"""
 
         # Ordenar ascendente coluna específica para facilitar a visualização.
-        df = df.sort_values(by='uf', ascending=True)
+        df = df.sort_values(by="uf", ascending=True)
 
     elif (op_escala) == 1:
         # Escala positiva
         scaler = MinMaxScaler(feature_range=(0, 1))
-        df[f'{coluna_origem}_escala_p'] = scaler.fit_transform(
-            df[[f'{coluna_origem}']]).round(5)
+        df[f"{coluna_origem}_escala_p"] = scaler.fit_transform(
+            df[[f"{coluna_origem}"]]
+        ).round(5)
 
         # Adicionar coluna percentual
-        df[f'{coluna_origem}_percent_p'] = (
-            df[f'{coluna_origem}_escala_p']*100).round(4)
+        df[f"{coluna_origem}_percent_p"] = (
+            df[f"{coluna_origem}_escala_p"] * 100
+        ).round(4)
 
         # Aplicando a função de formatação para adicionar o símbolo de porcentagem
-        '''df[f'{coluna_origem}_percent_p'] = df[f'{coluna_origem}_percent_p'].apply(
-            lambda x: f'{x:.2f}%')'''
+        """df[f'{coluna_origem}_percent_p'] = df[f'{coluna_origem}_percent_p'].apply(
+            lambda x: f'{x:.2f}%')"""
 
         # Ordenar ascendente coluna específica para facilitar a visualização.
-        df = df.sort_values(by='uf', ascending=True)
+        df = df.sort_values(by="uf", ascending=True)
 
     else:
-
-        print_divisor_inicio_fim(f'!!! Opção {op_escala} não suportada !!!',
-                                 3)
+        print_divisor_inicio_fim(f"!!! Opção {op_escala} não suportada !!!", 3)
 
         pass
 
     return df
 
 
-def dividir_linhas(df,
-                   coluna_pesquisa,
-                   caracter_divisao,
-                   coluna_valor_divido):
+def dividir_linhas(df, coluna_pesquisa, caracter_divisao, coluna_valor_divido):
     """Função para divisão de linhas da uf pelo caracter '/', e divisão do valor da coluna especificada
 
     Args:
@@ -2077,9 +2171,7 @@ def dividir_linhas(df,
     novas_linhas = []
 
     for i, linha in df.iterrows():
-
         if (caracter_divisao) in linha[coluna_pesquisa]:
-
             # print(linha)
 
             ufs = linha[coluna_pesquisa].split(caracter_divisao)
@@ -2090,8 +2182,10 @@ def dividir_linhas(df,
             for uf in ufs:
                 nova_linha = linha.copy()
                 nova_linha[coluna_pesquisa] = uf
-                nova_linha[coluna_valor_divido] = linha[coluna_valor_divido] / n
-                nova_linha['n'] = n
+                nova_linha[coluna_valor_divido] = (
+                    linha[coluna_valor_divido] / n
+                )
+                nova_linha["n"] = n
                 novas_linhas.append(nova_linha)
         else:
             # novas_linhas = [linha]
@@ -2109,19 +2203,19 @@ def dividir_linhas(df,
     novo_df = novo_df.astype({coluna_valor_divido: int})
 
     # Remover linhas com valores NaN
-    novo_df.fillna(value=1,
-                   inplace=True)
+    novo_df.fillna(value=1, inplace=True)
 
     # novo_df.reset_index()
 
-    novo_df = novo_df.astype({'n': int})
+    novo_df = novo_df.astype({"n": int})
 
-    novo_df[f'{coluna_valor_divido}_2'] = (
-        novo_df[coluna_valor_divido]/novo_df['n']).round(0)
+    novo_df[f"{coluna_valor_divido}_2"] = (
+        novo_df[coluna_valor_divido] / novo_df["n"]
+    ).round(0)
 
-    novo_df = novo_df.astype({f'{coluna_valor_divido}_2': int})
+    novo_df = novo_df.astype({f"{coluna_valor_divido}_2": int})
 
     # Criar dataframe com os valores de colunas especificas das tabelas
-    novo_df = novo_df.loc[:, [coluna_pesquisa, f'{coluna_valor_divido}_2']]
+    novo_df = novo_df.loc[:, [coluna_pesquisa, f"{coluna_valor_divido}_2"]]
 
     return novo_df
