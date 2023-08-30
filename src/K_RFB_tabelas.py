@@ -196,14 +196,13 @@ def tb_sql_estabele_ativos():
             tb_rais_estabelecimentos.qtd_vinculos_ativos AS "QTD VINCULOS RAIS",
             tb_rfb_estabelecimentos.cod_cnae_fiscal_principal AS "COD CNAE PRINCIPAL",
             tb_ibge_municipios.id_cod_municipio_ibge AS "COD MUNICIPIO COMPLETO",
-            'BRASIL' ||', '||
-            COALESCE(tb_rfb_estabelecimentos.uf, '') ||' - '||
-            COALESCE(tb_ibge_municipios.nome_municipio_ibge, '""') ||', '||
-            COALESCE(REGEXP_REPLACE (tb_rfb_estabelecimentos.cep, '([0-9]{5})([0-9]{3})','\1-\2'), '""') ||', '||
-            COALESCE(tb_rfb_estabelecimentos.bairro, '') ||', '||
-            COALESCE(tb_rfb_estabelecimentos.tipo_logradouro, '') ||' '||
-            COALESCE(tb_rfb_estabelecimentos.logradouro, '') ||' '||
-            COALESCE(tb_rfb_estabelecimentos.numero, '') AS "ENDEREÇO",
+            tb_rfb_estabelecimentos.uf AS "UF",
+            tb_ibge_municipios.nome_municipio_ibge AS "NOME MUNICIPIO",
+            tb_rfb_estabelecimentos.cep AS "CEP",
+            tb_rfb_estabelecimentos.bairro AS "BAIRRO",
+            tb_rfb_estabelecimentos.tipo_logradouro AS "TIPO LOGRADOURO",
+            tb_rfb_estabelecimentos.logradouro AS "LOGRADOURO",
+            tb_rfb_estabelecimentos.numero AS "NUMERO",
             tb_rfb_estabelecimentos.ddd_1 AS "DDD1",
             tb_rfb_estabelecimentos.telefone_1 AS "FONE1",
             tb_rfb_estabelecimentos.ddd_2 AS "DDD2",
