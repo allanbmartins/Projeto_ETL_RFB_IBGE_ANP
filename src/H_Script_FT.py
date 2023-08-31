@@ -130,7 +130,7 @@ def inserir_dados_ft_bd():
         # Dados arquivo/tabela (força de trabalho)
         # Criar tabela
         table_create_sql_ft = r"""
-        CREATE TABLE IF NOT EXISTS "tb_sgi_ft_2012_2022" (
+        CREATE TABLE IF NOT EXISTS "tb_sgi_ft" (
             st_uf_ft VARCHAR(4),
             id_uf_ibge VARCHAR(4),
             st_estado VARCHAR(55),
@@ -159,7 +159,7 @@ def inserir_dados_ft_bd():
         # Inserir csv para o banco de dados
         leitura_csv_insercao_bd_sql(
             "tb_sgi_ft_2012_2022",
-            "tb_sgi_ft_2012_2022",
+            "tb_sgi_ft",
             table_create_sql_ft,
             "ft",
             output_files_files_convert,
@@ -193,7 +193,7 @@ def criar_indices_ft():
         def chaves_estrangeiras():
             def chave_ft():
                 # Crias chaves Estrangeiras nas tabela estabelecimentos para visitados SGI
-                tabela_temp = "tb_sgi_ft_2012_2022"
+                tabela_temp = "tb_sgi_ft"
                 tabela_temp_origem = "tb_ibge_municipios"
                 nome_fk_coluna = "FK_id_cod_municipio_ibge"
                 coluna_temp1 = "id_capital_ibge"

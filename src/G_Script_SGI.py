@@ -230,20 +230,61 @@ def converter_utf8_arq_sgi():
         log_retorno_erro(text)
 
 
-def inserir_dados_cnpj_virtual_estabelecimentos_bd():
+def convert_utf8_dados_cnpj_virtual_estabelecimentos_ativos_bd():
+    """Função para inserir arquivos csv no banco de dados postgres"""
+
+    try:
+        insert_start = time.time()
+
+        path_var_output = GetEnv("SGI_OUTPUT_FILES_PATH")
+        path_var_output_convert = GetEnv("SGI_OUTPUT_FILES_PATH_CONVERT")
+
+        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv"
+
+        # Converter para UTF-8
+        split_csv_file_pandas_todos(
+            path_var_output,
+            path_var_output_convert,
+            nome_arquivo,
+            5000000,
+            "latin-1",
+            "Utf-8",
+            "infer",
+            True,
+        )
+
+        insert_end = time.time()
+
+        print_parcial_final_log_inf_retorno(
+            "", insert_start, insert_end, "", "final"
+        )
+
+        print_parcial_final_log_inf_retorno(
+            f"Converter UTF-8",
+            insert_start,
+            insert_end,
+            "",
+            "geral",
+        )
+
+    except Exception as text:
+        log_retorno_erro(text)
+
+
+def inserir_dados_cnpj_virtual_estabelecimentos_ativos_bd():
     """Função para inserir arquivos csv no banco de dados postgres"""
 
     try:
         insert_start = time.time()
         # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv('DB_NAME'))    
-        path_var_output = GetEnv("SGI_OUTPUT_FILES_PATH")
-        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv"
-        nome_tabela =  "tb_rfb_estabelecimento_reduzido_ativos"
-        path_file_csv = os.path.join(path_var_output, nome_arquivo))
-        
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
+        path_var_output_convert = GetEnv("SGI_OUTPUT_FILES_PATH_CONVERT")
 
-        # Dados arquivo/tabela 
+        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv._parte_1"
+        nome_tabela = "tb_rfb_estabelecimento_reduzido_ativos"
+        path_file_csv = os.path.join(path_var_output_convert, nome_arquivo)
+
+        # Dados arquivo/tabela
         # Criar tabela
         sql_3 = f"""
         COPY {nome_tabela}
@@ -298,7 +339,7 @@ def inserir_dados_sgi_bd():
         """
         # Inserir csv para o banco de dados
         leitura_csv_insercao_bd_sql(
-            "tb_sgi_visitados_2012_2020",  # sgi_visitados
+            "tb_sgi_visitados",  # sgi_visitados
             "tb_sgi_visitados",
             table_create_sql_visitados_sgi,
             "sgi",
@@ -323,129 +364,41 @@ def inserir_dados_sgi_bd():
         log_retorno_erro(text)
 
 
-def dados_faltantes_sgi():
-    """Função para remover cnpj repetidos das tabelas especificadas"""
-
-    insert_start = time.time()
-    base_dados = GetEnv("DB_NAME")
-
-    try:
-
-        def faltantes_estabelecimentos():
-            # Inserir valores faltantes da tabela país
-            tabela_temp = "tb_sgi_visitados"
-            tabela_temp_origem = "tb_rfb_estabelecimento_reduzido_ativos"
-            coluna_temp1 = "id_cod_cnpj_trab"
-            coluna_temp1_origem = "CNPJ RFB"
-            output_erros = os.path.join(
-                GetEnv("SGI_OUTPUT_ERROS_PATH"),
-                f"FALTANTES_CNPJ_{tabela_temp_origem}.csv",
-            )
-
-            """verificar_dados_faltantes_tabelas(base_dados,
-                                              tabela_temp,
-                                              tabela_temp_origem,
-                                              coluna_temp1,
-                                              coluna_temp1_origem,
-                                              1,
-                                              output_erros)"""
-
-            # remover valores faltantes da tabela
-            nome_coluna_temp1 = "id_cod_cnpj_completo_num"
-            nome_coluna_temp2 = "xxx"
-
-            remover_dados_faltantes_tabelas(
-                base_dados,
-                tabela_temp,
-                tabela_temp_origem,
-                coluna_temp1,
-                coluna_temp1_origem,
-                nome_coluna_temp1,
-                nome_coluna_temp2,
-                1,
-                output_erros,
-            )
-
-        funçao_barprogress([faltantes_estabelecimentos], "green")
-
-        insert_end = time.time()
-
-        print_parcial_final_log_inf_retorno(
-            f"verificação/remoção de valores faltantes nas tabelas na {base_dados}",
-            insert_start,
-            insert_end,
-            "",
-            "geral",
-        )
-
-    except Exception as text:
-        log_retorno_erro(text)
-
-
-def inserir_dados_estab_cnpj_virtual_bd():
-    """Função para converter arquivos para formato Utf-8"""
+def criar_tb_transposta_dados_sgi_bd():
+    """Função para tabela transposta da tabela sgi no banco de dados postgres"""
 
     try:
         insert_start = time.time()
 
-        # Conectar:
         cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
 
-        output_files = GetEnv("SGI_OUTPUT_FILES_PATH")
-        output_files_files_convert = GetEnv("SGI_OUTPUT_FILES_PATH_CONVERT")
-
-        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv"
-        path_file_csv = os.path.join(output_files, nome_arquivo)
-
-        nome_tabela = "tb_rfb_estabelecimento_reduzido_ativos"
-
-        sql_3 = f"""
-        COPY {nome_tabela}
-        FROM '{path_file_csv}' --input full file path here.
-        DELIMITER ';' CSV HEADER;
+        # Dados arquivo/tabela (municipios_anp)
+        # Criar tabela
+        table_create_sql_visitados_sgi_tranposta = r"""
+        CREATE TABLE tb_sgi_visitados_transposta AS
+        SELECT 
+            "id_cod_cnpj_trab",
+            "st_uf_sgi_visitado",
+            "cd_cnae_principal_rfb",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2012') AS "2012",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2013') AS "2013",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2014') AS "2014",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2015') AS "2015",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2016') AS "2016",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2017') AS "2017",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2018') AS "2018",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2019') AS "2019",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2020') AS "2020",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2021') AS "2021",
+            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2022') AS "2022"
+        FROM tb_sgi_visitados
+        WHERE "id_cod_cnpj_trab" != 0
+        GROUP BY "id_cod_cnpj_trab", "st_uf_sgi_visitado", "cd_cnae_principal_rfb";
         """
 
-        cur.execute(sql_3)
+        # Criar tabela transposta sgi para o banco de dados
+        cur.execute(table_create_sql_visitados_sgi_tranposta)
         pg_conn.commit()
-
-        insert_end = time.time()
-
-        print_parcial_final_log_inf_retorno(
-            nome_arquivo, insert_start, insert_end, "", "final"
-        )
-
-    except Exception as text:
-        log_retorno_erro(text)
-
-
-def criar_indices_sgi():
-    """Função para criar indices nas tabelas especificadas"""
-
-    try:
-        insert_start = time.time()
-        base_dados = GetEnv("DB_NAME")
-
-        def chaves_estrangeiras():
-            def chave_visitados_sgi():
-                # Crias chaves Estrangeiras nas tabela estabelecimentos para visitados SGI
-                tabela_temp = "tb_sgi_visitados"
-                tabela_temp_origem = "tb_rfb_estabelecimentos"
-                nome_fk_coluna = "FK_id_cod_cnpj_completo_num"
-                coluna_temp1 = "id_cod_cnpj_trab"
-                coluna_temp1_origem = "id_cod_cnpj_completo_num"
-
-                criar_chaves_estrangeiras_tabelas(
-                    base_dados,
-                    tabela_temp,
-                    tabela_temp_origem,
-                    nome_fk_coluna,
-                    coluna_temp1,
-                    coluna_temp1_origem,
-                )
-
-            chave_visitados_sgi()
-
-        chaves_estrangeiras()
 
         insert_end = time.time()
 
@@ -454,7 +407,7 @@ def criar_indices_sgi():
         )
 
         print_parcial_final_log_inf_retorno(
-            f"criação de chaves primárias e estrangeiras nas tabelas na {base_dados}",
+            f"inserção no banco de todas as seções",
             insert_start,
             insert_end,
             "",
@@ -463,6 +416,114 @@ def criar_indices_sgi():
 
     except Exception as text:
         log_retorno_erro(text)
+
+
+# def dados_faltantes_sgi():
+#     """Função para remover cnpj repetidos das tabelas especificadas"""
+
+#     insert_start = time.time()
+#     base_dados = GetEnv("DB_NAME")
+
+#     try:
+
+#         def faltantes_estabelecimentos_ativos():
+#             # Inserir valores faltantes da tabela país
+#             tabela_temp = "tb_sgi_visitados"
+#             tabela_temp_origem = "tb_rfb_estabelecimento_reduzido_ativos"
+#             coluna_temp1 = "id_cod_cnpj_trab"
+#             coluna_temp1_origem = "CNPJ RFB"
+#             output_erros = os.path.join(
+#                 GetEnv("SGI_OUTPUT_ERROS_PATH"),
+#                 f"FALTANTES_CNPJ_{tabela_temp_origem}.csv",
+#             )
+
+#             verificar_dados_faltantes_tabelas(
+#                 base_dados,
+#                 tabela_temp,
+#                 tabela_temp_origem,
+#                 coluna_temp1,
+#                 coluna_temp1_origem,
+#                 1,
+#                 output_erros,
+#             )
+
+#             # remover valores faltantes da tabela
+#             nome_coluna_temp1 = "id_cod_cnpj_completo_num"
+#             nome_coluna_temp2 = "xxx"
+
+#             """remover_dados_faltantes_tabelas(
+#                 base_dados,
+#                 tabela_temp,
+#                 tabela_temp_origem,
+#                 coluna_temp1,
+#                 coluna_temp1_origem,
+#                 nome_coluna_temp1,
+#                 nome_coluna_temp2,
+#                 1,
+#                 output_erros,
+#             )"""
+
+#         funçao_barprogress([faltantes_estabelecimentos_ativos], "green")
+
+#         insert_end = time.time()
+
+#         print_parcial_final_log_inf_retorno(
+#             f"verificação/remoção de valores faltantes nas tabelas na {base_dados}",
+#             insert_start,
+#             insert_end,
+#             "",
+#             "geral",
+#         )
+
+#     except Exception as text:
+#         log_retorno_erro(text)
+
+
+# def criar_indices_sgi():
+#     """Função para criar indices nas tabelas especificadas"""
+
+#     try:
+#         insert_start = time.time()
+#         base_dados = GetEnv("DB_NAME")
+
+#         def chaves_estrangeiras():
+#             def chave_visitados_sgi():
+#                 # Crias chaves Estrangeiras nas tabela estabelecimentos para visitados SGI
+#                 tabela_temp = "tb_sgi_visitados"
+#                 tabela_temp_origem = "tb_rfb_estabelecimentos"
+#                 nome_fk_coluna = "FK_id_cod_cnpj_completo_num"
+#                 coluna_temp1 = "id_cod_cnpj_trab"
+#                 coluna_temp1_origem = "id_cod_cnpj_completo_num"
+
+#                 criar_chaves_estrangeiras_tabelas(
+#                     base_dados,
+#                     tabela_temp,
+#                     tabela_temp_origem,
+#                     nome_fk_coluna,
+#                     coluna_temp1,
+#                     coluna_temp1_origem,
+#                 )
+
+#             chave_visitados_sgi()
+
+#         chaves_estrangeiras()
+
+#         insert_end = time.time()
+
+#         print_parcial_final_log_inf_retorno(
+#             "", insert_start, insert_end, "", "final"
+#         )
+
+#         print_parcial_final_log_inf_retorno(
+#             f"criação de chaves primárias e estrangeiras nas tabelas na {base_dados}",
+#             insert_start,
+#             insert_end,
+#             "",
+#             "geral",
+#         )
+
+#     except Exception as text:
+#         log_retorno_erro(text)
 
 
 def sequencia_sgi():
@@ -478,7 +539,7 @@ def sequencia_sgi():
                             criar_indices_sgi],
                            'red')"""
 
-        funçao_barprogress([inserir_dados_sgi_bd], "red")
+        funçao_barprogress([""], "red")
 
         insert_end = time.time()
 

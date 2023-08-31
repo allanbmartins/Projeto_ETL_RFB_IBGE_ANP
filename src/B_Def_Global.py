@@ -779,7 +779,7 @@ def split_csv_file_pandas_todos(
         row_limit (Inteiro): Limite de linhas para cada arquivo dividido
         encoding_entrada (String): Encoding do arquivo de entrada
         encoding_encoding_saida (String): Encoding do arquivo de saida
-        header_entrada (String): Escolha de criação de header no arquivo convertido 'default' sim  ou 'None' não
+        header_entrada (String): Escolha de criação de header no arquivo convertido "infer" para sim  ou 'None' paranão
         header_saida (String): Escolha de criação de header no arquivo convertido 'True' sim  ou 'False' não
     """
 
@@ -1018,8 +1018,8 @@ def leitura_csv_insercao_bd_sql(
         if len(Items) > 0:
             # Drop table antes do insert
             sql_1 = f"""DROP TABLE IF EXISTS "{nome_tabela}" CASCADE;"""
-            # cur.execute(sql_1)
-            # pg_conn.commit()
+            cur.execute(sql_1)
+            pg_conn.commit()
 
             # Criando tabela
             pg_conn.autocommit = True  #
@@ -1658,12 +1658,12 @@ def verificar_dados_faltantes_tabelas(
 
         # Crie  SQL para consulta de valores faltantes na tabela específica
         sql_1 = f"""SELECT 
-            {coluna_temp1} 
+            "{coluna_temp1}" 
             FROM {tabela_temp}
-            WHERE {coluna_temp1} IS NOT NULL
+            WHERE "{coluna_temp1}" IS NOT NULL
             EXCEPT
             SELECT 
-            {coluna_temp1_origem} 
+            "{coluna_temp1_origem}" 
             FROM {tabela_temp_origem};
             """
 
