@@ -271,49 +271,6 @@ def convert_utf8_dados_cnpj_virtual_estabelecimentos_ativos_bd():
         log_retorno_erro(text)
 
 
-def inserir_dados_cnpj_virtual_estabelecimentos_ativos_bd():
-    """Função para inserir arquivos csv no banco de dados postgres"""
-
-    try:
-        insert_start = time.time()
-        # Conectar:
-        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
-        path_var_output_convert = GetEnv("SGI_OUTPUT_FILES_PATH_CONVERT")
-
-        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv._parte_1"
-        nome_tabela = "tb_rfb_estabelecimento_reduzido_ativos"
-        path_file_csv = os.path.join(path_var_output_convert, nome_arquivo)
-
-        # Dados arquivo/tabela
-        # Criar tabela
-        sql_3 = f"""
-        COPY {nome_tabela}
-        FROM '{path_file_csv}' --input full file path here.
-        DELIMITER ';' CSV HEADER;
-        """
-
-        # Inserir csv para o banco de dados
-        cur.execute(sql_3)
-        pg_conn.commit()
-
-        insert_end = time.time()
-
-        print_parcial_final_log_inf_retorno(
-            "", insert_start, insert_end, "", "final"
-        )
-
-        print_parcial_final_log_inf_retorno(
-            f"inserção no banco de todas as seções",
-            insert_start,
-            insert_end,
-            "",
-            "geral",
-        )
-
-    except Exception as text:
-        log_retorno_erro(text)
-
-
 def inserir_dados_sgi_bd():
     """Função para inserir arquivos csv no banco de dados postgres"""
 

@@ -1,3 +1,4 @@
+import os
 import time
 
 from B_Def_Global import (
@@ -342,9 +343,12 @@ def tb_sql_sgi_visitados_trab():
             cd_cnae_principal_rfb, 
             id_cod_cnpj_ori, 
             qtd_num,
-            tb_rfb_estabelecimentos.cod_cnae_fiscal_principal AS cd_cnae_principal_rfb_2
+            tb_rfb_estabelecimentos.cod_cnae_fiscal_principal AS cd_cnae_principal_rfb_2,
+            tb_ibge_municipios.id_cod_municipio_ibge AS "COD MUNICIPIO COMPLETO"
             FROM public.tb_sgi_visitados
             LEFT JOIN tb_rfb_estabelecimentos ON tb_sgi_visitados.id_cod_cnpj_trab = tb_rfb_estabelecimentos.id_cod_cnpj_completo_num
+            LEFT JOIN tb_rfb_municipios ON tb_rfb_estabelecimentos.id_cod_municipio_tom = tb_rfb_municipios.id_cod_municipio_tom_rfb
+            LEFT JOIN tb_ibge_municipios ON tb_rfb_municipios.id_cod_municipio_tom_rfb = tb_ibge_municipios.id_cod_municipio_tom_rfb
             ;
             """
 
@@ -492,6 +496,49 @@ def tb_sql_estabele_ativos():
         log_retorno_erro(text)
 
 
+def inserir_dados_cnpj_virtual_estabelecimentos_ativos_bd():
+    """Função para inserir arquivos csv no banco de dados postgres"""
+
+    try:
+        insert_start = time.time()
+        # Conectar:
+        cur, pg_conn = conecta_bd_generico(GetEnv("DB_NAME"))
+        path_var_output_convert = GetEnv("SGI_OUTPUT_FILES_PATH")
+
+        nome_arquivo = "tb_rfb_estabelecimentos_cnpj_virtuais.csv"
+        nome_tabela = "tb_rfb_estabelecimento_reduzido_ativos"
+        path_file_csv = os.path.join(path_var_output_convert, nome_arquivo)
+
+        # Dados arquivo/tabela
+        # Criar tabela
+        sql_3 = f"""
+        COPY {nome_tabela}
+        FROM '{path_file_csv}' --input full file path here.
+        DELIMITER ';' CSV HEADER;
+        """
+
+        # Inserir csv para o banco de dados
+        cur.execute(sql_3)
+        pg_conn.commit()
+
+        insert_end = time.time()
+
+        print_parcial_final_log_inf_retorno(
+            "", insert_start, insert_end, "", "final"
+        )
+
+        print_parcial_final_log_inf_retorno(
+            f"inserção no banco de todas as seções",
+            insert_start,
+            insert_end,
+            "",
+            "geral",
+        )
+
+    except Exception as text:
+        log_retorno_erro(text)
+
+
 def tb_sql_estabele_baixados():
     """Função para criação da tabela estabelecimentos ativos no banco de dados postgres"""
 
@@ -552,7 +599,9 @@ def sequencia_tabelas_RFB():
                             criar_indices_rfb],
                            'blue')"""
 
-        funçao_barprogress([tb_sql_sgi_visitados_trab], "blue")
+        funçao_barprogress(
+            [inserir_dados_cnpj_virtual_estabelecimentos_ativos_bd], "blue"
+        )
 
         insert_end = time.time()
 
