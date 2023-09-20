@@ -3,26 +3,19 @@ import time
 
 import pandas as pd
 
-from B_Def_Global import (
-    GetEnv,
-    conecta_bd_generico,
-    convert_tempo,
-    criar_chaves_estrangeiras_tabelas,
-    criar_chaves_primaria_tabelas,
-    download_arquiv_barprogress,
-    funçao_barprogress,
-    leitura_csv_insercao_bd_sql,
-    limpar_terminal,
-    log_retorno_erro,
-    log_retorno_info,
-    print_divisor_inicio_fim,
-    print_parcial_final_log_inf_retorno,
-    remover_dados_faltantes_tabelas,
-    remover_repetidos_tabelas,
-    split_csv_file_pandas_todos,
-    verificar_dados_faltantes_tabelas,
-    verificar_repetidos_tabelas,
-)
+from B_Def_Global import (GetEnv, conecta_bd_generico, convert_tempo,
+                          criar_chaves_estrangeiras_tabelas,
+                          criar_chaves_primaria_tabelas,
+                          download_arquiv_barprogress, funçao_barprogress,
+                          leitura_csv_insercao_bd_sql, limpar_terminal,
+                          log_retorno_erro, log_retorno_info,
+                          print_divisor_inicio_fim,
+                          print_parcial_final_log_inf_retorno,
+                          remover_dados_faltantes_tabelas,
+                          remover_repetidos_tabelas,
+                          split_csv_file_pandas_todos,
+                          verificar_dados_faltantes_tabelas,
+                          verificar_repetidos_tabelas)
 from Z_Logger import Logs
 
 logs = Logs(filename="logs.log")
@@ -334,23 +327,20 @@ def criar_tb_transposta_dados_sgi_bd():
         table_create_sql_visitados_sgi_tranposta = r"""
         CREATE TABLE tb_sgi_visitados_transposta AS
         SELECT 
-            "id_cod_cnpj_trab",
-            "st_uf_sgi_visitado",
-            "cd_cnae_principal_rfb",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2012') AS "2012",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2013') AS "2013",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2014') AS "2014",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2015') AS "2015",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2016') AS "2016",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2017') AS "2017",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2018') AS "2018",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2019') AS "2019",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2020') AS "2020",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2021') AS "2021",
-            count("id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2022') AS "2022"
-        FROM tb_sgi_visitados
+            "id_cod_cnpj_trab" AS "CNPJ SGI",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2013') AS "2013",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2014') AS "2014",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2015') AS "2015",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2016') AS "2016",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2017') AS "2017",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2018') AS "2018",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2019') AS "2019",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2020') AS "2020",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2021') AS "2021",
+            count(distinct "id_cod_cnpj_trab") FILTER (WHERE dt_ano_sgi_visitado = '2022') AS "2022"
+        FROM tb_sgi_visitados_trab
         WHERE "id_cod_cnpj_trab" != 0
-        GROUP BY "id_cod_cnpj_trab", "st_uf_sgi_visitado", "cd_cnae_principal_rfb";
+        GROUP BY "id_cod_cnpj_trab";
         """
 
         # Criar tabela transposta sgi para o banco de dados
@@ -496,7 +486,7 @@ def sequencia_sgi():
                             criar_indices_sgi],
                            'red')"""
 
-        funçao_barprogress([""], "red")
+        funçao_barprogress([criar_tb_transposta_dados_sgi_bd], "red")
 
         insert_end = time.time()
 

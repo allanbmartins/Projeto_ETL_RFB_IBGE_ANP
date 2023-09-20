@@ -1,0 +1,6 @@
+INFO:[09/20/2023 03:22:56 PM]: *** (criar_tb_transposta_dados_sgi_bd) executada em todos os arquivos  
+Com tempo de (00:00:34)h:mim:s ***
+INFO:[09/20/2023 03:22:56 PM]: ### O processo total (criar_tb_transposta_dados_sgi_bd) de inserção no banco de todas as seções foi finalizado... 
+ Com tempo de (00:00:34)h:mim:s ###
+INFO:[09/20/2023 03:22:56 PM]: ### O processo total (sequencia_sgi) de inserção no banco, remoção de cnpj duplicados e criação de chaves primárias e estrangeiras nas tabelas do SGI na dados_etl foi finalizado... 
+ Com tempo de (00:00:34)h:mim:s ###
