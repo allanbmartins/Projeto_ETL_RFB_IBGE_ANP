@@ -395,7 +395,7 @@ def inserir_dados_estab_bd():
                 "correio_eletronico" varchar(255),
                 "situacao_especial" text,
                 "data_situacao_especial" DATE,
-                "id_cod_cnpj_completo_txt" varchar(14),
+                "id_cod_cnpj_completo_txt" varchar(20),
                 "id_cod_cnpj_completo_num" BIGINT);
             '''
             # Inserir csv para o banco de dados

@@ -486,7 +486,8 @@ def sequencia_sgi():
                             criar_indices_sgi],
                            'red')"""
 
-        funçao_barprogress([criar_tb_transposta_dados_sgi_bd], "red")
+        funçao_barprogress(
+            [convert_utf8_dados_cnpj_virtual_estabelecimentos_ativos_bd], "red")
 
         insert_end = time.time()
 

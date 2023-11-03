@@ -176,9 +176,10 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 ## **_Infraestrutura necessária/opcional:_**
 
 - [Link download - Windows 10 ou superior - 64Bits](https://www.microsoft.com/pt-br/windows/)
-- [Link download - Python 3.11.4](https://www.python.org/downloads/release/python-3114/) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554)
+- [Link download - Python 3.11.4](https://www.python.org/downloads/release/python-3114/) - [Programar em Python no VS Code](https://www.youtube.com/watch?v=CW_MUogO554) 
+- NÃO UTILIZAR O PYTHON 12, DARÁ ERRO COM A INSTALAÇÃO DOS PACOTES (DEVIDO REQUERIMENTO DO USO DE ARQUIVO "pyproject.toml")
 - [Link download - Visual Studio Code](https://code.visualstudio.com/download) - [Python + VS Code no Windows em 2022](https://www.youtube.com/watch?v=XQwHJc1uO_g)
-- [Link download - PostgreSQL 15](https://www.postgresql.org/download/) - [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
+- [Link download - PostgreSQL 16](https://www.postgresql.org/download/) - [Resumido para utilização do PostgreSQL](./extras/PostgreSQL_resumido.html)
 - [Packages Python mais atuais conforme "requirements.txt"](https://www.postgresql.org/download/)
 - [Link download Java Release 8 - Atualização 333 - 32Bits e 64Bits - Requerido pelo pacote Tabula-Py para leitura de pdf"](https://www.java.com/pt-BR/download/help/windows_manual_download_pt-br.html)
 - [Link download opcional - Insomnia - API Client](https://insomnia.rest/download)
@@ -217,7 +218,7 @@ Em suma, o PCA é uma de redução de dimensionalidade técnica que transforma u
 
 **2.** Baixe e extraia o conteúdo do projeto em uma pasta de sua escolha (preferencialmente na raiz do drive D:\\\*), abra a pasta dentro do Visual Studio Code já pré configurado para uso da linguagem Pyhon.
 
-**3.** Execute no Powershell do windows como administrador o comando "Set-ExecutionPolicy AllSigned" e coloque a opção A [Para todos] para liberação de execução de scripts, já no terminal do VSCODE execute o arquivo `01_Instalacao venv.bat` como administrador que foi utilizado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
+**3.** Execute no Powershell do windows como administrador o comando "Set-ExecutionPolicy AllSigned" e coloque a opção A [Para todos] para liberação de execução de scripts, já no terminal do VSCODE execute o arquivo `.\01_Instalacao_venv.bat` como administrador, tal passo foi criado para automatizar o processo de criação do ambiente de variáveis, atualização do `PIP` e instalação dos pacotes necessários através do arquivo `requirements.txt`.
 
 &nbsp;
 
@@ -245,7 +246,7 @@ pip list
 
 &nbsp;
 
-**4.** Para facilitação foi criado uma **interface gráfica pelo pacote "tkinter"**, execute o arquivo **"A_GUI.py"** da pasta ./src para iniciar o mesmo, más também existe um **menu via console** caso queiram utilizar execute o arquivo **"A_Main.py"**.
+**4.** Para facilitação foi criado uma **interface gráfica pelo pacote "tkinter"**, execute o arquivo **"__main__.py"** da pasta ./src para iniciar o mesmo, más também existe um **menu via console** caso queiram utilizar execute o arquivo **"A_Main.py"**.
 &nbsp;
 
 ![Alt text](Images/01_Menu_principal.png?raw=true "Menu Principal")

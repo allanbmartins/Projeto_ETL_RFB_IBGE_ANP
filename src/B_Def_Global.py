@@ -752,7 +752,8 @@ def calcula_tempo_execucao(entrada):
 
         # Imprima o tempo de execução
         print_divisor_inicio_fim(
-            f"Tempo de execução em horas/minutos/segundos: {convert_tempo(elapsed_time)}",  # elapsed_time:.2f
+            # elapsed_time:.2f
+            f"Tempo de execução em horas/minutos/segundos: {convert_tempo(elapsed_time)}",
             3,
         )
 
@@ -1658,12 +1659,12 @@ def verificar_dados_faltantes_tabelas(
 
         # Crie  SQL para consulta de valores faltantes na tabela específica
         sql_1 = f"""SELECT 
-            "{coluna_temp1}" 
+            {coluna_temp1} 
             FROM {tabela_temp}
-            WHERE "{coluna_temp1}" IS NOT NULL
+            WHERE {coluna_temp1} IS NOT NULL
             EXCEPT
             SELECT 
-            "{coluna_temp1_origem}" 
+            {coluna_temp1_origem} 
             FROM {tabela_temp_origem};
             """
 
