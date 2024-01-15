@@ -5,20 +5,14 @@ from time import sleep
 
 import pandas as pd
 
-from B_Def_Global import (
-    GetEnv,
-    conecta_bd_generico,
-    criar_chaves_estrangeiras_tabelas,
-    criar_chaves_primaria_tabelas,
-    download_arquiv_barprogress,
-    funçao_barprogress,
-    leitura_csv_insercao_bd_sql,
-    limpar_terminal,
-    log_retorno_erro,
-    log_retorno_info,
-    print_divisor_inicio_fim,
-    print_parcial_final_log_inf_retorno,
-)
+from B_Def_Global import (GetEnv, conecta_bd_generico,
+                          criar_chaves_estrangeiras_tabelas,
+                          criar_chaves_primaria_tabelas,
+                          download_arquiv_barprogress, funçao_barprogress,
+                          leitura_csv_insercao_bd_sql, limpar_terminal,
+                          log_retorno_erro, log_retorno_info,
+                          print_divisor_inicio_fim,
+                          print_parcial_final_log_inf_retorno)
 from Z_Logger import Logs
 
 logs = Logs(filename="logs.log")
@@ -524,7 +518,7 @@ def inserir_dados_ibge_bd():
             table_create_sql_areas_urbanizadas_2019_ibge = r'''
             CREATE TABLE IF NOT EXISTS "tb_ibge_areas_urbanizadas_2019" (
             "id_cod_municipio_ibge" INT, 
-            "areas_urbanizadas_ibge_2019" varchar(9), 
+            "areas_urbanizadas_ibge_2019" varchar(12), 
             "nome_municipio_ibge" varchar(255), 
             "uf" varchar(3));
             '''
@@ -543,7 +537,7 @@ def inserir_dados_ibge_bd():
             table_create_sql_areas_territoriais_2022_ibge = r'''
             CREATE TABLE IF NOT EXISTS "tb_ibge_areas_territoriais_2022" (
             "id_cod_municipio_ibge" INT, 
-            "areas_territoriais_ibge_2022" varchar(9), 
+            "areas_territoriais_ibge_2022" varchar(12), 
             "nome_municipio_ibge" varchar(255), 
             "uf" varchar(3));
             '''

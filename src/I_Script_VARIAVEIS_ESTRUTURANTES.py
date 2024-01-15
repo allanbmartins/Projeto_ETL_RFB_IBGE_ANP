@@ -2069,4 +2069,4 @@ def sequencia_var_estruturantes():
         log_retorno_erro(text)
 
 
-sequencia_var_estruturantes()
+# sequencia_var_estruturantes()

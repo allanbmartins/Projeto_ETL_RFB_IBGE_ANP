@@ -3,62 +3,30 @@ import tkinter as tk
 import webbrowser
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 
-from B_Def_Global import (
-    Criar_Var_Ambiente,
-    VerifPath,
-    gerenciar_bancos,
-    gerenciar_diretorios,
-    limpar_terminal,
-    log_retorno_erro,
-)
-from C_Script_RFB import (
-    baixar_arq_rfb_estab,
-    cnpj_repetidos_rfb,
-    converter_utf8_arq_rfb_estab,
-    criar_indices_rfb,
-    dados_faltantes_rfb,
-    descompactar_arq_rfb_estab,
-    inserir_dados_estab_bd,
-    sequencia_RFB,
-)
-from D_Script_IBGE import (
-    area_ter_urb_ibge,
-    cnae_detalhado_ibge,
-    criar_indices_ibge,
-    inserir_dados_ibge_bd,
-    municipios_ibge,
-    pib_ibge,
-    populacao_2022_ibge,
-    sequencia_baixar_ibge,
-    sequencia_IBGE,
-    total_area_ter_2022_ibge,
-)
-from E_Script_ANP import (
-    criar_indices_anp,
-    dados_faltantes_anp,
-    inserir_dados_anp_bd,
-    postos_combustiveis_anp,
-    sequencia_anp,
-)
+from B_Def_Global import (Criar_Var_Ambiente, VerifPath, gerenciar_bancos,
+                          gerenciar_diretorios, limpar_terminal,
+                          log_retorno_erro)
+from C_Script_RFB import (baixar_arq_rfb_estab, cnpj_repetidos_rfb,
+                          converter_utf8_arq_rfb_estab, criar_indices_rfb,
+                          dados_faltantes_rfb, descompactar_arq_rfb_estab,
+                          inserir_dados_estab_bd, sequencia_RFB)
+from D_Script_IBGE import (area_ter_urb_ibge, cnae_detalhado_ibge,
+                           criar_indices_ibge, inserir_dados_ibge_bd,
+                           municipios_ibge, pib_ibge, populacao_2022_ibge,
+                           sequencia_baixar_ibge, sequencia_IBGE,
+                           total_area_ter_2022_ibge)
+from E_Script_ANP import (criar_indices_anp, dados_faltantes_anp,
+                          inserir_dados_anp_bd, postos_combustiveis_anp,
+                          sequencia_anp)
 from I_Script_VARIAVEIS_ESTRUTURANTES import (
-    agua_esgoto_IBGE_SNB,
-    capacidade_instalada_ANEEL_ENERG,
-    estabelecimentos_per_capita_RFB,
-    municipios_faixas_fronteiras_IBGE_GEO,
-    ocorrencias_criminais_MJSP_SEG,
-    quantidade_municipios_IBGE,
-    quantidade_populacao_IBGE,
-    rede_pavimentada_DNIT_TRANSP,
-    sequencia_agregados_IBGE,
-    sequencia_dados_variaveis,
-    sequencia_var_estruturantes,
-    tabela_var_estruturantes_final,
-    unidades_conservacao_ICMBIO,
-    valor_area_territorial_IBGE,
-    valor_pib_industrial_IBGE,
-    var_ECON,
-    var_TELECON,
-)
+    agua_esgoto_IBGE_SNB, capacidade_instalada_ANEEL_ENERG,
+    estabelecimentos_per_capita_RFB, municipios_faixas_fronteiras_IBGE_GEO,
+    ocorrencias_criminais_MJSP_SEG, quantidade_municipios_IBGE,
+    quantidade_populacao_IBGE, rede_pavimentada_DNIT_TRANSP,
+    sequencia_agregados_IBGE, sequencia_dados_variaveis,
+    sequencia_var_estruturantes, tabela_var_estruturantes_final,
+    unidades_conservacao_ICMBIO, valor_area_territorial_IBGE,
+    valor_pib_industrial_IBGE, var_ECON, var_TELECON)
 from Z_Logger import Logs
 
 logs = Logs(filename="logs.log")

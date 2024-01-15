@@ -418,22 +418,23 @@ DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
 &nbsp;
 
 - **Data atualização dos arquivos, tempos obtidos processo e tamanhos dos arquivos da RFB:**
-  - **`2023-08-21`**;
+  - **`2024-01-15`**;
 
 &nbsp;
 
 - Tempos parciais coletados no processo da RFB:
 
-| Item | Descrição Processo                                                                                                                                   | Tempo decorrido no processo PC i7 8Gen-Ram 16GB-HD-10Mbps | Tempo decorrido no processo PC i7 4Gen-Ram 8GB-SSD-200Mbps |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-| 1    | Baixar                                                                                                                                               | `5:37:43   `                                              | `1:08:00   `                                               |
-| 2    | Descompactar                                                                                                                                         | `0:07:42`                                                 | `0:06:00   `                                               |
-| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:13`                                                 | `1:01:00   `                                               |
-| 4    | Inserir no Banco de dados                                                                                                                            | `0:38:13`                                                 | `0:26:00   `                                               |
-| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:08:18`                                                 | `0:09:00   `                                               |
-| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:08:09`                                                 | `0:04:00   `                                               |
-| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:44`                                                 | `0:16:00   `                                               |
-|      | Total                                                                                                                                                | `7:31:02`                                                 | `3:10:00   `                                               |
+
+| Item | Descrição Processo                                                                                                                                   | Tempo decorrido no processo PC Intel i7 8Gen-Ram 16GB-HD-10Mbps | Tempo decorrido no processo PC Intel i7 4Gen-Ram 8GB-SSD-200Mbps | Tempo decorrido no processo PC Ryzen 5 PRO 4650GE -Ram 16GB-SSD-10Mbps |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------- |
+| 1    | Baixar                                                                                                                                               | `5:37:43   `                                              | `1:08:00   `                                               | `3:38:50   `                                               	  |
+| 2    | Descompactar                                                                                                                                         | `0:07:42`                                                 | `0:06:00   `                                               | `0:04:12   `                                              		  |
+| 3    | Converter/separar/1º Tratamento (dataStyle '%y%m%d', substituição 0 e nulos na coluna data situação, correção data, criação da coluna cnpj completo) | `0:25:13`                                                 | `1:01:00   `                                               | `0:21:13   `                                              		  |
+| 4    | Inserir no Banco de dados                                                                                                                            | `0:38:13`                                                 | `0:26:00   `                                               | `0:23:17   `                                              		  |
+| 5    | 2º Tratamento - Repetidos                                                                                                                            | `0:08:18`                                                 | `0:09:00   `                                               | `0:02:04   `                                              		  |
+| 6    | 2º Tratamento - Faltantes                                                                                                                            | `0:08:09`                                                 | `0:04:00   `                                               | `0:02:08   `                                             	 	  |
+| 7    | Criar chaves primárias/estrangeiras nas tabelas para relacionamentos                                                                                 | `0:25:44`                                                 | `0:16:00   `                                               | `0:11:19   `                                              		  |
+|      | Total                                                                                                                                                | `7:31:02`                                                 | `3:10:00   `               								   | `4:43:03`                                                 		  |
 
 &nbsp;
 
@@ -441,12 +442,12 @@ DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
 
 | Item | Tipo                            | Tamanho    |
 | ---- | ------------------------------- | ---------- |
-| 1    | Compactados - originais         | `5,70 GB`  |
-| 2    | Descompactados - originais      | `20,7 GB`  |
-| 3    | Convertidos - padronizados      | `17,6 GB`  |
-| 4    | Banco de dados - Inicial        | `20,59 GB` |
-| 4    | Banco de dados - 2º Tratamentos | `20,59 GB` |
-| 4    | Banco de dados - Chaves         | `22,94 GB` |
+| 1    | Compactados - originais         | `5,75 GB`  |
+| 2    | Descompactados - originais      | `21,1 GB`  |
+| 3    | Convertidos - padronizados      | `17,9 GB`  |
+| 4    | Banco de dados - Inicial        | `21,69 GB` |
+| 4    | Banco de dados - 2º Tratamentos | `21,79 GB` |
+| 4    | Banco de dados - Chaves         | `23,33 GB` |
 
 &nbsp;
 
