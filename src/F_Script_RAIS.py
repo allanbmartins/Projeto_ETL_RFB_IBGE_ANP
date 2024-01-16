@@ -4,26 +4,19 @@ import zipfile
 
 from tqdm import tqdm
 
-from B_Def_Global import (
-    GetEnv,
-    conecta_bd_generico,
-    convert_tempo,
-    criar_chaves_estrangeiras_tabelas,
-    criar_chaves_primaria_tabelas,
-    download_arquiv_barprogress,
-    funçao_barprogress,
-    leitura_csv_insercao_bd_sql,
-    limpar_terminal,
-    log_retorno_erro,
-    log_retorno_info,
-    print_divisor_inicio_fim,
-    print_parcial_final_log_inf_retorno,
-    remover_dados_faltantes_tabelas,
-    remover_repetidos_tabelas,
-    split_csv_file_pandas_todos,
-    verificar_dados_faltantes_tabelas,
-    verificar_repetidos_tabelas,
-)
+from B_Def_Global import (GetEnv, conecta_bd_generico, convert_tempo,
+                          criar_chaves_estrangeiras_tabelas,
+                          criar_chaves_primaria_tabelas,
+                          download_arquiv_barprogress, funçao_barprogress,
+                          leitura_csv_insercao_bd_sql, limpar_terminal,
+                          log_retorno_erro, log_retorno_info,
+                          print_divisor_inicio_fim,
+                          print_parcial_final_log_inf_retorno,
+                          remover_dados_faltantes_tabelas,
+                          remover_repetidos_tabelas,
+                          split_csv_file_pandas_todos,
+                          verificar_dados_faltantes_tabelas,
+                          verificar_repetidos_tabelas)
 from Z_Logger import Logs
 
 logs = Logs(filename="logs.log")
@@ -369,7 +362,7 @@ def sequencia_rais():
         insert_end = time.time()
 
         print_parcial_final_log_inf_retorno(
-            f"converter e inserção no banco, remoção de cnpj duplicados e crição de chaves primárias e estrangeiras nas tabelas do RAIS na {base_dados}",
+            f"converter e inserção no banco, remoção de cnpj duplicados e criação de chaves primárias e estrangeiras nas tabelas do RAIS na {base_dados}",
             insert_start,
             insert_end,
             "",

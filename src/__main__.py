@@ -53,7 +53,7 @@ def menu_tkinter_1():
         menubar = tk.Menu(main)
         main.config(menu=menubar)
         main.config(background='#ffffff')
-        main.title('ETL_RFB_IBGE_ANP - MEMU PRINCIPAL')
+        main.title('PROJETO_ETL_RFB_IBGE_ANP - MENU PRINCIPAL')
         main.geometry('670x800')
         main.resizable(True, True)
 
