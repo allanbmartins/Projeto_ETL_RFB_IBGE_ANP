@@ -51,7 +51,7 @@ def Criar_Var_Ambiente():
     host = "localhost"  # input('Digite o HOST usado do banco: ')
     port = "5432"  # input('Digite a PORTA usada do banco: ')
     user = "postgres"  # input('Digite o USERNAME usado do banco: ')
-    passw = "xxxx"  # input('Digite o PASSWORD usado do banco: ')
+    passw = "postgres"  # input('Digite o PASSWORD usado do banco: ')
     namebd = "dados_etl"  # input('Digite o NAME BD do banco: ')
 
     try:
@@ -154,10 +154,10 @@ def Criar_Var_Ambiente():
             + r"https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93?localidades=N6[all]"
             + "\n"
         )
-        # Dados PIB TOTAL, INDUSTRIAL E SERVIÇOS POR MUNICÍPIOS 2020 em Mil Reais - Fonte: https://servicodados.ibge.gov.br/api/docs
+        # Dados PIB TOTAL, INDUSTRIAL E SERVIÇOS POR MUNICÍPIOS 2021 em Mil Reais - Fonte: https://servicodados.ibge.gov.br/api/docs
         frases.append(
-            "URL_IBGE_PIB_2020="
-            + r"https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37|517|6575?localidades=N6[all]"
+            "URL_IBGE_PIB_2021="
+            + r"https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2021/variaveis/37|517|6575?localidades=N6[all]"
             + "\n"
         )
         # Dados ÁREA TERRITORIAL URBANA 2019 - https://servicodados.ibge.gov.br/api/docs
@@ -206,7 +206,7 @@ def Criar_Var_Ambiente():
         )
         # Dados IBGE PNSB - Pesquisa Nacional de Saneamento Básico - Fonte: https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?=&t=resultados - Layout: https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/ - Origem: https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37|498|513|517|6575|525?localidades=N6[all]
         frases.append(
-            "URL_IBGE_PNSB_ABASTACIMENTO_AGUA="
+            "URL_IBGE_PNSB_ABASTECIMENTO_AGUA="
             + r"https://ftp.ibge.gov.br/Indicadores_Sociais/Saneamento_Basico/2017/tabelas_xlsx/abastecimento_de_agua_20210624.zip"
             + "\n"
         )
@@ -542,6 +542,7 @@ def download_arquiv_barprogress(
                             colorize=True,
                         )
 
+                        enlighten.get_manager().stop()
                         break
 
                     else:

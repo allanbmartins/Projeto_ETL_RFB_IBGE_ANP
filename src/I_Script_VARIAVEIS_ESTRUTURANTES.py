@@ -174,7 +174,7 @@ def valor_pib_industrial_IBGE():
     # 'https://www2.correios.com.br/institucional/licit_compras_contratos/licitacoes/anexos/EDI_AP000001_2019_114383.pdf'
 
     ext = ".csv"
-    name_file_ori = "tb_ibge_pib_2020.csv"
+    name_file_ori = "tb_ibge_pib_2021.csv"
     name_file = "03_tb_ibge_valor_pib_industrial_2022"
     file_path_ori = os.path.join(path_var_output, name_file_ori)
     file_path = os.path.join(path_var_output, (name_file + ext))
@@ -196,15 +196,15 @@ def valor_pib_industrial_IBGE():
             columns=[
                 "cod_municipio_ibge",
                 "nome_municipio",
-                "pib_total_2020",
-                "pib_serv_2020",
+                "pib_total_2021",
+                "pib_serv_2021",
             ]
         )
 
         # print(tmp_1)
 
         # Agrupando por item e contando o número de ocorrências
-        tmp_1 = tmp_1.groupby(["uf"])["pib_ind_2020"].sum().reset_index()
+        tmp_1 = tmp_1.groupby(["uf"])["pib_ind_2021"].sum().reset_index()
 
         # print(tmp_1)
 
@@ -213,7 +213,7 @@ def valor_pib_industrial_IBGE():
         # Ordenar ascendente coluna específica para facilitar a visualização.
         tmp_1 = tmp_1.sort_values(by="uf", ascending=True)
 
-        tmp_1 = coluna_escala_p_n(tmp_1, 1, "pib_ind_2020")
+        tmp_1 = coluna_escala_p_n(tmp_1, 1, "pib_ind_2021")
 
         print(tmp_1)
 
@@ -1251,7 +1251,7 @@ def agua_esgoto_IBGE_SNB():
     path_var_output = GetEnv("VAR_OUTPUT_FILES_PATH")
     path_var_output_convert = GetEnv("VAR_OUTPUT_FILES_PATH_CONVERT")
     # 'https://www2.correios.com.br/institucional/licit_compras_contratos/licitacoes/anexos/EDI_AP000001_2019_114383.pdf'
-    url_api_1 = GetEnv("URL_IBGE_PNSB_ABASTACIMENTO_AGUA")
+    url_api_1 = GetEnv("URL_IBGE_PNSB_ABASTECIMENTO_AGUA")
     url_api_2 = GetEnv("URL_IBGE_PNSB_ESGOTO_SANITARIO")
     ext = ".zip"
     name_file_ori = "02_tb_ibge_quantidade_municipios_2022.csv"
@@ -1656,7 +1656,7 @@ def var_ECON():
         tmp_2_pib_ind = pd.read_csv(
             file_path_ori_2,
             # index_col=False,
-            usecols=["uf", "pib_ind_2020"],
+            usecols=["uf", "pib_ind_2021"],
             sep=";",
             encoding="Utf8",
         )
@@ -1666,7 +1666,7 @@ def var_ECON():
 
         # Criar coluna com de densidade de agencias por população * por 1000
         tmp_3["econ"] = (
-            (tmp_3["pib_ind_2020"] / 1000) / (tmp_3["qtd_populacao"])
+            (tmp_3["pib_ind_2021"] / 1000) / (tmp_3["qtd_populacao"])
         ) * 1000
 
         tmp_3 = coluna_escala_p_n(tmp_3, 1, "econ")

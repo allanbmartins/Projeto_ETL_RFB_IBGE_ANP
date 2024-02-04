@@ -67,7 +67,7 @@ def Menu(titulo, opcoes):
                 os.system("cls")
                 # Encerra este menu e retorna a função anterior
                 break
-            if int(op) < len(opcoes):
+            if int(op) <= len(opcoes):
                 # Chama a função do menu:
                 opcoes[int(op) - 1][1]()
                 continue
@@ -143,17 +143,17 @@ def executar_script_rfb():
     opcoes = [
         ("1 - Baixar arquivos da RFB (Estabelecimentos) ", baixar_arq_rfb_estab),
         ("2 - Extrair arquivos da RFB (Estabelecimentos) ", descompactar_arq_rfb_estab),
-        ("4 - Converter para Utf8, divisão de arquivos e criação da coluna cnpj completo - RFB (Estabelecimentos) ",
+        ("3 - Converter para Utf8, divisão de arquivos e criação da coluna cnpj completo - RFB (Estabelecimentos) ",
          converter_utf8_arq_rfb_estab),
-        ("3 - Inserir no banco de dados já criada as informações dos 'cvs' baixados da RFB (Estabelecimentos)",
+        ("4 - Inserir no banco de dados já criado as informações dos 'cvs' baixados da RFB (Estabelecimentos)",
          inserir_dados_estab_bd),
-        ("4 - Verificar/remover valores repetidos na coluna 'id_cod_cnpj_basico'...",
+        ("5 - Verificar/remover valores repetidos na coluna 'id_cod_cnpj_basico'...",
          cnpj_repetidos_rfb),
-        ("5 - Verificar/inserir valores faltantes em tabelas dimensão específicas...",
+        ("6 - Verificar/inserir valores faltantes em tabelas dimensão específicas...",
          dados_faltantes_rfb),
-        ("6 - Criar chaves primárias e estrangeiras nas coluas específicadas...",
+        ("7 - Criar chaves primárias e estrangeiras nas colunas especificadas...",
          criar_indices_rfb),
-        ("7 - Executar todos os passos acima em sequencia", sequencia_RFB)
+        ("8 - Executar todos os passos acima em sequencia", sequencia_RFB)
     ]
     return Menu("5 - Executar downloads RFB", opcoes)
 
@@ -171,9 +171,9 @@ def baixar_dados_ibge():
         ("5 - Baixar tabela de Total de Área territorial 2020 por metro quadrado por municípios IBGE",
          total_area_ter_2022_ibge),
         ("6 - Baixar tabela de CNAE detalhado por atividade IBGE", cnae_detalhado_ibge),
-        ("7 - Inserir no banco de dados já criada as informações dos cvs baixados do IBGE...",
+        ("7 - Inserir no banco de dados já criado as informações dos cvs baixados do IBGE...",
          inserir_dados_ibge_bd),
-        ("8 - Criar chaves primárias e estrangeiras nas coluas específicadas...",
+        ("8 - Criar chaves primárias e estrangeiras nas colunas especificadas...",
          criar_indices_ibge),
         ("9 - Executar todos os passos acima em sequência", sequencia_IBGE)
     ]
@@ -185,13 +185,13 @@ def baixar_dados_anp():
     print_divisor_inicio_fim('=== Baixar dados extras dados',
                              3)
     opcoes = [
-        ("1 - Baixar tabela de dados cadastrais revendedores varejistas combustiveis automoveis ANP...",
+        ("1 - Baixar tabela de dados cadastrais revendedores varejistas combustíveis automóveis ANP...",
          postos_combustiveis_anp),
-        ("2 - Inserir no banco de dados já criada as informações dos cvs baixados do ANP...",
+        ("2 - Inserir no banco de dados já criado as informações dos cvs baixados do ANP...",
          inserir_dados_anp_bd),
-        ("3 - 'Verificar/inserir valores faltantes em tabelas dimensão específicas...",
+        ("3 - Verificar/inserir valores faltantes em tabelas dimensão específicas...",
          dados_faltantes_anp),
-        ("4 - Criar chaves primárias e estrangeiras nas coluas específicadas...",
+        ("4 - Criar chaves primárias e estrangeiras nas colunas especificadas...",
          criar_indices_anp),
         ("5 - Executar todos os passos acima em sequência", sequencia_anp)
     ]
