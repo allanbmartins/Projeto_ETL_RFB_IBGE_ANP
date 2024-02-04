@@ -30,7 +30,7 @@ De forma geral, nelas constam as mesmas informações que conseguimos ver no car
 
 - Fonte oficial que é usada para baixar os arquivos do IBGE (Municípios), [aqui](https://www.gov.br/receitafederal/dados/municipios.csv/).
 - Fonte oficial que é usada para baixar os arquivos do IBGE (População), [aqui](https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93?localidades=N6[all]).
-- Fonte oficial que é usada para baixar os arquivos do IBGE (PIB), [aqui](https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2020/variaveis/37?localidades=N6[all]).
+- Fonte oficial que é usada para baixar os arquivos do IBGE (PIB), [aqui](https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2021/variaveis/37?localidades=N6[all]).
 - Fonte oficial que é usada para baixar os arquivos do IBGE (Território Urbano), [aqui](https://servicodados.ibge.gov.br/api/v3/agregados/8418/periodos/-6/variaveis/12749?localidades=N6[all]).
 - Fonte oficial que é usada para baixar os arquivos do IBGE (Território Total), [aqui](https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/6318?localidades=N6[all]).
 - Fonte oficial que é usada para baixar os arquivos do IBGE (CNAEs detalhado), [aqui](https://servicodados.ibge.gov.br/api/v2/CNAEs/subclasses).
@@ -365,7 +365,7 @@ DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
 
   - `tb_ibge_municipios`: dados para correlação cód. município Siafi/TOM que o RFB usa para o código IBGE.
   - `tb_ibge_pop_2022`: dados de população do Censo 2022 por municípios
-  - `tb_ibge_PIB_2020`: dados do PIB 2020 por municípios
+  - `tb_ibge_PIB_2021`: dados do PIB 2021 por municípios
   - `tb_ibge_areas_urbanizadas_2019`: dados de Território Urbanizados 2019 por municípios
   - `tb_ibge_areas_territoriais_2022`: dados de Território Total do Censo 2022 por municípios
   - `tb_ibge_cnaes_detalhado`: dados do CNAES detalhado por atividade econômica.
@@ -374,7 +374,7 @@ DB_NAME=dados_etl" #Caso queira altere o nome do banco de dados que será criado
 
 - A tabela/coluna `tb_ibge_municipios`/`id_cod_municipio_ibge` possui uma chave primária, e uma chave estrangeira para a tabela/coluna `tb_rfb_municipios`/`id_cod_municipio_tom_rfb`.
 
-- Já as tabelas `tb_ibge_pop_2022`, `tb_ibge_PIB_2020`, `tb_ibge_areas_urbanizadas_2019` e `tb_ibge_areas_territoriais_2022`possuem uma chave estrangeira para a tabela/coluna `tb_ibge_municipios`/`id_cod_municipio_ibge`, que é a principal chave de ligação entre elas.
+- Já as tabelas `tb_ibge_pop_2022`, `tb_ibge_PIB_2021`, `tb_ibge_areas_urbanizadas_2019` e `tb_ibge_areas_territoriais_2022`possuem uma chave estrangeira para a tabela/coluna `tb_ibge_municipios`/`id_cod_municipio_ibge`, que é a principal chave de ligação entre elas.
 
 - A tabela/coluna `tb_ibge_cnaes_detalhado`/`id_cod_cnaes_subclasse_ibge` possui uma chave primária, e uma chave estrangeira para a tabela/coluna `tb_rfb_cnaes`/`id_cod_cnaes_ibge`.
 

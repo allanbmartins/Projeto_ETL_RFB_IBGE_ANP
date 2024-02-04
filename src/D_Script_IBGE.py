@@ -87,7 +87,7 @@ def populacao_2022_ibge():
                                     False)
 
         sleep(1)
-
+        print("\n")
         print_divisor_inicio_fim(f'Converter arquivo {name_file+ext} para .csv',
                                  3)
         # Ler json
@@ -150,9 +150,9 @@ def pib_ibge():
     """
 
     path_ibge = GetEnv('IBGE_FILES_PATH')
-    url_api = GetEnv('URL_IBGE_PIB_2020')
+    url_api = GetEnv('URL_IBGE_PIB_2021')
     ext = ('.json')
-    name_file = ('tb_ibge_pib_2020')
+    name_file = ('tb_ibge_pib_2021')
     file_path = os.path.join(path_ibge, (name_file+ext))
 
     try:
@@ -185,24 +185,24 @@ def pib_ibge():
                                     'localidade.nome'])
 
         # Inserir as séries dos serviços do PIB Industrial e Serviços
-        tmp_1['pib_ind_2020'] = tmp_2['serie.2020']
-        tmp_1['pib_serv_2020'] = tmp_3['serie.2020']
+        tmp_1['pib_ind_2021'] = tmp_2['serie.2021']
+        tmp_1['pib_serv_2021'] = tmp_3['serie.2021']
 
         # Alterar o nome da coluna
         tmp_1.columns = ['cod_municipio_ibge',
-                         'pib_total_2020',
+                         'pib_total_2021',
                          'nome_municipio',
                          'uf',
-                         'pib_ind_2020',
-                         'pib_serv_2020']
+                         'pib_ind_2021',
+                         'pib_serv_2021']
 
         # Alterando ordem das colunas do dataframe
         tmp_1 = tmp_1[['cod_municipio_ibge',
                        'nome_municipio',
                        'uf',
-                       'pib_total_2020',
-                       'pib_ind_2020',
-                       'pib_serv_2020']]
+                       'pib_total_2021',
+                       'pib_ind_2021',
+                       'pib_serv_2021']]
 
         # print(f'\nPIB Geral {tmp_1}')
 
@@ -250,6 +250,7 @@ def area_ter_urb_ibge():
                                     False)
 
         sleep(1)
+        print("\n")
 
         # Ler json
         print_divisor_inicio_fim(f'Converter arquivo {name_file+ext} para .csv',
@@ -320,6 +321,7 @@ def total_area_ter_2022_ibge():
                                     file_path,
                                     False)
         sleep(1)
+        print("\n")
 
         # Ler json
         print_divisor_inicio_fim(f'Converter arquivo {name_file+ext} para .csv',
@@ -494,19 +496,19 @@ def inserir_dados_ibge_bd():
 
             # Dados arquivo/tabela (pib_ibge_2021)
             # Criar tabela
-            table_create_sql_pib_2020_ibge = r'''
-            CREATE TABLE IF NOT EXISTS "tb_ibge_pib_2020" (
+            table_create_sql_pib_2021_ibge = r'''
+            CREATE TABLE IF NOT EXISTS "tb_ibge_pib_2021" (
             "id_cod_municipio_ibge" INT, 
             "nome_municipio_ibge" varchar(255), 
             "uf" varchar(3),
-            "pib_ibge_2020" BIGINT,
-            "pib_ind_2020" BIGINT,
-            "pib_serv_2020" BIGINT);
+            "pib_ibge_2021" BIGINT,
+            "pib_ind_2021" BIGINT,
+            "pib_serv_2021" BIGINT);
             '''
             # Inserir csv para o banco de dados
-            leitura_csv_insercao_bd_sql('tb_ibge_pib_2020.csv',
-                                        'tb_ibge_pib_2020',
-                                        table_create_sql_pib_2020_ibge,
+            leitura_csv_insercao_bd_sql('tb_ibge_pib_2021.csv',
+                                        'tb_ibge_pib_2021',
+                                        table_create_sql_pib_2021_ibge,
                                         'ibge',
                                         extracted_files)
         sleep(1)
@@ -672,7 +674,7 @@ def criar_indices_ibge():
                                                   coluna_temp1_origem)
 
                 # Crias chaves Estrangeiras nas tabela para municipios
-                tabela_temp = 'tb_ibge_pib_2020'
+                tabela_temp = 'tb_ibge_pib_2021'
                 tabela_temp_origem = 'tb_ibge_municipios'
                 nome_fk_coluna = 'FK_id_cod_municipio_ibge'
                 coluna_temp1 = 'id_cod_municipio_ibge'
