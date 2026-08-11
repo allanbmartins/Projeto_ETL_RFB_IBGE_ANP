@@ -390,10 +390,10 @@ def menu_tkinter_1():
             label='Verificar/inserir valores faltantes em tabelas dimensão específicas...', command=dados_faltantes_rfb)
         filemenu5.add_separator()
         filemenu5.add_command(
-            label='Criar chaves primárias e estrangeiras nas coluas específicadas...', command=criar_indices_rfb)
+            label='Criar chaves primárias e estrangeiras nas colunas específicadas...', command=criar_indices_rfb)
         filemenu5.add_separator()
         filemenu5.add_command(
-            label='Executar todos os passos acima em sequencia...', command=sequencia_RFB)
+            label='Executar todos os passos acima em sequência...', command=sequencia_RFB)
         filemenu5.add_separator()
         filemenu5.add_command(label='Sair', command=Quit)
 
@@ -414,10 +414,10 @@ def menu_tkinter_1():
             label='Baixar todas a tabelas IBGE acima de uma vez...', command=sequencia_baixar_ibge)
         filemenu6.add_separator()
         filemenu6.add_command(
-            label='Inserir no banco de dados já criada as informações dos cvs baixados do IBGE...', command=inserir_dados_ibge_bd)
+            label='Inserir no banco de dados já criado as informações dos cvs baixados do IBGE...', command=inserir_dados_ibge_bd)
         filemenu6.add_separator()
         filemenu6.add_command(
-            label='Criar chaves primárias e estrangeiras nas coluas específicadas...', command=criar_indices_ibge)
+            label='Criar chaves primárias e estrangeiras nas colunas específicadas...', command=criar_indices_ibge)
         filemenu6.add_separator()
         filemenu6.add_command(
             label='Executar todos os passos acima em sequencia...', command=sequencia_IBGE)
@@ -425,19 +425,19 @@ def menu_tkinter_1():
         filemenu6.add_command(label='Sair', command=Quit)
 
         filemenu7.add_command(
-            label='Baixar tabela de dados cadastrais revendedores varejistas combustiveis automoveis ANP...', command=postos_combustiveis_anp)
+            label='Baixar tabela de dados cadastrais revendedores varejistas combustíveis automóveis ANP...', command=postos_combustiveis_anp)
         filemenu7.add_separator()
         filemenu7.add_command(
-            label='Inserir no banco de dados já criada as informações dos cvs baixados do ANP...', command=inserir_dados_anp_bd)
+            label='Inserir no banco de dados já criado as informações dos cvs baixados do ANP...', command=inserir_dados_anp_bd)
         filemenu7.add_separator()
         filemenu7.add_command(label='TRANSFORMAÇÃO DE DADOS', command='XXX')
         filemenu7.add_separator()
         filemenu7.add_command(
             label='Verificar/inserir valores faltantes em tabelas dimensão específicas...', command=dados_faltantes_anp)
         filemenu7.add_command(
-            label='Criar chaves primárias e estrangeiras nas coluas específicadas...', command=criar_indices_anp)
+            label='Criar chaves primárias e estrangeiras nas colunas específicadas...', command=criar_indices_anp)
         filemenu7.add_command(
-            label='Executar todos os passos acima em sequencia...', command=sequencia_anp)
+            label='Executar todos os passos acima em sequência...', command=sequencia_anp)
         filemenu7.add_separator()
         filemenu7.add_command(label='Sair', command=Quit)
 
@@ -445,9 +445,9 @@ def menu_tkinter_1():
         filemenu8.add_command(
             label='Criar agregado(população) das tabelas IBGE...', command=quantidade_populacao_IBGE)
         filemenu8.add_command(
-            label='Criar agregado(munícipios) das tabelas IBGE...', command=quantidade_municipios_IBGE)
+            label='Criar agregado(municípios) das tabelas IBGE...', command=quantidade_municipios_IBGE)
         filemenu8.add_command(
-            label='Criar agregado(PIB Insdustrial) das tabelas IBGE...', command=valor_pib_industrial_IBGE)
+            label='Criar agregado(PIB Industrial) das tabelas IBGE...', command=valor_pib_industrial_IBGE)
         filemenu8.add_command(
             label='Criar agregado(Área Territorial) das tabelas IBGE...', command=valor_area_territorial_IBGE)
         filemenu8.add_command(
@@ -465,7 +465,7 @@ def menu_tkinter_1():
         filemenu8.add_command(
             label='Dados DNIT - Plano Nacional de Viação e Sistema Nacional de Viação...', command=rede_pavimentada_DNIT_TRANSP)
         filemenu8.add_command(
-            label='Dados variáveal TELECON (Cobertura Agencias Correios e Cobertura Fibra)...', command=var_TELECON)
+            label='Dados variáveis TELECOM (Cobertura Agencias Correios e Cobertura Fibra)...', command=var_TELECON)
         filemenu8.add_command(
             label='Dados IBGE PNSB - Pesquisa Nacional de Saneamento Básico (Cobertura esgoto e Cobertura água)...', command=agua_esgoto_IBGE_SNB)
         filemenu8.add_command(
@@ -473,7 +473,7 @@ def menu_tkinter_1():
         filemenu8.add_command(
             label='Dados RFB - Estabelecimentos(Interesse) per capita......', command=estabelecimentos_per_capita_RFB)
         filemenu8.add_command(
-            label='Dados variáveal ECON - IBGE agregados (PIB Indústrial x População)...', command=var_ECON)
+            label='Dados variáveis ECON - IBGE agregados (PIB Industrial x População)...', command=var_ECON)
         filemenu8.add_command(
             label='Dados variáveis em sequência...', command=sequencia_dados_variaveis)
         filemenu8.add_separator()
@@ -484,7 +484,7 @@ def menu_tkinter_1():
         filemenu8.add_separator()
 
         filemenu8.add_command(
-            label='Executar todos os passos acima em sequencia...', command=sequencia_var_estruturantes)
+            label='Executar todos os passos acima em sequência...', command=sequencia_var_estruturantes)
         filemenu8.add_separator()
         filemenu8.add_command(label='Sair', command=Quit)
 
